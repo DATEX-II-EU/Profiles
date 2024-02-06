@@ -23,6 +23,7 @@ Organization description
 ASFINAG acts as an economically responsible motorway operator. We are convinced that modern and sustainably developed infrastructure is essential both for the mobility requirements of every single person and for Austria as a location for business. By using new technologies and innovations, we want to make Austria's motorways and expressways amongst the safest in Europe – in the interest of our customers and to strengthen the country as a place in which to do business.
 
 Organization logo
+![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/2c9c33ee-4b34-4861-be54-5c76bf1b7349)
 
 Website
 https://www.asfinag.at/
