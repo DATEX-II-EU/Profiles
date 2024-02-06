@@ -1,5 +1,4 @@
-Austrian Reference Profile SRTI
-===============================
+# Austrian Reference Profile SRTI
 
 **Status definition refers to ISO 14187**<br>
 Card
@@ -22,7 +21,7 @@ ASFINAG acts as an economically responsible motorway operator. We are convinced 
 
 Organization logo
 
-![](/sites/default/files/d2-profile/logo/ASFINAG.4c_claim_EN_0_1.jpg)
+![](ASFINAG.4c_claim_EN_0_1.jpg)
 
 Website
 
@@ -38,30 +37,30 @@ gottfried.allmer@asfinag.at
 
 XMI file
 
-[AustriaProfile\_3.3\_2.1.zip\_.xml](http://repo.datex2.eu/sites/default/files/d2-profile/xmi/AustriaProfile_3.3_2.1.zip_.xml)
+[AustriaProfile\_3.3\_2.1.zip\_.xml](model/AustriaProfile_3.3_2.1.zip_.xml)
 
 XML schema
 
 [LevelC\_3\_AustriaProfile\_0.xsd](schema/LevelC_3_AustriaProfile_0.xsd)
 
-[LevelC\_3\_Common\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Common_0.xsd)
+[LevelC\_3\_Common\_0.xsd](schema/LevelC_3_Common_0.xsd)
 
-[LevelC\_3\_D2Payload\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_D2Payload_0.xsd)
+[LevelC\_3\_D2Payload\_0.xsd](schema/LevelC_3_D2Payload_0.xsd)
 
-[LevelC\_3\_Facilities.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Facilities.xsd)
+[LevelC\_3\_Facilities.xsd](schema/LevelC_3_Facilities.xsd)
 
-[LevelC\_3\_LocationExtension\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_LocationExtension_0.xsd)
+[LevelC\_3\_LocationExtension\_0.xsd](schema/LevelC_3_LocationExtension_0.xsd)
 
-[LevelC\_3\_LocationReferencing\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_LocationReferencing_0.xsd)
+[LevelC\_3\_LocationReferencing\_0.xsd](schema/LevelC_3_LocationReferencing_0.xsd)
 
-[LevelC\_3\_Parking.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Parking.xsd)
+[LevelC\_3\_Parking.xsd](schema/LevelC_3_Parking.xsd)
 
-[LevelC\_3\_Situation.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Situation.xsd)
+[LevelC\_3\_Situation.xsd](schema/LevelC_3_Situation.xsd)
 
 PDF Documentation
 
-[AustrianRecommendedReferenceProfile\_SRTI.pdf](http://repo.datex2.eu/sites/default/files/d2-profile/pdf/AustrianRecommendedReferenceProfile_SRTI.pdf)
+[AustrianRecommendedReferenceProfile\_SRTI.pdf](doc/AustrianRecommendedReferenceProfile_SRTI.pdf)
 
 Selection file
 
-[selection.sel](http://repo.datex2.eu/sites/default/files/d2-profile/documentation/selection.sel)
+[selection.sel](model/documentation/selection.sel)
