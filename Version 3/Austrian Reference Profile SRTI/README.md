@@ -42,7 +42,7 @@ XMI file
 
 XML schema
 
-[LevelC\_3\_AustriaProfile\_0.xsd](LevelC_3_AustriaProfile_0.xsd)
+[LevelC\_3\_AustriaProfile\_0.xsd](schema/LevelC_3_AustriaProfile_0.xsd)
 
 [LevelC\_3\_Common\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Common_0.xsd)
 
