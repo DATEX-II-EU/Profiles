@@ -1,37 +1,67 @@
-Submitted by Fabrizio.Paoletti on Tuesday, 20 July, 2021 - 17:57
-Status definition refers to ISO 14817
+Austrian Reference Profile SRTI
+===============================
+
+**Status definition refers to ISO 14187**<br>
 Card
-Extension object
-Dynamica Lane Management
-Extension information
-This is an officially released extension from DATEX II PSA run in 2016-2021 dealing with a description of Lane and Carriageway regulations taylored for Dynamic Lane Management and HardShoulder Management Zone implemented by specific static and variable signs.
 
-the Land and Carriageway Model extends the Traffic Regulation package released from the same PSA to manage specific segments, sections and lanes settings according to common understanding usage within mostly motorway operators running such dynamic lane management zones. besides those prefefined zones management the model can be used to describe the restriction to lanes and carriageways in roadworks management with lanes deviated, closed and reversed along a road or motorway segment defined by the roadwork zone.
+**Profile object**<br>
+SituationPublication
 
-the implementation had been proposed by DATEX II PSA and will be considered for further evolution in the following year by the prosecution of the DATEX II activities.
+**Profile information**<br>
+ASFINAG provides DATEX II traffic data feeds in real time with 24/7/365 availability of all Austrian highways and motorways. Principal contractors for the data would be service providers for mobile transmission to vehicles. Please visit [https://contentportal.asfinag.at/](https://contentportal.asfinag.at/) for registration and to acquire a contract.
+
+This section describes the Austrian Reference Profile for safety-related traffic information. It uses SituationPublication to describe the content of unplanned events. Location referencing is done using Points and Linear elements in the form of coordinates and ALERT-C. OpenLR location referencing is also supported. It also uses few B level extensions in addition to the approved extensions, which are also documented. One important extension is the “Graph Integration Platform (GIP)”. The GIP provides a digital map of Austria’s transport network to all authorities.
 
 Organization name
-DATEX II PSA
-Contact name
-Fabrizio Paoletti
+
+ASFINAG
+
 Organization description
-DATEX II organisation supporting DATEX II evolution co-funded by the European Commission
+
+ASFINAG acts as an economically responsible motorway operator. We are convinced that modern and sustainably developed infrastructure is essential both for the mobility requirements of every single person and for Austria as a location for business. By using new technologies and innovations, we want to make Austria's motorways and expressways amongst the safest in Europe – in the interest of our customers and to strengthen the country as a place in which to do business.
+
+Organization logo
+
+![](/sites/default/files/d2-profile/logo/ASFINAG.4c_claim_EN_0_1.jpg)
+
+Website
+
+https://www.asfinag.at/
+
+Contact name
+
+Dipl.-Ing. Gottfried Allmer
 
 Contact mail
-fpaoletti@autostrade.it
-Website
-www.datex2.eu
-Country/Region
-EU
-Centre type
-TMC
 
-EA Model File
-DATEX II PIM - rev877 - metr_v11_DLM UPD 2021-04-20-r6.zip
+gottfried.allmer@asfinag.at
+
 XMI file
-DATEX II PIM-METR-DLM-package-6.xml
+
+[AustriaProfile\_3.3\_2.1.zip\_.xml](http://repo.datex2.eu/sites/default/files/d2-profile/xmi/AustriaProfile_3.3_2.1.zip_.xml)
+
 XML schema
-DATEXII_3_LaneManagement.xsd
+
+[LevelC\_3\_AustriaProfile\_0.xsd](schema/LevelC_3_AustriaProfile_0.xsd)
+
+[LevelC\_3\_Common\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Common_0.xsd)
+
+[LevelC\_3\_D2Payload\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_D2Payload_0.xsd)
+
+[LevelC\_3\_Facilities.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Facilities.xsd)
+
+[LevelC\_3\_LocationExtension\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_LocationExtension_0.xsd)
+
+[LevelC\_3\_LocationReferencing\_0.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_LocationReferencing_0.xsd)
+
+[LevelC\_3\_Parking.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Parking.xsd)
+
+[LevelC\_3\_Situation.xsd](http://repo.datex2.eu/sites/default/files/d2-profile/xml/LevelC_3_Situation.xsd)
+
 PDF Documentation
-WARNING it's a PDF zipped file
-3.2
+
+[AustrianRecommendedReferenceProfile\_SRTI.pdf](http://repo.datex2.eu/sites/default/files/d2-profile/pdf/AustrianRecommendedReferenceProfile_SRTI.pdf)
+
+Selection file
+
+[selection.sel](http://repo.datex2.eu/sites/default/files/d2-profile/documentation/selection.sel)
