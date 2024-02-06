@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:atp="http://levelC/schema/3/austriaProfile" version="3.3" targetNamespace="http://levelC/schema/3/austriaProfile" xmlns:com="http://levelC/schema/3/common" xmlns:loc="http://levelC/schema/3/locationReferencing" xmlns:sit="http://levelC/schema/3/situation" xmlns:fac="http://levelC/schema/3/facilities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://levelC/schema/3/facilities" schemaLocation="LevelC_3_Facilities.xsd" />
+  <xs:import namespace="http://levelC/schema/3/situation" schemaLocation="LevelC_3_Situation.xsd" />
+  <xs:import namespace="http://levelC/schema/3/locationReferencing" schemaLocation="LevelC_3_LocationReferencing.xsd" />
+  <xs:import namespace="http://levelC/schema/3/common" schemaLocation="LevelC_3_Common.xsd" />
+  <xs:complexType name="_ECallTypeEnum">
+    <xs:simpleContent>
+      <xs:extension base="atp:ECallTypeEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_GipLinkItineraryLocationReferenceIndexGipLink">
+    <xs:sequence>
+      <xs:element name="gipLink" type="atp:GipLink" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_GipLinkLinearLocationReferenceIndexGipLink">
+    <xs:sequence>
+      <xs:element name="gipLink" type="atp:GipLink" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_GipLinkPointLocationReferenceIndexGipLink">
+    <xs:sequence>
+      <xs:element name="gipLink" type="atp:GipLink" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_GipReferenceDirectionEnum">
+    <xs:simpleContent>
+      <xs:extension base="atp:GipReferenceDirectionEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_SituationRecordVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="com:VersionedReference">
+        <xs:attribute name="targetClass" type="xs:string" use="required" fixed="sit:SituationRecord" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AdditionalInformationRelatedToEvent">
+    <xs:annotation>
+      <xs:documentation>An extension to provide additional details of an event that are not covered by core Datex2 elements</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="eventTypeInfo" type="atp:EventTypeInfo" minOccurs="0" />
+      <xs:element name="_additionalInformationRelatedToEventExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AffectedModesOfTransport">
+    <xs:annotation>
+      <xs:documentation>Affected modes of transport or types of vehicles by the specified event</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="affectedMode" type="com:_VehicleTypeEnum" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Affected mode of transportation by the event</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_affectedModesOfTransportExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ECallTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Types of e-calls.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="automatic">
+        <xs:annotation>
+          <xs:documentation>An automatically triggered e-call.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="manual">
+        <xs:annotation>
+          <xs:documentation>A manually triggered e-call.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="EventTypeInfo">
+    <xs:annotation>
+      <xs:documentation>Detail of the event type</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCEventCode" type="com:Integer" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>One or more alertC event codes corresponding to the event type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eventType" type="com:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Event type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supplementaryAlertCEventCodes" type="atp:SupplementaryAlertCEventCode" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="_eventTypeInfoExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExtendedItineraryByIndexedLocationsForGipLinks">
+    <xs:annotation>
+      <xs:documentation>Extension for providing an itinerary of gip links</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="gipLinkItineraryLocationReference" type="atp:GipLinkItineraryLocationReference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExtendedLinearForGipLink">
+    <xs:annotation>
+      <xs:documentation>An extension for GipLink linear location reference</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="gipLinkLinearLocationReference" type="atp:GipLinkLinearLocationReference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExtendedPointForGipLink">
+    <xs:annotation>
+      <xs:documentation>An extension for Point to provide GipLink information</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="gipLinkPointLocationReference" type="atp:GipLinkPointLocationReference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GipLink">
+    <xs:annotation>
+      <xs:documentation>A GIPLink object</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="linkId" type="com:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier of the GipLink</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="referenceDirection" type="atp:_GipReferenceDirectionEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reference direction</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linkPercentageFrom" type="loc:PercentageDistanceAlongLinearElement">
+        <xs:annotation>
+          <xs:documentation>From offset</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linkPercentageTo" type="loc:PercentageDistanceAlongLinearElement">
+        <xs:annotation>
+          <xs:documentation>To offset</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_gipLinkExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GipLinkItineraryLocationReference">
+    <xs:annotation>
+      <xs:documentation>Contains an arbitrary number of gip links</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="gipLink" type="atp:_GipLinkItineraryLocationReferenceIndexGipLink" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="_gipLinkItineraryLocationReferenceExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="version" type="com:String" use="optional">
+      <xs:annotation>
+        <xs:documentation>Version of the provided GIP links. </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="name" type="com:String" use="optional">
+      <xs:annotation>
+        <xs:documentation>Name of the provided GIP</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="GipLinkLinearLocationReference">
+    <xs:annotation>
+      <xs:documentation>Contains one or more gip links that are part of a linear location</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="gipLink" type="atp:_GipLinkLinearLocationReferenceIndexGipLink" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="_gipLinkLinearLocationReferenceExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="version" type="com:String" use="optional">
+      <xs:annotation>
+        <xs:documentation>Version of the provided GIP links. </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="name" type="com:String" use="optional">
+      <xs:annotation>
+        <xs:documentation>Name of the provided GIP</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="GipLinkPointLocationReference">
+    <xs:annotation>
+      <xs:documentation>Contains one or more Gip links that are part of a point location</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="gipLink" type="atp:_GipLinkPointLocationReferenceIndexGipLink" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="_gipLinkPointLocationReferenceExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="version" type="com:String" use="optional">
+      <xs:annotation>
+        <xs:documentation>Version of the provided GIP links. </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="name" type="com:String" use="optional">
+      <xs:annotation>
+        <xs:documentation>Name of the provided GIP</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:simpleType name="GipReferenceDirectionEnum">
+    <xs:annotation>
+      <xs:documentation>Enumeation for GipLink reference direction</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="fromTo">
+        <xs:annotation>
+          <xs:documentation>from to</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="toFrom">
+        <xs:annotation>
+          <xs:documentation>to from</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OperatorActionExtended">
+    <xs:annotation>
+      <xs:documentation>Extension class for OperatorAction.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="mainSpeedLimit" type="com:KilometresPerHour" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The speed limit that covers the longest distance within the road works zone (i.e. there might be higher as well as lower speed limits in this roadworks zone, but for lower distances).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="minimumSpeedLimit" type="com:KilometresPerHour" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The minimum speed limit within the roadworks zone (i.e. there might be segments with a higher speed limit).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SituationExtended">
+    <xs:annotation>
+      <xs:documentation>Extension for situation</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="overallPhaseSituation" type="sit:SituationRecord" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>One identifiable versioned instance of a single record within a situation that summarises a single phase (i.e overall location, validity information of a single phase). </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overallSituation" type="sit:SituationRecord">
+        <xs:annotation>
+          <xs:documentation>One identifiable versioned instance of a single record/element within a situation that summarises all</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SituationRecordExtended">
+    <xs:annotation>
+      <xs:documentation>Situation record extensions relevant to AustriaProfile</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="phaseReferenceId" type="atp:_SituationRecordVersionedReference" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A reference to a situation record that represents a roadwork phase</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="messageBasedOnECall" type="com:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Whether the message is based on an e-call or not.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="eCallType" type="atp:_ECallTypeEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specifies the type of e-call.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="affectedModesOfTransport" type="atp:AffectedModesOfTransport" />
+      <xs:element name="additionalInformationRelatedToEvent" type="atp:AdditionalInformationRelatedToEvent" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SupplementaryAlertCEventCode">
+    <xs:annotation>
+      <xs:documentation>List of supplementary event codes</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCEventCode" type="com:Integer" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_supplementaryAlertCEventCodeExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
