@@ -1,5 +1,4 @@
-Austrian Reference Profile SRTI
-===============================
+# Austrian Reference Profile SRTI
 
 **Status definition refers to ISO 14187**<br>
 Card
