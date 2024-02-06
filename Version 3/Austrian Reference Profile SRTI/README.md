@@ -1,16 +1,13 @@
 Austrian Reference Profile SRTI
 ===============================
 
-Status definition refers to ISO 14187
-
+**Status definition refers to ISO 14187**
 Card
 
-Profile object
-
+**Profile object**
 SituationPublication
 
-Profile information
-
+**Profile information**
 ASFINAG provides DATEX II traffic data feeds in real time with 24/7/365 availability of all Austrian highways and motorways. Principal contractors for the data would be service providers for mobile transmission to vehicles. Please visit [https://contentportal.asfinag.at/](https://contentportal.asfinag.at/) for registration and to acquire a contract.
 
 This section describes the Austrian Reference Profile for safety-related traffic information. It uses SituationPublication to describe the content of unplanned events. Location referencing is done using Points and Linear elements in the form of coordinates and ALERT-C. OpenLR location referencing is also supported. It also uses few B level extensions in addition to the approved extensions, which are also documented. One important extension is the “Graph Integration Platform (GIP)”. The GIP provides a digital map of Austria’s transport network to all authorities.
@@ -30,16 +27,6 @@ Organization logo
 Website
 
 https://www.asfinag.at/
-
-Country/Region
-
-AT
-
-Centre type
-
-TMC
-
-[3.3](/taxonomy/term/45)
 
 Contact name
 
