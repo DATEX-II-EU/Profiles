@@ -21,16 +21,28 @@ Contact mail
 gottfried.allmer@asfinag.at
 
 XMI file
+
 AustriaProfile_TrafficRegulation.xmi_.zip_.xml
+
 XML schema
+
 LevelC_3_AustriaProfile.xsd
+
 LevelC_3_Common.xsd
+
 LevelC_3_CommonExtension.xsd
+
 LevelC_3_D2Payload.xsd
+
 LevelC_3_LocationExtension.xsd
+
 LevelC_3_LocationReferencing.xsd
+
 LevelC_3_TrafficRegulation.xsd
+
 PDF Documentation
 Placeholder.pdf
+
 Selection file
+
 selectionfile.sel
