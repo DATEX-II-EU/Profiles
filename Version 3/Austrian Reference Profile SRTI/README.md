@@ -1,11 +1,6 @@
 Austrian Reference Profile SRTI
 ===============================
 
-Breadcrumb
-----------
-
-[Home](/) [Implementations](/implementations) [Profile Directory](/implementations/profile_directory)
-
 Status definition refers to ISO 14187
 
 Card
