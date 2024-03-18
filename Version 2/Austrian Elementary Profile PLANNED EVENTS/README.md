@@ -14,17 +14,17 @@ Change log
 
 Changes from V1.0 to V2.0 (published on 15.03.2019):
 
--Renamed the profile from "AustrianRoadworks" to "AustrianPlannedEvents".
--Added level B extensions for GIP location referencing.
--Marked the currently used data elements in the Profile by ASFINAG in green.
--Update the documentation with a detailed description of the lane restrictions in case of some planned events such as construction works. 
--Included exchange related data elements (such as keepAlive and subscription).
+- Renamed the profile from "AustrianRoadworks" to "AustrianPlannedEvents".
+- Added level B extensions for GIP location referencing.
+- Marked the currently used data elements in the Profile by ASFINAG in green.
+- Update the documentation with a detailed description of the lane restrictions in case of some planned events such as construction works. 
+- Included exchange related data elements (such as keepAlive and subscription).
 
 Changes from V2.0 to V2.1 (published on 03.10.2019):
--Added the relative location referencing method "DistanceFromLinearElementReferent"
--Added the element "capacityRemaning" to the "Impact" class
--Added the element "situationRecordCreationReference" to the "SituationRecord" class
--Added the elements "commentDateTime" and "commentType" to the "Comment" class
+- Added the relative location referencing method "DistanceFromLinearElementReferent"
+- Added the element "capacityRemaning" to the "Impact" class
+- Added the element "situationRecordCreationReference" to the "SituationRecord" class
+- Added the elements "commentDateTime" and "commentType" to the "Comment" class
 
 The older version "v2.0" of the AustrianPlannedEvents is provided inside the attachment "http://datex2.eu/sites/default/files/d2-profile/AustrianPlannedEventsPr…".  For any other information related to the older versions please contact "gottfried.allmer@asfinag.at".
 
