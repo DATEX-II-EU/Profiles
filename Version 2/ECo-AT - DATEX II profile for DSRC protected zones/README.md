@@ -1,51 +1,44 @@
-# Slovenian profile on wind data
+# ECo-AT - DATEX II profile for DSRC protected zones
 
 Status definition refers to ISO 14187
 Card
 Profile object
-Road Traffic Data
+PredefinedLocationsPublication
 Profile information
-Road traffic  relevant Wind data as published by the Slovenian National Traffic Control Centre
+This profile describes the message content for the DSRC Protected zones (protected zones) use case as described by the project ECo-AT. The profile uses “PredefinedLocationsPublication”, and also uses level b extensions, which are also described in this document. All the extension components are colored in yellow, and the enumeration components are colored in blue. Location referencing is done using “TpegGeometricArea”.
 
 Organization name
-Republic of Slovenia, Ministry of infrastructure, NCUP - National traffic management centre
+ECo-AT (The Austrian contribution to the Cooperative ITS Corridor)
 Organization description
-Government, Public Services
+ECo-AT (European Corridor – Austrian Testbed for Cooperative Systems) is the Austrian project to create harmonised and standardised cooperative ITS applications jointly with partners in Germany and the Netherlands. The project is led by the Austrian motorway operator ASFINAG and the consortium consists of Kapsch TrafficCom AG, Siemens AG Österreich, SWARCO AG, High Tech Marketing, Volvo Technology AB, FTW, ITS Vienna Region, and BASt (Bundesanstalt für Straßenwesen).
 
 Organization logo<br>
-![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/f5f633c6-7612-43b8-adc7-fdd2b345fcef)
+![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/9809a03b-9b38-4a75-b548-3dffacc22703)
+
+Website
+http://www.eco-at.info/
 
 Contact name
-Matej Vovk
+Dipl.-Ing. Peter Meckel
 Contact mail
-dummy
+Peter.Meckel@asfinag.at
+
+EA Model File
+
+DATEX_II_PIM_ASFINAG.zip
 
 XMI file
 
-DatexII_Winds_D2Payload_XMI.xml
+seeZipFile.xml
 
 XML schema
 
-DATEXII_3_Common_9.xsd
-
-DATEXII_3_CommonExtension_4.xsd
-
-DATEXII_3_D2Payload_9.xsd
-
-DATEXII_3_Facilities_4.xsd
-
-DATEXII_3_LocationExtension_5.xsd
-
-DATEXII_3_LocationReferencing_9.xsd
-
-DATEXII_3_Parking_5.xsd
-
-DATEXII_3_RoadTrafficData_2.xsd
+DATEXII-Profile_ProtectedZones_ECo-AT.xsd
 
 PDF Documentation
 
-realiswind-3.0-profile.pdf
+DATEXII-Protected_Zones_ECo-AT.pdf
 
 Selection file
 
-realiswind-3.0-selection.sel
+protected_zones.sel
