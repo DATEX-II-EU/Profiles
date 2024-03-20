@@ -1,0 +1,3270 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:D2LogicalModel="http://datex2.eu/schema/2/2_0" version="2.3" targetNamespace="http://datex2.eu/schema/2/2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="_AreaExtensionType">
+    <xs:sequence>
+      <xs:element name="areaExtended" type="D2LogicalModel:AreaExtended" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_ChargeBandVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="ChargeBand" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_ContactDetailsVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="ContactDetails" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_ExtensionType">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_GenericPublicationExtensionType">
+    <xs:sequence>
+      <xs:element name="parkingTablePublication" type="D2LogicalModel:ParkingTablePublication" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_GroupOfParkingSpaces">
+    <xs:sequence>
+      <xs:element name="parkingSpaceBasics" type="D2LogicalModel:ParkingSpaceBasics" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="groupIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_GroupOfParkingSpacesParkingSpaceIndexParkingSpace">
+    <xs:sequence>
+      <xs:element name="parkingSpace" type="D2LogicalModel:ParkingSpace" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="parkingSpaceIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_LocationContainedInItinerary">
+    <xs:sequence>
+      <xs:element name="location" type="D2LogicalModel:Location" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_ParkingRecordEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility">
+    <xs:sequence>
+      <xs:element name="parkingEquipmentOrServiceFacility" type="D2LogicalModel:ParkingEquipmentOrServiceFacility" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="equipmentOrServiceFacilityIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_ParkingRecordVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="ParkingRecord" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_ParkingSiteScenarioIndexParkingUsageScenario">
+    <xs:sequence>
+      <xs:element name="parkingUsageScenario" type="D2LogicalModel:ParkingUsageScenario" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="scenarioIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_ParkingSpace">
+    <xs:sequence>
+      <xs:element name="parkingSpaceBasics" type="D2LogicalModel:ParkingSpaceBasics" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="parkingSpaceIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_ParkingSpaceBasicsEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility">
+    <xs:sequence>
+      <xs:element name="parkingEquipmentOrServiceFacility" type="D2LogicalModel:ParkingEquipmentOrServiceFacility" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="equipmentOrServiceFacilityIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_ParkingSpaceBasicsScenarioIndexParkingUsageScenario">
+    <xs:sequence>
+      <xs:element name="parkingUsageScenario" type="D2LogicalModel:ParkingUsageScenario" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="scenarioIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_PolygonAreaIndexPointCoordinates">
+    <xs:sequence>
+      <xs:element name="pointCoordinates" type="D2LogicalModel:PointCoordinates" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_PredefinedItineraryVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="PredefinedItinerary" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_PredefinedLocationVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="PredefinedLocation" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_PredefinedNonOrderedLocationGroupVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="PredefinedNonOrderedLocationGroup" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_VehicleCharacteristicsExtensionType">
+    <xs:sequence>
+      <xs:element name="vehicleCharacteristicsExtended" type="D2LogicalModel:VehicleCharacteristicsExtended" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AccessCategoryEnum">
+    <xs:annotation>
+      <xs:documentation>Specifies the category of the access.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="vehicleEntranceAndExit">
+        <xs:annotation>
+          <xs:documentation>An entrance and exit for vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vehicleEntrance">
+        <xs:annotation>
+          <xs:documentation>An entrance for vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vehicleExit">
+        <xs:annotation>
+          <xs:documentation>An exit for vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pedestrianEntranceAndExit">
+        <xs:annotation>
+          <xs:documentation>An entrance and exit for pedestrian.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pedestrianEntrance">
+        <xs:annotation>
+          <xs:documentation>An entrance for pedestrian.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pedestrianExit">
+        <xs:annotation>
+          <xs:documentation>An exit for pedestrian.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="emergencyExit">
+        <xs:annotation>
+          <xs:documentation>An exit that can be used by pedestrians in case of emergency (i.e. among others easy to access and signed).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unspecified">
+        <xs:annotation>
+          <xs:documentation>The category of this access is not specified any further.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AccessibilityEnum">
+    <xs:annotation>
+      <xs:documentation>Special forms of accessibility, easements and marking for handicapped people.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="barrierFreeAccessible">
+        <xs:annotation>
+          <xs:documentation>Accessible without any steps or other barriers. This is not as strong as handicappedAccessible.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="handicappedAccessible">
+        <xs:annotation>
+          <xs:documentation>Accessible for handicapped people. Wheelchair accessible is a special form of it.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="wheelChairAccessible">
+        <xs:annotation>
+          <xs:documentation>Accessible by people in a wheelchair.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="handicappedEasements">
+        <xs:annotation>
+          <xs:documentation>There are special easements for handicapped people, like handrails or handicapped-friendly furniture.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="orientationSystemForBlindPeople">
+        <xs:annotation>
+          <xs:documentation>There is some orientation system, which helps blind or visually impaired people. Examples might be some acoustic system or tactile paving.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="handicappedMarked">
+        <xs:annotation>
+          <xs:documentation>There is a visible mark for the privilege of handicapped or disabled people (e.g. a wheelchair symbol).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:documentation>No form of special accessibility, i.e. usually not convenient for handicapped people, e.g. because of steps or barriers.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>It is unknown, whether there is a special form of accessibility.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AlertCArea">
+    <xs:annotation>
+      <xs:documentation>An area defined by reference to a predefined ALERT-C location table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCLocationCountryCode" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>EBU country code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCLocationTableNumber" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Number allocated to an ALERT-C table in a country. Ref. EN ISO 14819-3 for the allocation of a location table number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCLocationTableVersion" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Version number associated with an ALERT-C table reference.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="areaLocation" type="D2LogicalModel:AlertCLocation">
+        <xs:annotation>
+          <xs:documentation>Area location defined by a specific Alert-C location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCAreaExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCDirection">
+    <xs:annotation>
+      <xs:documentation>The direction of traffic flow along the road to which the information relates.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCDirectionCoded" type="D2LogicalModel:AlertCDirectionEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The direction of traffic flow to which the situation, traffic data or information is related. Positive is in the direction of coding of the road.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCDirectionNamed" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>ALERT-C name of a direction e.g. Brussels -&gt; Lille.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCDirectionSense" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicates for circular routes (i.e. valid only for ring roads) the sense in which navigation should be made from the primary location to the secondary location, to avoid ambiguity. TRUE indicates positive RDS direction, i.e. direction of coding of road.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCDirectionExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlertCDirectionEnum">
+    <xs:annotation>
+      <xs:documentation>The direction of traffic flow concerned by a situation or traffic data. In ALERT-C the positive (resp. negative) direction corresponds to the positive offset direction within the RDS location table.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="both">
+        <xs:annotation>
+          <xs:documentation>Indicates that both directions of traffic flow are affected by the situation or relate to the traffic data.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="negative">
+        <xs:annotation>
+          <xs:documentation>The direction of traffic flow concerned by a situation or traffic data. In ALERT-C the negative direction corresponds to the negative offset direction within the RDS location table.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="positive">
+        <xs:annotation>
+          <xs:documentation>The direction of traffic flow concerned by a situation or traffic data. In ALERT-C the positive direction corresponds to the positive offset direction within the RDS location table.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown direction.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AlertCLocation">
+    <xs:annotation>
+      <xs:documentation>Identification of a specific point, linear or area location in an ALERT-C location table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCLocationName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name of ALERT-C location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="specificLocation" type="D2LogicalModel:AlertCLocationCode" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Unique code within the ALERT-C location table which identifies the specific point, linear or area location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlertCLocationCode">
+    <xs:annotation>
+      <xs:documentation>A positive integer number (between 1 and 63,487) which uniquely identifies a pre-defined Alert C location defined within an Alert-C table.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:NonNegativeInteger" />
+  </xs:simpleType>
+  <xs:complexType name="AlertCMethod2Point">
+    <xs:annotation>
+      <xs:documentation>A single point on the road network defined by reference to a point in a pre-defined ALERT-C location table and which has an associated direction of traffic flow.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:AlertCPoint">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="D2LogicalModel:AlertCDirection" />
+          <xs:element name="alertCMethod2PrimaryPointLocation" type="D2LogicalModel:AlertCMethod2PrimaryPointLocation" />
+          <xs:element name="alertCMethod2PointExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod2PrimaryPointLocation">
+    <xs:annotation>
+      <xs:documentation>The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="D2LogicalModel:AlertCLocation" />
+      <xs:element name="alertCMethod2PrimaryPointLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4Point">
+    <xs:annotation>
+      <xs:documentation>A single point on the road network defined by reference to a point in a pre-defined ALERT-C location table plus an offset distance and which has an associated direction of traffic flow.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:AlertCPoint">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="D2LogicalModel:AlertCDirection" />
+          <xs:element name="alertCMethod4PrimaryPointLocation" type="D2LogicalModel:AlertCMethod4PrimaryPointLocation" />
+          <xs:element name="alertCMethod4PointExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4PrimaryPointLocation">
+    <xs:annotation>
+      <xs:documentation>The point (called Primary point) which is either a single point or at the downstream end of a linear road section. The point is specified by a reference to a point in a pre-defined ALERT-C location table plus a non-negative offset distance.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="D2LogicalModel:AlertCLocation" />
+      <xs:element name="offsetDistance" type="D2LogicalModel:OffsetDistance" />
+      <xs:element name="alertCMethod4PrimaryPointLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCPoint" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A single point on the road network defined by reference to a pre-defined ALERT-C location table and which has an associated direction of traffic flow.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="alertCLocationCountryCode" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>EBU country code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCLocationTableNumber" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Number allocated to an ALERT-C table in a country. Ref. EN ISO 14819-3 for the allocation of a location table number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCLocationTableVersion" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Version number associated with an ALERT-C table reference.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alertCPointExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AmountOfMoney">
+    <xs:annotation>
+      <xs:documentation>A monetary value expressed to two decimal places.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Decimal">
+      <xs:totalDigits value="8" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Area">
+    <xs:annotation>
+      <xs:documentation>A geographic or geometric defined area which may be qualified by height information to provide additional geospatial discrimination (e.g. for snow in an area but only above a certain altitude).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Location">
+        <xs:sequence>
+          <xs:element name="alertCArea" type="D2LogicalModel:AlertCArea" minOccurs="0" />
+          <xs:element name="areaExtension" type="D2LogicalModel:_AreaExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AreaDestination">
+    <xs:annotation>
+      <xs:documentation>The specification of the destination of a defined route or itinerary which is an area.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Destination">
+        <xs:sequence>
+          <xs:element name="area" type="D2LogicalModel:Area" />
+          <xs:element name="areaDestinationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AreaExtended">
+    <xs:annotation>
+      <xs:documentation>Extension class for area used in parking publication extension.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="polygonArea" type="D2LogicalModel:PolygonArea" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AvailabilityEnum">
+    <xs:annotation>
+      <xs:documentation>An enumeration which states if something is available or not.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="available">
+        <xs:annotation>
+          <xs:documentation>The element in question is available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="notAvailable">
+        <xs:annotation>
+          <xs:documentation>The element in question is not available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>There is no information about whether the element in question is available or not.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Boolean">
+    <xs:annotation>
+      <xs:documentation>Boolean has the value space required to support the mathematical concept of binary-valued logic: {true, false}. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:complexType name="Charge">
+    <xs:annotation>
+      <xs:documentation>A particular charge for a specified interval belonging a charge band.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="charge" type="D2LogicalModel:AmountOfMoney" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Charge for the specified interval (for vehicle of defined characteristics, if any specified) up to the maximum defined duration and during the defined period(s).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargeInterval" type="D2LogicalModel:Seconds" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Interval for which the charge applies (e.g. charge applies for 2 hours (to specify in seconds)). If no interval is specified, the price is valid for the whole period (kind of flat fee).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargeTypeDescription" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Additional description for this kind of charge type, especially if the enumeration does not fit.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timePeriodOfDay" type="D2LogicalModel:TimePeriodOfDay" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The TimePeriodOfDay limits the validity of the charge to this period (e.g. night-tariffs).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ChargeBand">
+    <xs:annotation>
+      <xs:documentation>A charge band in accordance with the specified conditions, possibly up to a maximum duration, during a specified period and for a vehicle of specified characteristics (in case of parking).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="chargeCurrency" type="D2LogicalModel:CurrencyEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A three-character code according to ISO 4217 for the currency in which the parking charge is specified (e.g. EUR, GBP, SEK, CZK).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargeBandName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name for this charge band.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="charge" type="D2LogicalModel:Charge" maxOccurs="unbounded" />
+      <xs:element name="chargeBandExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ChargeBandByReference">
+    <xs:annotation>
+      <xs:documentation>Using (a) prior defined charge band(s), identified by its reference.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="chargeBandReference" type="D2LogicalModel:_ChargeBandVersionedReference" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A reference to a charge band.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargeBandByReferenceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ChargingStationUsageTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Type of usage for electric charging station(s).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="lorryPowerConsumption">
+        <xs:annotation>
+          <xs:documentation>Supply for lorries with power consumption, e.g. for refrigerated goods transports.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ConfidentialityValueEnum">
+    <xs:annotation>
+      <xs:documentation>Values of confidentiality.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="internalUse">
+        <xs:annotation>
+          <xs:documentation>For internal use only of the recipient organisation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noRestriction">
+        <xs:annotation>
+          <xs:documentation>No restriction on usage.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthorities">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthoritiesAndTrafficOperators">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities and traffic operators.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthoritiesTrafficOperatorsAndPublishers">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities, traffic operators and publishers (service providers).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthoritiesTrafficOperatorsAndVms">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities, traffic operators, publishers (service providers) and variable message signs.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Contact">
+    <xs:annotation>
+      <xs:documentation>Address and contact information about some person, service or the parking site, provided in detail or via reference.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="contactUnknown" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>When true, the contact for the selected role and/or timeframe is unknown. Don't use the specialisations in this case.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contactNotDefined" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>When true, there is currently no contact defined for the selected role and/or timeframe. Don't use the specialisations in this case.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="contactExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContactByReference">
+    <xs:annotation>
+      <xs:documentation>Contact information that is addressed via a reference.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Contact">
+        <xs:sequence>
+          <xs:element name="contactReference" type="D2LogicalModel:_ContactDetailsVersionedReference" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Contact information provided by a reference.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactByReferenceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ContactDetails">
+    <xs:annotation>
+      <xs:documentation>Details for some person, service or the parking site itself, especially address information.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Contact">
+        <xs:sequence>
+          <xs:element name="contactOrganisationName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Name of the organisation or service. Do not use this attribute in combination with role "parkingSiteAddress".</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactPersonName" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Name of the contact person.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactPersonFirstName" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>First name of the contact person.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactDetailsAddress" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Complete address of the contact. Alternatively use the separate fields to describe the address.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactDetailsStreet" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Street of the contact.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactDetailsHouseNumber" type="D2LogicalModel:String" minOccurs="0" maxOccurs="2">
+            <xs:annotation>
+              <xs:documentation>House number of the contact. Supports a multiplicity up to two, to specify lower and upper numbers.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactDetailsPostcode" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Postcode of the contact.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactDetailsCity" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>City of the contact.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="country" type="D2LogicalModel:CountryEnum" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>ISO 3166-1 two character country code.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactDetailsTelephoneNumber" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Telephone Number of contact.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="contactDetailsEMail" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>E-Mail address of the contact.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="publishingAgreement" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Indication, whether the contact accepted publishing its contact information.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="groupOfLocations" type="D2LogicalModel:GroupOfLocations" minOccurs="0" />
+          <xs:element name="contactDetailsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required" />
+        <xs:attribute name="version" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="CountryEnum">
+    <xs:annotation>
+      <xs:documentation>List of countries.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="at">
+        <xs:annotation>
+          <xs:documentation>Austria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="be">
+        <xs:annotation>
+          <xs:documentation>Belgium</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bg">
+        <xs:annotation>
+          <xs:documentation>Bulgaria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ch">
+        <xs:annotation>
+          <xs:documentation>Switzerland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cs">
+        <xs:annotation>
+          <xs:documentation>Serbia and Montenegro</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cy">
+        <xs:annotation>
+          <xs:documentation>Cyprus</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cz">
+        <xs:annotation>
+          <xs:documentation>Czech Republic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de">
+        <xs:annotation>
+          <xs:documentation>Germany</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dk">
+        <xs:annotation>
+          <xs:documentation>Denmark</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ee">
+        <xs:annotation>
+          <xs:documentation>Estonia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es">
+        <xs:annotation>
+          <xs:documentation>Spain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fi">
+        <xs:annotation>
+          <xs:documentation>Finland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fo">
+        <xs:annotation>
+          <xs:documentation>Faroe Islands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr">
+        <xs:annotation>
+          <xs:documentation>France</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gb">
+        <xs:annotation>
+          <xs:documentation>Great Britain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gg">
+        <xs:annotation>
+          <xs:documentation>Guernsey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gi">
+        <xs:annotation>
+          <xs:documentation>Gibraltar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gr">
+        <xs:annotation>
+          <xs:documentation>Greece</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hr">
+        <xs:annotation>
+          <xs:documentation>Croatia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hu">
+        <xs:annotation>
+          <xs:documentation>Hungary</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ie">
+        <xs:annotation>
+          <xs:documentation>Ireland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="im">
+        <xs:annotation>
+          <xs:documentation>Isle Of Man</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="is">
+        <xs:annotation>
+          <xs:documentation>Iceland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="it">
+        <xs:annotation>
+          <xs:documentation>Italy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="je">
+        <xs:annotation>
+          <xs:documentation>Jersey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="li">
+        <xs:annotation>
+          <xs:documentation>Lichtenstein</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lt">
+        <xs:annotation>
+          <xs:documentation>Lithuania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lu">
+        <xs:annotation>
+          <xs:documentation>Luxembourg</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lv">
+        <xs:annotation>
+          <xs:documentation>Latvia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ma">
+        <xs:annotation>
+          <xs:documentation>Morocco</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mc">
+        <xs:annotation>
+          <xs:documentation>Monaco</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mk">
+        <xs:annotation>
+          <xs:documentation>Macedonia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mt">
+        <xs:annotation>
+          <xs:documentation>Malta</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nl">
+        <xs:annotation>
+          <xs:documentation>Netherlands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no">
+        <xs:annotation>
+          <xs:documentation>Norway</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pl">
+        <xs:annotation>
+          <xs:documentation>Poland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pt">
+        <xs:annotation>
+          <xs:documentation>Portugal</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ro">
+        <xs:annotation>
+          <xs:documentation>Romania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se">
+        <xs:annotation>
+          <xs:documentation>Sweden</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="si">
+        <xs:annotation>
+          <xs:documentation>Slovenia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sk">
+        <xs:annotation>
+          <xs:documentation>Slovakia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sm">
+        <xs:annotation>
+          <xs:documentation>San Marino</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tr">
+        <xs:annotation>
+          <xs:documentation>Turkey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="va">
+        <xs:annotation>
+          <xs:documentation>Vatican City State</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CurrencyEnum">
+    <xs:annotation>
+      <xs:documentation>Three letter code defining the currency according to ISO 4217 (e.g. EUR for Euro). This enumeration only contains European currencies including the US dollar.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="eur">
+        <xs:annotation>
+          <xs:documentation>Euro</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="all">
+        <xs:annotation>
+          <xs:documentation>Lek (Albania)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="amd">
+        <xs:annotation>
+          <xs:documentation>Armeniam Dram</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="azn">
+        <xs:annotation>
+          <xs:documentation>Azerbaijanian Manat</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bam">
+        <xs:annotation>
+          <xs:documentation>Convertible Mark (Bosnia and Herzogowina)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bgn">
+        <xs:annotation>
+          <xs:documentation>Bulgarian Lev</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="byr">
+        <xs:annotation>
+          <xs:documentation>Belarussian Ruble</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="chf">
+        <xs:annotation>
+          <xs:documentation>Swiss Franc</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="czk">
+        <xs:annotation>
+          <xs:documentation>Czech Koruna</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dkk">
+        <xs:annotation>
+          <xs:documentation>Danish Krone</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gbp">
+        <xs:annotation>
+          <xs:documentation>Pound Sterling</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gel">
+        <xs:annotation>
+          <xs:documentation>Lari (Georgia)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hrk">
+        <xs:annotation>
+          <xs:documentation>Croatian Kuna</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="huf">
+        <xs:annotation>
+          <xs:documentation>Forint (Hungary)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="isk">
+        <xs:annotation>
+          <xs:documentation>Iceland Krona</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ltl">
+        <xs:annotation>
+          <xs:documentation>Litas (Lithuania)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mdl">
+        <xs:annotation>
+          <xs:documentation>Moldovan Leu</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mkd">
+        <xs:annotation>
+          <xs:documentation>Denar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nok">
+        <xs:annotation>
+          <xs:documentation>Norwegian Krone</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pln">
+        <xs:annotation>
+          <xs:documentation>Zloty</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ron">
+        <xs:annotation>
+          <xs:documentation>New Romanian Leu</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rsd">
+        <xs:annotation>
+          <xs:documentation>Serbian Dinar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="rub">
+        <xs:annotation>
+          <xs:documentation>Russian Ruble</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sek">
+        <xs:annotation>
+          <xs:documentation>Swedish Krona</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="try">
+        <xs:annotation>
+          <xs:documentation>Turkish Lira</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="uah">
+        <xs:annotation>
+          <xs:documentation>Hryvnia (Ukraine)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="usd">
+        <xs:annotation>
+          <xs:documentation>US Dollar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Another currency.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="d2LogicalModel" type="D2LogicalModel:D2LogicalModel">
+    <xs:unique name="_d2LogicalModelParkingTableConstraint">
+      <xs:selector xpath=".//D2LogicalModel:parkingTable" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
+    <xs:unique name="_d2LogicalModelContactDetailsConstraint">
+      <xs:selector xpath=".//D2LogicalModel:contactDetails" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
+    <xs:unique name="_d2LogicalModelParkingAccessConstraint">
+      <xs:selector xpath=".//D2LogicalModel:parkingAccess" />
+      <xs:field xpath="@id" />
+    </xs:unique>
+    <xs:unique name="_d2LogicalModelParkingRecordConstraint">
+      <xs:selector xpath=".//D2LogicalModel:parkingRecord" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
+    <xs:unique name="_d2LogicalModelChargeBandConstraint">
+      <xs:selector xpath=".//D2LogicalModel:chargeBand" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
+  </xs:element>
+  <xs:complexType name="D2LogicalModel">
+    <xs:annotation>
+      <xs:documentation>The DATEX II logical model comprising exchange, content payload and management sub-models.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="exchange" type="D2LogicalModel:Exchange" />
+      <xs:element name="payloadPublication" type="D2LogicalModel:PayloadPublication" minOccurs="0" />
+      <xs:element name="d2LogicalModelExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="modelBaseVersion" use="required" fixed="2" />
+  </xs:complexType>
+  <xs:simpleType name="Date">
+    <xs:annotation>
+      <xs:documentation>A combination of year, month and day integer-valued properties plus an optional timezone property. It represents an interval of exactly one day, beginning on the first moment of the day in the timezone, i.e. '00:00:00' up to but not including '24:00:00'.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:date" />
+  </xs:simpleType>
+  <xs:simpleType name="DateTime">
+    <xs:annotation>
+      <xs:documentation>A combination of integer-valued year, month, day, hour, minute properties, a decimal-valued second property and a time zone property from which it is possible to determine the local time, the equivalent UTC time and the time zone offset from UTC.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="DayEnum">
+    <xs:annotation>
+      <xs:documentation>Days of the week.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="monday">
+        <xs:annotation>
+          <xs:documentation>Monday.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tuesday">
+        <xs:annotation>
+          <xs:documentation>Tuesday.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="wednesday">
+        <xs:annotation>
+          <xs:documentation>Wednesday.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="thursday">
+        <xs:annotation>
+          <xs:documentation>Thursday.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="friday">
+        <xs:annotation>
+          <xs:documentation>Friday.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="saturday">
+        <xs:annotation>
+          <xs:documentation>Saturday.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sunday">
+        <xs:annotation>
+          <xs:documentation>Sunday.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DayWeekMonth">
+    <xs:annotation>
+      <xs:documentation>Specification of periods defined by the intersection of days, weeks and months.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="applicableDay" type="D2LogicalModel:DayEnum" minOccurs="0" maxOccurs="7">
+        <xs:annotation>
+          <xs:documentation>Applicable day of the week. "All days of the week" is expressed by non-inclusion of this attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="applicableWeek" type="D2LogicalModel:WeekOfMonthEnum" minOccurs="0" maxOccurs="5">
+        <xs:annotation>
+          <xs:documentation>Applicable week of the month (1 to 5).  "All weeks of the month" is expressed by non-inclusion of this attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="applicableMonth" type="D2LogicalModel:MonthOfYearEnum" minOccurs="0" maxOccurs="12">
+        <xs:annotation>
+          <xs:documentation>Applicable month of the year.  "All months of the year" is expressed by non-inclusion of this attribute.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dayWeekMonthExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Decimal">
+    <xs:annotation>
+      <xs:documentation>A decimal number whose value space is the set of numbers that can be obtained by multiplying an integer by a non-positive power of ten, i.e., expressible as i × 10^-n where i and n are integers and n &gt;= 0.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal" />
+  </xs:simpleType>
+  <xs:complexType name="Destination" abstract="true">
+    <xs:annotation>
+      <xs:documentation>The specification a destination. This may be either a point location or an area location.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="destinationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DistanceAlongLinearElement" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Distance of a point along a linear element either measured from the start node or a defined referent on that linear element, where the start node is relative to the element definition rather than the direction of traffic flow.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="distanceAlongLinearElementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DistanceFromLinearElementStart">
+    <xs:annotation>
+      <xs:documentation>Distance of a point along a linear element measured from the start node of the linear element, where start node is relative to the element definition rather than the direction of traffic flow.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DistanceAlongLinearElement">
+        <xs:sequence>
+          <xs:element name="distanceAlong" type="D2LogicalModel:MetresAsFloat" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>A measure of distance along a linear element.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="distanceFromLinearElementStartExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ElectricCharging">
+    <xs:annotation>
+      <xs:documentation>Additional information for the equipment 'electricChargingStation'. This component refers to the number of charging stations specified in the attribute 'numberOfEquipmentOrServiceFacilities'.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="chargingStationUsageType" type="D2LogicalModel:ChargingStationUsageTypeEnum" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Usage type of the electric charging station(s).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="electricChargingExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Equipment">
+    <xs:annotation>
+      <xs:documentation>One type of equipment, that is available on the parking site.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:ParkingEquipmentOrServiceFacility">
+        <xs:sequence>
+          <xs:element name="equipmentType" type="D2LogicalModel:EquipmentTypeEnum" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>One type of equipment, that is available on the parking site.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="electricCharging" type="D2LogicalModel:ElectricCharging" minOccurs="0" />
+          <xs:element name="equipmentExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="EquipmentTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Equipment available on the parking or parking space or grouped parking spaces.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="toilet">
+        <xs:annotation>
+          <xs:documentation>Indicates, whether there are toilets available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="shower">
+        <xs:annotation>
+          <xs:documentation>Indicates, whether there are shower facilities available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="informationPoint">
+        <xs:annotation>
+          <xs:documentation>An information point with employees.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="informatonStele">
+        <xs:annotation>
+          <xs:documentation>An unmanned information point.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="internetTerminal">
+        <xs:annotation>
+          <xs:documentation>Public internet terminal. Charges may be specified using the TariffsAndPayment section.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="internetWireless">
+        <xs:annotation>
+          <xs:documentation>Public wireless internet. Specifying an amount would be the number of hotspots/access points. Charges may be specified using the TariffsAndPayment section.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="payDesk">
+        <xs:annotation>
+          <xs:documentation>A possibility to pay for parking (with employees).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="paymentMachine">
+        <xs:annotation>
+          <xs:documentation>A parking ticket machine.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cashMachine">
+        <xs:annotation>
+          <xs:documentation>Cash machine.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vendingMachine">
+        <xs:annotation>
+          <xs:documentation>A vending machine for snacks, coffee etc. (without manpower).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="faxMachineOrService">
+        <xs:annotation>
+          <xs:documentation>A possibility to send and/or receive faxes.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="copyMachineOrService">
+        <xs:annotation>
+          <xs:documentation>A possibility to create copies of documents.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="safeDeposit">
+        <xs:annotation>
+          <xs:documentation>A possibility to store valuable possession in a safe way. </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="luggageLocker">
+        <xs:annotation>
+          <xs:documentation>Possibility to deposit luggage in a safe way.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="publicPhone">
+        <xs:annotation>
+          <xs:documentation>Indicates, whether there's a public telephone available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="publicCoinPhone">
+        <xs:annotation>
+          <xs:documentation>Indicates, whether there's a public telephone available that can be used with coins.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="publicCardPhone">
+        <xs:annotation>
+          <xs:documentation>Indicates, whether there's a public telephone available that can be used with a card.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="elevator">
+        <xs:annotation>
+          <xs:documentation>Indication of the availability of elevators.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="picnicFacilities">
+        <xs:annotation>
+          <xs:documentation>Indication of whether any picnicking facilities, such as tables, chairs and shaded areas, are available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dumpingStation">
+        <xs:annotation>
+          <xs:documentation>Possibility to get rid of sewerage (especially for motorhomes).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="freshWater">
+        <xs:annotation>
+          <xs:documentation>Possibility to get fresh water (e.g. for motorhomes) - toilets and showers etc. are not intended here.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="wasteDisposal">
+        <xs:annotation>
+          <xs:documentation>Possibility to get rid of waste in a legal way (e.g. for truckers or motorhomes). Normal refuse bins are not intended here.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="refuseBin">
+        <xs:annotation>
+          <xs:documentation>Refuse bins for small amounts of garbage (see also 'wasteDisposal').</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="iceFreeScaffold">
+        <xs:annotation>
+          <xs:documentation>A technical equipment to remove ice and snow from the roof of lorries.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="playground">
+        <xs:annotation>
+          <xs:documentation>A playground for children.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="electricChargingStation">
+        <xs:annotation>
+          <xs:documentation>For charging vehicles, motorhome supply etc. The 'numberOf...' attribute specifies the number of charging stations. You may specify the number of charging points and further information with component 'ElectricCharging'.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bikeParking">
+        <xs:annotation>
+          <xs:documentation>Bike parking.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tollTerminal">
+        <xs:annotation>
+          <xs:documentation>A terminal, where toll charges can be paid manually (this does not mean a toll gate on the road)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="defibrillator">
+        <xs:annotation>
+          <xs:documentation>Medical equipment to provide first aid after heart attacks.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="firstAidEquipment">
+        <xs:annotation>
+          <xs:documentation>Equipment to support first aid on injured people. Note that 'defibrillator' is a separate literal.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fireHose">
+        <xs:annotation>
+          <xs:documentation>A hose for water transport in case of fire.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fireExtingiusher">
+        <xs:annotation>
+          <xs:documentation>Fire extinguisher</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fireHydrant">
+        <xs:annotation>
+          <xs:documentation>Fire hydrant</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:documentation>None.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Some other equipment. Use 'otherEquipmentOrServiceFacility' to specify it.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Exchange">
+    <xs:annotation>
+      <xs:documentation>Details associated with the management of the exchange between the supplier and the client.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="keepAlive" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicator that this exchange is due to "keep alive" functionality.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="response" type="D2LogicalModel:ResponseEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The type of the response that the supplier is returning to the requesting client.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subscriptionReference" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Unique identifier of the client's subscription with the supplier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supplierIdentification" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="exchangeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExternalReferencing">
+    <xs:annotation>
+      <xs:documentation>A location defined by reference to an external/other referencing system.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="externalLocationCode" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A code in the external referencing system which defines the location.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="externalReferencingSystem" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identification of the external/other location referencing system.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="externalReferencingExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Float">
+    <xs:annotation>
+      <xs:documentation>A floating point number whose value space consists of the values m × 2^e, where m is an integer whose absolute value is less than 2^24, and e is an integer between -149 and 104, inclusive.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:float" />
+  </xs:simpleType>
+  <xs:complexType name="GenericPublication">
+    <xs:annotation>
+      <xs:documentation>A publication used to make level B extensions at the publication level.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:PayloadPublication">
+        <xs:sequence>
+          <xs:element name="genericPublicationName" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The name of the generic publication.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="genericPublicationExtension" type="D2LogicalModel:_GenericPublicationExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GroupOfLocations" abstract="true">
+    <xs:annotation>
+      <xs:documentation>One or more physically separate locations. Multiple locations may be related, as in an itinerary (or route), or may be unrelated. It is not for identifying the same physical location using different Location objects for different referencing systems.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="groupOfLocationsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GroupOfParkingSites">
+    <xs:annotation>
+      <xs:documentation>A logical composition of parking sites with aggregated properties (e.g. number of spaces). Examples: Urban parking area "West" or all truck parkings along a motorway. The included parking sites may -but must not- be specified as subcomponents.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:ParkingRecord">
+        <xs:sequence>
+          <xs:element name="groupOfParkingSitesType" type="D2LogicalModel:GroupOfParkingSitesTypeEnum" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The type of this group of parking sites.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="parkingSiteByReference" type="D2LogicalModel:_ParkingRecordVersionedReference" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>Parking sites of this collection defined by reference.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="parkingSite" type="D2LogicalModel:ParkingSite" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="groupOfParkingSitesExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="GroupOfParkingSitesTypeEnum">
+    <xs:annotation>
+      <xs:documentation>The type of this group of parking sites.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="truckParkingPriorityZone">
+        <xs:annotation>
+          <xs:documentation>This group is describing a truck parking priority zone according to the EU regulation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GroupOfParkingSpaces">
+    <xs:annotation>
+      <xs:documentation>A group of parking spaces. All information provided has to be identical for all places in this group. Can also be used just to give the number of lorry parkings, for example. 'GroupOfParkingSpaces' may be multiple defined or include each other.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:ParkingSpaceBasics">
+        <xs:sequence>
+          <xs:element name="parkingNumberOfSpaces" type="D2LogicalModel:NonNegativeInteger" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Number of parking spaces (attribute is used for a parking record as well as for a group of parking spaces).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="parkingTypeOfGroup" type="D2LogicalModel:ParkingTypeOfGroup" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Defines the type of this group specification.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="parkingSpace" type="D2LogicalModel:_GroupOfParkingSpacesParkingSpaceIndexParkingSpace" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="groupOfParkingSpacesExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="HeaderInformation">
+    <xs:annotation>
+      <xs:documentation>Management information relating to the data contained within a publication.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="confidentiality" type="D2LogicalModel:ConfidentialityValueEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The extent to which the related information may be circulated, according to the recipient type. Recipients must comply with this confidentiality statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="informationStatus" type="D2LogicalModel:InformationStatusEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The status of the related information (real, test, exercise ....).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="headerInformationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="InformationStatusEnum">
+    <xs:annotation>
+      <xs:documentation>Status of the related information (i.e. real, test or exercise).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="real">
+        <xs:annotation>
+          <xs:documentation>The information is real. It is not a test or exercise.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="securityExercise">
+        <xs:annotation>
+          <xs:documentation>The information is part of an exercise which is for testing security.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="technicalExercise">
+        <xs:annotation>
+          <xs:documentation>The information is part of an exercise which includes tests of associated technical subsystems.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="test">
+        <xs:annotation>
+          <xs:documentation>The information is part of a test for checking the exchange of this type of information.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="InternationalIdentifier">
+    <xs:annotation>
+      <xs:documentation>An identifier/name whose range is specific to the particular country.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="country" type="D2LogicalModel:CountryEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>ISO 3166-1 two character country code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nationalIdentifier" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier or name unique within the specified country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="internationalIdentifierExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InterUrbanParkingSite">
+    <xs:annotation>
+      <xs:documentation>A parking site in an interurban context.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:ParkingSite">
+        <xs:sequence>
+          <xs:element name="interUrbanParkingSiteLocation" type="D2LogicalModel:InterUrbanParkingSiteLocationEnum" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Defines whether the interurban parking site is located in or nearby a motorway context, is a layby or on-street parking.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="interUrbanParkingSiteExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="InterUrbanParkingSiteLocationEnum">
+    <xs:annotation>
+      <xs:documentation>Location of the truck or motorway related parking.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="motorway">
+        <xs:annotation>
+          <xs:documentation>The parking is located directly on a motorway or a similar type of road.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nearbyMotorway">
+        <xs:annotation>
+          <xs:documentation>The parking is located with some distance to a motorway or a similar type of road but focussed on travellers from this motorway.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="layBy">
+        <xs:annotation>
+          <xs:documentation>An area along a road that offers temporary parking.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="onStreet">
+        <xs:annotation>
+          <xs:documentation>Vehicles are parking on the roadside.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>The parking is located somewhere else.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Itinerary" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Multiple (i.e. more than one) physically separate locations arranged as an ordered set that defines an itinerary or route.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:GroupOfLocations">
+        <xs:sequence>
+          <xs:element name="routeDestination" type="D2LogicalModel:Destination" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>Destination of a route or final location in an itinerary.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="itineraryExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ItineraryByIndexedLocations">
+    <xs:annotation>
+      <xs:documentation>Multiple physically separate locations arranged as an ordered set that defines an itinerary or route. The index qualifier indicates the order.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Itinerary">
+        <xs:sequence>
+          <xs:element name="locationContainedInItinerary" type="D2LogicalModel:_LocationContainedInItinerary" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>A location contained in an itinerary (i.e. an ordered set of locations defining a route or itinerary).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="itineraryByIndexedLocationsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ItineraryByReference">
+    <xs:annotation>
+      <xs:documentation>Multiple (i.e. more than one) physically separate locations which are ordered that constitute an itinerary or route where they are defined by reference to a predefined itinerary.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Itinerary">
+        <xs:sequence>
+          <xs:element name="predefinedItineraryReference" type="D2LogicalModel:_PredefinedItineraryVersionedReference" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>A reference to a versioned instance of a predefined itinerary as specified in a PredefinedLocationsPublication.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="itineraryByReferenceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="Language">
+    <xs:annotation>
+      <xs:documentation>A language datatype, identifies a specified language by an ISO 639-1 2-alpha / ISO 639-2 3-alpha code.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:language" />
+  </xs:simpleType>
+  <xs:complexType name="LinearElement">
+    <xs:annotation>
+      <xs:documentation>A linear element along a single linear object, consistent with ISO 19148 definitions. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="roadName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name of the road of which the linear element forms a part.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="roadNumber" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier/number of the road of which the linear element forms a part.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linearElementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="LinearReferencingDirectionEnum">
+    <xs:annotation>
+      <xs:documentation>Directions of traffic flow relative to the direction in which the linear element is defined.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="both">
+        <xs:annotation>
+          <xs:documentation>Indicates that both directions of traffic flow are affected by the situation or relate to the traffic data.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="opposite">
+        <xs:annotation>
+          <xs:documentation>Indicates that the direction of traffic flow affected by the situation or related to the traffic data is in the opposite sense to the direction in which the linear element is defined.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="aligned">
+        <xs:annotation>
+          <xs:documentation>Indicates that the direction of traffic flow affected by the situation or related to the traffic data is in the same sense as the direction in which the linear element is defined.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Indicates that the direction of traffic flow affected by the situation or related to the traffic data is unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LoadType2Enum">
+    <xs:annotation>
+      <xs:documentation>Loads that are currently not supported in loadType.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="refrigeratedGoods">
+        <xs:annotation>
+          <xs:documentation>Refrigerated goods.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Location" abstract="true">
+    <xs:annotation>
+      <xs:documentation>The specification of a location either on a network (as a point or a linear location) or as an area. This may be provided in one or more referencing systems.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:GroupOfLocations">
+        <xs:sequence>
+          <xs:element name="externalReferencing" type="D2LogicalModel:ExternalReferencing" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="locationForDisplay" type="D2LogicalModel:PointCoordinates" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A location which may be used by clients for visual display on user interfaces.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="locationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LocationByReference">
+    <xs:annotation>
+      <xs:documentation>A location defined by reference to a predefined location.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Location">
+        <xs:sequence>
+          <xs:element name="predefinedLocationReference" type="D2LogicalModel:_PredefinedLocationVersionedReference" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>A reference to a versioned predefined location.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="locationByReferenceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MetresAsFloat">
+    <xs:annotation>
+      <xs:documentation>A measure of distance defined in metres in a floating point format.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:simpleType name="MetresAsNonNegativeInteger">
+    <xs:annotation>
+      <xs:documentation>A measure of distance defined in metres in a non negative integer format.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:NonNegativeInteger" />
+  </xs:simpleType>
+  <xs:simpleType name="MonthOfYearEnum">
+    <xs:annotation>
+      <xs:documentation>A list of the months of the year.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="january">
+        <xs:annotation>
+          <xs:documentation>The month of January.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="february">
+        <xs:annotation>
+          <xs:documentation>The month of February.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="march">
+        <xs:annotation>
+          <xs:documentation>The month of March.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="april">
+        <xs:annotation>
+          <xs:documentation>The month of April.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="may">
+        <xs:annotation>
+          <xs:documentation>The month of May.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="june">
+        <xs:annotation>
+          <xs:documentation>The month of June.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="july">
+        <xs:annotation>
+          <xs:documentation>The month of July.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="august">
+        <xs:annotation>
+          <xs:documentation>The month of August.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="september">
+        <xs:annotation>
+          <xs:documentation>The month of September.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="october">
+        <xs:annotation>
+          <xs:documentation>The month of October.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="november">
+        <xs:annotation>
+          <xs:documentation>The month of November.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="december">
+        <xs:annotation>
+          <xs:documentation>The month of December.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MultilingualString">
+    <xs:sequence>
+      <xs:element name="values">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="value" type="D2LogicalModel:MultilingualStringValue" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MultilingualStringValue">
+    <xs:simpleContent>
+      <xs:extension base="D2LogicalModel:MultilingualStringValueType">
+        <xs:attribute name="lang" type="xs:language" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="MultilingualStringValueType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NetworkLocation" abstract="true">
+    <xs:annotation>
+      <xs:documentation>The specification of a location on a network (as a point or a linear location).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Location">
+        <xs:sequence>
+          <xs:element name="networkLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="NonNegativeInteger">
+    <xs:annotation>
+      <xs:documentation>An integer number whose value space is the set {0, 1, 2, ..., 2147483645, 2147483646, 2147483647}.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger" />
+  </xs:simpleType>
+  <xs:complexType name="NonOrderedLocationGroupByList">
+    <xs:annotation>
+      <xs:documentation>A group of (i.e. more than one) physically separate locations which have no specific order and where each location is explicitly listed.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:NonOrderedLocations">
+        <xs:sequence>
+          <xs:element name="locationContainedInGroup" type="D2LogicalModel:Location" minOccurs="2" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>A location contained in a non ordered group of locations.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nonOrderedLocationGroupByListExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NonOrderedLocationGroupByReference">
+    <xs:annotation>
+      <xs:documentation>A group of (i.e. more than one) physically separate locations which have no specific order that are defined by reference to a predefined non ordered location group.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:NonOrderedLocations">
+        <xs:sequence>
+          <xs:element name="predefinedNonOrderedLocationGroupReference" type="D2LogicalModel:_PredefinedNonOrderedLocationGroupVersionedReference" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>A reference to a versioned instance of a predefined non ordered location group as specified in a PredefinedLocationsPublication.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="nonOrderedLocationGroupByReferenceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NonOrderedLocations" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Multiple (i.e. more than one) physically separate locations which have no specific order.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:GroupOfLocations">
+        <xs:sequence>
+          <xs:element name="nonOrderedLocationsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OffsetDistance">
+    <xs:annotation>
+      <xs:documentation>The non negative offset distance from the ALERT-C referenced point to the actual point.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="offsetDistance" type="D2LogicalModel:MetresAsNonNegativeInteger" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The non negative offset distance from the ALERT-C referenced point to the actual point. The ALERT-C locations in the Primary and Secondary locations must always encompass the linear section being specified, thus Offset Distance is towards the other point.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="offsetDistanceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OpeningTimes">
+    <xs:annotation>
+      <xs:documentation>A specification of opening times (e.g. for a parking site, a service facility, an access or the availability for equipment).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="validity" type="D2LogicalModel:Validity" minOccurs="0" />
+      <xs:element name="openingTimesExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OverallPeriod">
+    <xs:annotation>
+      <xs:documentation>A continuous or discontinuous period of validity defined by overall bounding start and end times and the possible intersection of valid periods (potentially recurring) with the complement of exception periods (also potentially recurring).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="overallStartTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Start of bounding period of validity defined by date and time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overallEndTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>End of bounding period of validity defined by date and time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validPeriod" type="D2LogicalModel:Period" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A single time period, a recurring time period or a set of different recurring time periods during which validity is true.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overallPeriodExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParkingAccess">
+    <xs:annotation>
+      <xs:documentation>Describes one entrance or exit (or both) to a parking site.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="accessCategory" type="D2LogicalModel:AccessCategoryEnum" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Specifies the category(s) of this access.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="primaryRoad" type="D2LogicalModel:Road" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Identification for up to two primary roads located nearby the access or which make the parking accessible.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="location" type="D2LogicalModel:Location" />
+      <xs:element name="parkingAccessExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ParkingAssignment">
+    <xs:annotation>
+      <xs:documentation>One set of prohibited/only allowed/convenient assignment for parking space(s), parking site(s) or an access. Same kind of data forms a union (e.g. lorries OR buses), different kind of data forms an intersection (e.g. residents AND long-term).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="vehicleCharacteristics" type="D2LogicalModel:VehicleCharacteristics" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="parkingAssignmentExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParkingEquipmentOrServiceFacility" abstract="true">
+    <xs:annotation>
+      <xs:documentation>One type of equipment or additional service facility that is available at the parking site, parking space or group of parking spaces.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="availability" type="D2LogicalModel:AvailabilityEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specifies, if the element in question is available or not. Note that this is no dynamic information!</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalDescription" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Provides an additional description.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="otherEquipmentOrServiceFacility" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specifies the additional equipment or service facility, if the enumerations provided do not fit. Use literal 'other' in this case.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="accessibility" type="D2LogicalModel:AccessibilityEnum" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Information on accessibility, easements and marking for handicapped people.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nameOrBrand" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name or brand of the equipment or service facility, e.g. brand of petrol station, name of the WC-Service etc.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="photoUrl" type="D2LogicalModel:Url" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specifies a URL at which a photo of the object in concern can be found.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="availabilityAndOpeningTimes" type="D2LogicalModel:OpeningTimes" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Specify the general availability of some equipment or service facility (by using just the 'OverallPeriod' component) or specify its opening times more detailed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="applicableForVehicles" type="D2LogicalModel:VehicleCharacteristics" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="parkingEquipmentOrServiceFacilityExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParkingRecord" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A container for static parking information. Must be specialised as a parking site or as a group of parking sites.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="parkingName" type="D2LogicalModel:MultilingualString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name of the parking, i.e. name of the parking site or the group of parking sites.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingAlias" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Alternative name for the parking site or the group of parking sites.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingRecordVersionTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date/time that this version of the parking record was defined.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingNumberOfSpaces" type="D2LogicalModel:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Number of parking spaces (attribute is used for a parking record as well as for a group of parking spaces).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="operator" type="D2LogicalModel:Contact" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Contact details of the operator of the parking facility.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingLocation" type="D2LogicalModel:GroupOfLocations">
+        <xs:annotation>
+          <xs:documentation>The location(s) or the extent of the parking. Examples could be an Area for parking area, a Point location for an urban parking facility or a Linear for on street parking.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="onlyAssignedParking" type="D2LogicalModel:ParkingAssignment" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Parking is only allowed for the assignment given in this class, i.e. other assignments are not allowed. By using this role, it is not allowed to use 'assignedParkingAmongOthers' and 'prohibitedParking' for the same type of attributes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assignedParkingAmongOthers" type="D2LogicalModel:ParkingAssignment" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Assignments for parking. Other assignments are allowed as well, i.e. the parking spaces are convenient for this kind of assignment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="prohibitedParking" type="D2LogicalModel:ParkingAssignment" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Parking is not allowed for the given assignment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="tariffsAndPayment" type="D2LogicalModel:TariffsAndPayment" minOccurs="0" />
+      <xs:element name="parkingEquipmentOrServiceFacility" type="D2LogicalModel:_ParkingRecordEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="parkingSpace" type="D2LogicalModel:_ParkingSpace" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Properties of a single parking space. This aggregation may only be used with the "ParkingSpace" specialisation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="groupOfParkingSpaces" type="D2LogicalModel:_GroupOfParkingSpaces" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Properties for a group of parking spaces. Usually, all properties specified have to be the same for all spaces included. This aggregation may only be used with the "GroupOfParkingSpaces" specialisation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="entireArea" type="D2LogicalModel:Area" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>An underlaying area this parking record is located in or belongs to. Examples are a state, province, truck parking area etc. A name can be specified in the area structure.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingRecordExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="ParkingSecurityEnum">
+    <xs:annotation>
+      <xs:documentation>Specifies security measures related to the parking site or particular spaces.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="socialControl">
+        <xs:annotation>
+          <xs:documentation>Social control e.g. parking situated in a neighbourhood.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="securityStaff">
+        <xs:annotation>
+          <xs:documentation>Security staff.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="externalSecurity">
+        <xs:annotation>
+          <xs:documentation>External security, e.g. police or staff not directly belonging to the parking.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cctv">
+        <xs:annotation>
+          <xs:documentation>CCTV (camera observation).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dog">
+        <xs:annotation>
+          <xs:documentation>Dog.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="guard24hours">
+        <xs:annotation>
+          <xs:documentation>24/24 guard.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lighting">
+        <xs:annotation>
+          <xs:documentation>Site is illuminated in a normal way (but not as strong as 'floodLight').</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="floodLight">
+        <xs:annotation>
+          <xs:documentation>Flood light (stronger than lighting).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fences">
+        <xs:annotation>
+          <xs:documentation>Fences.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="areaSeperatedFromSurroundings">
+        <xs:annotation>
+          <xs:documentation>Site is separated from its surroundings. Can also be used to express a space for noise-producing vehicles, e.g. lorries with cooling generators.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:documentation>There are no security measures.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>None of the values in this enumeration applies. Use 'parkingAdditionalSecurity' instead.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ParkingSite" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A record containing static details of a parking site. Must be specialised as an 'Urban-' or 'InterUrbanParkingSite' or a 'SpecialLocationParkingSite'.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:ParkingRecord">
+        <xs:sequence>
+          <xs:element name="parkingSiteAddress" type="D2LogicalModel:Contact" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>Information about the parking site itself (address etc.). The 'GroupOfLocations' association must not be used for this role.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="parkingUsageScenario" type="D2LogicalModel:_ParkingSiteScenarioIndexParkingUsageScenario" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="parkingAccess" type="D2LogicalModel:ParkingAccess" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>An exit from the parking facility onto the road network from any parking space unless separate exits are specified for assigned parking spaces, in which case this is an exit from only the principal parking spaces.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="parkingStandardsAndSecurity" type="D2LogicalModel:ParkingStandardsAndSecurity" />
+          <xs:element name="parkingSiteExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParkingSpace">
+    <xs:annotation>
+      <xs:documentation>A single parking space. It is possible to define the same parking space more than once with different properties, e.g. when there is a different parking assignment for different times.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:ParkingSpaceBasics">
+        <xs:sequence>
+          <xs:element name="parkingSpaceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ParkingSpaceBasics" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Common properties of parking spaces and groups of parking spaces.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="onlyAssignedParking" type="D2LogicalModel:ParkingAssignment" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Parking is only allowed for the assignment given in this class, i.e. other assignments are not allowed. By using this role, it is not allowed to use 'assignedParkingAmongOthers' and 'prohibitedParking' for the same type of attributes.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="assignedParkingAmongOthers" type="D2LogicalModel:ParkingAssignment" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Assignments for parking. Other assignments are allowed as well, i.e. the parking spaces are convenient for this kind of assignment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="prohibitedParking" type="D2LogicalModel:ParkingAssignment" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Parking is not allowed for the given assignment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingEquipmentOrServiceFacility" type="D2LogicalModel:_ParkingSpaceBasicsEquipmentOrServiceFacilityIndexParkingEquipmentOrServiceFacility" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Equiment, services and szenarios, which are directly related to the assigned parking space or parking space group. Note that the infrastructure index must be unique with respect to the Parking class' infrastrucure indeces</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingUsageScenario" type="D2LogicalModel:_ParkingSpaceBasicsScenarioIndexParkingUsageScenario" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="parkingSpaceBasicsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParkingStandardsAndSecurity">
+    <xs:annotation>
+      <xs:documentation>Security measures and standards or standard-like categorization for a parking site.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="parkingSecurity" type="D2LogicalModel:ParkingSecurityEnum" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Specifies security measures related to the parking site or particular spaces.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingAdditionalSecurity" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Security equipment of the parking site that is not covered by the enumeration 'ParkingSecurityEnum'.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingSupervision" type="D2LogicalModel:ParkingSupervisionEnum" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Defines the kind of supervision of the parking site.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingSecurityNationalClassification" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A national classification of the parking security.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="certifiedSecureParking" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Presence of a certification for secure parking.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="dateOfCertification" type="D2LogicalModel:Date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date of certification.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingStandardsAndSecurityExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ParkingSupervisionEnum">
+    <xs:annotation>
+      <xs:documentation>Defines the kind of supervision of the parking site.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="remote">
+        <xs:annotation>
+          <xs:documentation>Remote.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="onSite">
+        <xs:annotation>
+          <xs:documentation>On site.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="controlCentreOnSite">
+        <xs:annotation>
+          <xs:documentation>Control centre on site.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="controlCentreOffSite">
+        <xs:annotation>
+          <xs:documentation>Control centre off site.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="patrol">
+        <xs:annotation>
+          <xs:documentation>Patrol.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="none">
+        <xs:annotation>
+          <xs:documentation>None.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ParkingTable">
+    <xs:annotation>
+      <xs:documentation>A collection of parking records, which can be parking sites or groups of parking sites.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="parkingTableName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The name of the parking table.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingTableVersionTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date/time that this version of the parking table was defined by the supplier. The identity and version of the table are defined by the class stereotype implementation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingRecord" type="D2LogicalModel:ParkingRecord" maxOccurs="unbounded" />
+      <xs:element name="parkingTableExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="ParkingTablePublication">
+    <xs:annotation>
+      <xs:documentation>A publication defining one or more tables that have entries of parking sites or groups of them, located in an urban or interurban context.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="headerInformation" type="D2LogicalModel:HeaderInformation" minOccurs="0" />
+      <xs:element name="parkingTable" type="D2LogicalModel:ParkingTable" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ParkingTypeOfGroup">
+    <xs:annotation>
+      <xs:documentation>The type of group specification (group of parking spaces).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="adjacentSpaces">
+        <xs:annotation>
+          <xs:documentation>A description of adjacent spaces.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nonAdjacentSpaces">
+        <xs:annotation>
+          <xs:documentation>A description of non-adjacent spaces.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="completeFloor">
+        <xs:annotation>
+          <xs:documentation>A description for a complete floor in a car park.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mixedUsage">
+        <xs:annotation>
+          <xs:documentation>A definition for mixed usage for this group (e.g. by time). This means there are more definitions for this group or for sub- or supersets of it.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="statisticsOnly">
+        <xs:annotation>
+          <xs:documentation>This group provides statistical figures only, for example 60 spaces for lorries in total. Usually, this kind of group does not use georeference information.  It is not a complete description of parking spaces.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="singleParameters">
+        <xs:annotation>
+          <xs:documentation>This group provides some single features for a selected number of spaces. For example, you can define all spaces, where electric charging stations are provided. It is not a complete description of the parking spaces.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Some other kind of group.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ParkingUsageScenario">
+    <xs:annotation>
+      <xs:documentation>A special type of usage available for the parking site or the group of parking spaces. In the 'ParkingStatusPublication', the operation type (in operation or not) can be defined.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="parkingUsageScenario" type="D2LogicalModel:ParkingUsageScenarioEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A special type of usage available for the parking site or a group of parking spaces. In the 'ParkingStatusPublication', the operation type (in operation or not) can be defined.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="parkingUsageScenarioExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ParkingUsageScenarioEnum">
+    <xs:annotation>
+      <xs:documentation>Types of parking usage (park &amp; ride, kiss &amp; ride, ...)</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="truckParking">
+        <xs:annotation>
+          <xs:documentation>The parking site is designed for lorries (other vehicles are allowed as well).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restArea">
+        <xs:annotation>
+          <xs:documentation>The parking site is associated with a rest area, i.e. people can relax some time outside their car there. Note that the presence of some bench, picnic place or toilet is already sufficient; there is no need for a restaurant or a building.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="serviceArea">
+        <xs:annotation>
+          <xs:documentation>The parking site is associated with a service area.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PayloadPublication" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A payload publication of traffic related information or associated management information created at a specific point in time that can be exchanged via a DATEX II interface.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="publicationTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date/time at which the payload publication was created.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publicationCreator" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="payloadPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="D2LogicalModel:Language" use="required">
+      <xs:annotation>
+        <xs:documentation>The default language used throughout the payload publication.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="Period">
+    <xs:annotation>
+      <xs:documentation>A continuous time period or a set of discontinuous time periods defined by the intersection of a set of criteria all within an overall delimiting interval.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="startOfPeriod" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Start of period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="endOfPeriod" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>End of a period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periodName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The name of the period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recurringTimePeriodOfDay" type="D2LogicalModel:TimePeriodOfDay" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A recurring period of a day.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="recurringDayWeekMonthPeriod" type="D2LogicalModel:DayWeekMonth" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>A recurring period defined in terms of days of the week, weeks of the month and months of the year. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="periodExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Point">
+    <xs:annotation>
+      <xs:documentation>A single geospatial point.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:NetworkLocation">
+        <xs:sequence>
+          <xs:element name="alertCPoint" type="D2LogicalModel:AlertCPoint" minOccurs="0" />
+          <xs:element name="pointAlongLinearElement" type="D2LogicalModel:PointAlongLinearElement" minOccurs="0" />
+          <xs:element name="pointByCoordinates" type="D2LogicalModel:PointByCoordinates" minOccurs="0" />
+          <xs:element name="pointExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PointAlongLinearElement">
+    <xs:annotation>
+      <xs:documentation>A point on a linear element where the linear element is either a part of or the whole of a linear object (i.e. a road), consistent with ISO 19148 definitions. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="directionRelativeAtPoint" type="D2LogicalModel:LinearReferencingDirectionEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The direction of traffic flow at the specified point relative to the direction in which the linear element is defined.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="linearElement" type="D2LogicalModel:LinearElement" />
+      <xs:element name="distanceAlongLinearElement" type="D2LogicalModel:DistanceAlongLinearElement" />
+      <xs:element name="pointAlongLinearElementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointByCoordinates">
+    <xs:annotation>
+      <xs:documentation>A single point defined only by a coordinate set with an optional bearing direction.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bearing" type="D2LogicalModel:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A bearing at the point measured in degrees (0 - 359). Unless otherwise specified the reference direction corresponding to 0 degrees is North.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pointCoordinates" type="D2LogicalModel:PointCoordinates" />
+      <xs:element name="pointByCoordinatesExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointCoordinates">
+    <xs:annotation>
+      <xs:documentation>A pair of coordinates defining the geodetic position of a single point using the European Terrestrial Reference System 1989 (ETRS89).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="latitude" type="D2LogicalModel:Float" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Latitude in decimal degrees using the European Terrestrial Reference System 1989 (ETRS89).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="longitude" type="D2LogicalModel:Float" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Longitude in decimal degrees using the European Terrestrial Reference System 1989 (ETRS89).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pointCoordinatesExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointDestination">
+    <xs:annotation>
+      <xs:documentation>The specification of the destination of a defined route or itinerary which is a point.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Destination">
+        <xs:sequence>
+          <xs:element name="point" type="D2LogicalModel:Point" />
+          <xs:element name="pointDestinationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PolygonArea">
+    <xs:annotation>
+      <xs:documentation>defines points for a closed polygon-shape describing the area</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="sectionName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name of the polygon area. Especially useful when the area consists of more than one polygon.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pointCoordinates" type="D2LogicalModel:_PolygonAreaIndexPointCoordinates" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="polygonAreaExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ResponseEnum">
+    <xs:annotation>
+      <xs:documentation>Types of response that a supplier can return to a requesting client.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="acknowledge">
+        <xs:annotation>
+          <xs:documentation>An acknowledgement that the supplier has received and complied with the client's request.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="requestDenied">
+        <xs:annotation>
+          <xs:documentation>A notification that the supplier has denied the client's request for a data.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="subscriptionRequestDenied">
+        <xs:annotation>
+          <xs:documentation>A notification that the supplier has denied the client's request for a subscription.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Road">
+    <xs:annotation>
+      <xs:documentation>Identification of a road by its name, identifier, type ...</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="roadIdentifier" type="D2LogicalModel:MultilingualString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier/number of the road.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="typeOfRoad" type="D2LogicalModel:RoadTypeEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Type of the road.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="roadDestination" type="D2LogicalModel:MultilingualString" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Name of some city, area, compass direction or other identification the road is leading to (to determine the direction in question).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="distanceToThisRoad" type="D2LogicalModel:MetresAsNonNegativeInteger" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Distance to the road in metres (from the calling component/object).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="roadExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RoadNode">
+    <xs:annotation>
+      <xs:documentation>A road node as part of the specialised road identified by the name of a junctionon on this road.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Road">
+        <xs:sequence>
+          <xs:element name="junctionName" type="D2LogicalModel:MultilingualString" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Name of the junction.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="roadNodeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="RoadTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Categorisation of the  road type (motorway, main road, ...).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="motorway">
+        <xs:annotation>
+          <xs:documentation>Motorway.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="trunkRoad">
+        <xs:annotation>
+          <xs:documentation>Trunk road.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mainRoad">
+        <xs:annotation>
+          <xs:documentation>Main road.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Seconds">
+    <xs:annotation>
+      <xs:documentation>Seconds.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:complexType name="ServiceFacility">
+    <xs:annotation>
+      <xs:documentation>One type of service facility that is available on the parking site or located next to it. You can specify the number of this service facility type (e.g. 5 restaurants) as well as the number of subitems (e.g. 200 restaurant places).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:ParkingEquipmentOrServiceFacility">
+        <xs:sequence>
+          <xs:element name="serviceFacilityType" type="D2LogicalModel:ServiceFacilityTypeEnum" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>One type of service, that is available on the parking site.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numberOfSubitems" type="D2LogicalModel:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The quantity of sub items to this service facility type, e.g. the total number of restaurant places or fuel dispensers etc.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="distanceFromParkingSite" type="D2LogicalModel:MetresAsNonNegativeInteger" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>If the service facility is not located on the parking site itself, its distance can be specified here in metres.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="serviceFacilityExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ServiceFacilityTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Service facilities available on the parking site, parking space or group of parking spaces. In distinction to equipment, a service is mostly manned.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="hotel">
+        <xs:annotation>
+          <xs:documentation>A hotel.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="motel">
+        <xs:annotation>
+          <xs:documentation>Hotel on the motorway or other accommodation service.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overnightAccommodation">
+        <xs:annotation>
+          <xs:documentation>OvernightAccomodation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="shop">
+        <xs:annotation>
+          <xs:documentation>A shop of unspecified kind.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="kiosk">
+        <xs:annotation>
+          <xs:documentation>Kiosk.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="foodShopping">
+        <xs:annotation>
+          <xs:documentation>Food shopping.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cafe">
+        <xs:annotation>
+          <xs:documentation>Cafe.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restaurant">
+        <xs:annotation>
+          <xs:documentation>Restaurant.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restaurantSelfService">
+        <xs:annotation>
+          <xs:documentation>A restaurant where people arange and fetch their meal themselve, this might enclose a buffet.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="motorwayRestaurant">
+        <xs:annotation>
+          <xs:documentation>Restaurant located on a motorway rest area.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="motorwayRestaurantSmall">
+        <xs:annotation>
+          <xs:documentation>Smaller type of restaurant located on a motorway rest area. Might be with limited offers.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sparePartsShopping">
+        <xs:annotation>
+          <xs:documentation>Spare parts shopping.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="petrolStation">
+        <xs:annotation>
+          <xs:documentation>Indicates whether it is possible to get petrol.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vehicleMaintenance">
+        <xs:annotation>
+          <xs:documentation>Garage repair service.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tyreRepair">
+        <xs:annotation>
+          <xs:documentation>A tyre repair service.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="truckRepair">
+        <xs:annotation>
+          <xs:documentation>Truck repair.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="truckWash">
+        <xs:annotation>
+          <xs:documentation>Truck wash.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="carWash">
+        <xs:annotation>
+          <xs:documentation>Car wash.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pharmacy">
+        <xs:annotation>
+          <xs:documentation>Pharmacy.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="medicalFacility">
+        <xs:annotation>
+          <xs:documentation>Medical facility.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="police">
+        <xs:annotation>
+          <xs:documentation>Indicates whether a police station is on site or very close.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="touristInformation">
+        <xs:annotation>
+          <xs:documentation>Tourist information with employees.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bikeSharing">
+        <xs:annotation>
+          <xs:documentation>Bike Sharing.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="docstop">
+        <xs:annotation>
+          <xs:documentation>The site is part of the Docstop project, http://www.docstoponline.eu, which means medical assistance for professional drivers.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="laundry">
+        <xs:annotation>
+          <xs:documentation>A possibility for washing clothes (might also be a laundromat with coins).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="leisureActivities">
+        <xs:annotation>
+          <xs:documentation>There are leisure activities offered on the site or in the very near surrounding. Use the additional description attribute to give details.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>Unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Some other service facility. Use 'otherEquipmentOrServiceFacility' to specify it.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String">
+    <xs:annotation>
+      <xs:documentation>A character string whose value space is the set of finite-length sequences of characters. Every character has a corresponding Universal Character Set code point (as defined in ISO/IEC 10646), which is an integer.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TariffsAndPayment">
+    <xs:annotation>
+      <xs:documentation>A table of charges under various conditions, primary used for parking. </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="lastUpdated" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date/time at which this information was last updated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="freeOfCharge" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>No fee at all. In this case, no further elements of the tariffs structure are needed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="chargeBand" type="D2LogicalModel:ChargeBand" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="chargeBandByReference" type="D2LogicalModel:ChargeBandByReference" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="tariffsAndPaymentExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Time">
+    <xs:annotation>
+      <xs:documentation>An instant of time that recurs every day. The value space of time is the space of time of day values as defined in § 5.3 of [ISO 8601]. Specifically, it is a set of zero-duration daily time instances.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:time" />
+  </xs:simpleType>
+  <xs:complexType name="TimePeriodByHour">
+    <xs:annotation>
+      <xs:documentation>Specification of a continuous period within a 24 hour period by times.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:TimePeriodOfDay">
+        <xs:sequence>
+          <xs:element name="startTimeOfPeriod" type="D2LogicalModel:Time" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Start of time period.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="endTimeOfPeriod" type="D2LogicalModel:Time" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>End of time period.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="timePeriodByHourExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TimePeriodOfDay" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Specification of a continuous period of time within a 24 hour period.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="timePeriodOfDayExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Url">
+    <xs:annotation>
+      <xs:documentation>A Uniform Resource Locator (URL) address comprising a compact string of characters for a resource available on the Internet.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI" />
+  </xs:simpleType>
+  <xs:complexType name="Validity">
+    <xs:annotation>
+      <xs:documentation>Specification of validity, either explicitly or by a validity time period specification which may be discontinuous.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="validityStatus" type="D2LogicalModel:ValidityStatusEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specification of validity, either explicitly overriding the validity time specification or confirming it.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validityTimeSpecification" type="D2LogicalModel:OverallPeriod">
+        <xs:annotation>
+          <xs:documentation>A specification of periods of validity defined by overall bounding start and end times and the possible intersection of valid periods with exception periods (exception periods overriding valid periods).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validityExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ValidityStatusEnum">
+    <xs:annotation>
+      <xs:documentation>Values of validity status that can be assigned to a described event, action or item.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="active">
+        <xs:annotation>
+          <xs:documentation>The described event, action or item is currently active regardless of the definition of the validity time specification.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="suspended">
+        <xs:annotation>
+          <xs:documentation>The described event, action or item is currently suspended, that is inactive, regardless of the definition of the validity time specification.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="definedByValidityTimeSpec">
+        <xs:annotation>
+          <xs:documentation>The validity status of the described event, action or item is in accordance with the definition of the validity time specification.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VehicleCharacteristics">
+    <xs:annotation>
+      <xs:documentation>The characteristics of a vehicle, e.g. lorry of gross weight greater than 30 tonnes.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="vehicleType" type="D2LogicalModel:VehicleTypeEnum" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Vehicle type.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vehicleCharacteristicsExtension" type="D2LogicalModel:_VehicleCharacteristicsExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleCharacteristicsExtended">
+    <xs:annotation>
+      <xs:documentation>Extension point for 'VehicleCharacteristics' to support additional attributes and literals like additional fuel types, load types etc.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="loadType2" type="D2LogicalModel:LoadType2Enum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Loads currently not supported in 'LoadTypeEnum'.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="VehicleTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Types of vehicle.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="agriculturalVehicle">
+        <xs:annotation>
+          <xs:documentation>Vehicle normally used for agricultural purposes, e.g. tractor, combined harvester etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="anyVehicle">
+        <xs:annotation>
+          <xs:documentation>Vehicle of any type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="articulatedVehicle">
+        <xs:annotation>
+          <xs:documentation>Articulated vehicle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bicycle">
+        <xs:annotation>
+          <xs:documentation>Bicycle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bus">
+        <xs:annotation>
+          <xs:documentation>Bus.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="car">
+        <xs:annotation>
+          <xs:documentation>Car.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="caravan">
+        <xs:annotation>
+          <xs:documentation>Caravan.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="carOrLightVehicle">
+        <xs:annotation>
+          <xs:documentation>Car or light vehicle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="carWithCaravan">
+        <xs:annotation>
+          <xs:documentation>Car towing a caravan.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="carWithTrailer">
+        <xs:annotation>
+          <xs:documentation>Car towing a trailer.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="constructionOrMaintenanceVehicle">
+        <xs:annotation>
+          <xs:documentation>Vehicle normally used for construction or maintenance purposes, e.g. digger, excavator, bulldozer, lorry mounted crane etc.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fourWheelDrive">
+        <xs:annotation>
+          <xs:documentation>Four wheel drive vehicle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="highSidedVehicle">
+        <xs:annotation>
+          <xs:documentation>High sided vehicle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lorry">
+        <xs:annotation>
+          <xs:documentation>Lorry of any type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="moped">
+        <xs:annotation>
+          <xs:documentation>Moped (a two wheeled motor vehicle characterized by a small engine typically less than 50cc and by normally having pedals).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="motorcycle">
+        <xs:annotation>
+          <xs:documentation>Motorcycle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="motorcycleWithSideCar">
+        <xs:annotation>
+          <xs:documentation>Three wheeled vehicle comprising a motorcycle with an attached side car.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="motorscooter">
+        <xs:annotation>
+          <xs:documentation>Motorscooter (a two wheeled motor vehicle characterized by a step-through frame and small diameter wheels).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tanker">
+        <xs:annotation>
+          <xs:documentation>Vehicle with large tank for carrying bulk liquids.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="threeWheeledVehicle">
+        <xs:annotation>
+          <xs:documentation>Three wheeled vehicle of unspecified type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="trailer">
+        <xs:annotation>
+          <xs:documentation>Trailer.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tram">
+        <xs:annotation>
+          <xs:documentation>Tram.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="twoWheeledVehicle">
+        <xs:annotation>
+          <xs:documentation>Two wheeled vehicle of unspecified type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="van">
+        <xs:annotation>
+          <xs:documentation>Van.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vehicleWithCatalyticConverter">
+        <xs:annotation>
+          <xs:documentation>Vehicle with catalytic converter.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vehicleWithoutCatalyticConverter">
+        <xs:annotation>
+          <xs:documentation>Vehicle without catalytic converter.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vehicleWithCaravan">
+        <xs:annotation>
+          <xs:documentation>Vehicle (of unspecified type) towing a caravan.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="vehicleWithTrailer">
+        <xs:annotation>
+          <xs:documentation>Vehicle (of unspecified type) towing a trailer.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="withEvenNumberedRegistrationPlates">
+        <xs:annotation>
+          <xs:documentation>Vehicle with even numbered registration plate.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="withOddNumberedRegistrationPlates">
+        <xs:annotation>
+          <xs:documentation>Vehicle with odd numbered registration plate.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VersionedReference">
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="WeekOfMonthEnum">
+    <xs:annotation>
+      <xs:documentation>Weeks of the month.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="firstWeekOfMonth">
+        <xs:annotation>
+          <xs:documentation>First week of the month.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="secondWeekOfMonth">
+        <xs:annotation>
+          <xs:documentation>Second week of the month.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="thirdWeekOfMonth">
+        <xs:annotation>
+          <xs:documentation>Third week of the month.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fourthWeekOfMonth">
+        <xs:annotation>
+          <xs:documentation>Fourth week of the month.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fifthWeekOfMonth">
+        <xs:annotation>
+          <xs:documentation>Fifth week of the month (at most only 3 days and non in February when not a leap year). </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
