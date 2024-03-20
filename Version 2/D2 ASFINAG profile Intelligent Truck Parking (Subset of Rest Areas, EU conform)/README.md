@@ -1,51 +1,45 @@
-# Slovenian profile on wind data
+# D2 ASFINAG profile Intelligent Truck Parking (Subset of Rest Areas, EU conform)
 
 Status definition refers to ISO 14187
 Card
 Profile object
-Road Traffic Data
+ParkingTablePublication
 Profile information
-Road traffic  relevant Wind data as published by the Slovenian National Traffic Control Centre
+ASFINAG provides DATEX II traffic information of Austrian motorways for service providers and other interested institutions. This profile describes the message content for the Static Part of Intelligent Truck Parking. It is limited to elements that are specified in the corresponding EU Regulation 885/2013 (including a very little set of further optional elements that make the profile smoothly) as well as some more optional elements selected by ASFINAG. The DATEX standard location referencing methods are not included in this document. ASFINAG specific documentation is accentuated in colour.
+All documents including those for dynamic information can be found in the zip-file.
 
 Organization name
-Republic of Slovenia, Ministry of infrastructure, NCUP - National traffic management centre
+ASFINAG
 Organization description
-Government, Public Services
+ASFINAG acts as an economically responsible motorway operator. We are convinced that modern and sustainably developed infrastructure is essential both for the mobility requirements of every single person and for Austria as a location for business. By using new technologies and innovations, we want to make Austria's motorways and expressways amongst the safest in Europe – in the interest of our customers and to strengthen the country as a place in which to do business.
 
-Organization logo<br>
-![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/f5f633c6-7612-43b8-adc7-fdd2b345fcef)
+Organization logo<BR>
+![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/1a4d468e-2f91-4f90-a051-ab757a658c32)
+
+Website
+http://www.asfinag.at/
 
 Contact name
-Matej Vovk
+Dipl.-Ing. Gottfried Allmer
 Contact mail
-dummy
+gottfried.allmer@asfinag.at
+
+EA Model File
+
+DATEX_II-Profile_ITP-EU-compliant_ASFINAG.zip
 
 XMI file
 
-DatexII_Winds_D2Payload_XMI.xml
+See_zip-file.xml
 
 XML schema
 
-DATEXII_3_Common_9.xsd
-
-DATEXII_3_CommonExtension_4.xsd
-
-DATEXII_3_D2Payload_9.xsd
-
-DATEXII_3_Facilities_4.xsd
-
-DATEXII_3_LocationExtension_5.xsd
-
-DATEXII_3_LocationReferencing_9.xsd
-
-DATEXII_3_Parking_5.xsd
-
-DATEXII_3_RoadTrafficData_2.xsd
+DATEX_II-Profile_ITP-EU-Static_ASFINAG.xsd
 
 PDF Documentation
 
-realiswind-3.0-profile.pdf
+DATEX_II-Profile_ITP-EU-compliant_Static_ASFINAG.pdf
 
 Selection file
 
-realiswind-3.0-selection.sel
+DATEX_II-Profile_ITP-EU-Static_ASFINAG.sel
