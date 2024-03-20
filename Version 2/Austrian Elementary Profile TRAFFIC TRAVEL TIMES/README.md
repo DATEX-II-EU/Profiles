@@ -23,7 +23,7 @@ Changes from v2.0 to v2.1 (published on 04.06.2019):
 - Added the element "capacityRemaning" to the "Impact" class
 - Added the element "situationRecordCreationReference" to the "SituationRecord" class
 - Added the elements "commentDateTime" and "commentType" to the "Comment" class
-- The older version "v2.0" of the AustrianUnplannedEvents is provided inside the attachment "http://datex2.eu/sites/default/files/d2-profile/AustrianUnplannedEventsProfile_2.zip".
+- The older version "v2.0" of the AustrianUnplannedEvents is provided inside the attachment AustrianUnplannedEventsProfile_2.zip
 
 Organization name
 ASFINAG
@@ -31,7 +31,7 @@ Organization description
 ASFINAG acts as an economically responsible motorway operator. We are convinced that modern and sustainably developed infrastructure is essential both for the mobility requirements of every single person and for Austria as a location for business. By using new technologies and innovations, we want to make Austria's motorways and expressways amongst the safest in Europe – in the interest of our customers and to strengthen the country as a place in which to do business.
 
 Organization logo<br>
-![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/8c9e2728-800a-4e92-9fbb-1049fc9a63bd)
+![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/0d99f22a-9d0d-414a-b70f-d0f0d8616daa)
 
 Website
 http://www.asfinag.at/
