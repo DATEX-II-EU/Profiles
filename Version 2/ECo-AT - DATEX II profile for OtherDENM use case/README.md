@@ -1,51 +1,57 @@
-# Slovenian profile on wind data
+# ECo-AT - DATEX II profile for OtherDENM use case
 
 Status definition refers to ISO 14187
 Card
 Profile object
-Road Traffic Data
+SituationPublication
 Profile information
-Road traffic  relevant Wind data as published by the Slovenian National Traffic Control Centre
+This profile describes the message content for the OtherDENM use case as described by the project ECo-AT using the Situation publication. This profile distinguishes between 64 different message types in the context of traffic messages. Location referencing is done using three location containers indexed by “ItineraryByIndexedLocations”. The first location container with index “0“ uses “PointByCoordinates“, whereas the second and third location containers uses the extension “LinearByCoordinates”. In addition to “LinearByCoordinates” each location container of type “Linear” also contains an “AlertCLinear (AlertCMethod4Linear)” container. Change log: Changes from V1 to V2 (published on 05.11.2015):
+
+- Added the data field “ClientIdentification” for the dissemination radius of the message as needed by the C-ITS-S. It is part of the exchange container.
+- Added an additional location container of type “Point(PointByCoordinates)” to “ItineraryByIndexedLocations”. This represents the event position.
+
+Changes from V2 to V3 (published on 26.11.2015):
+- Added “AlertCLinear (AlertCMethod4Linear)” to each location container of type “Linear” in addition to “LinearByCoordinates”.
+- Added the field “informationStatus” to differentiate between live and test data feed.
+
+Changes from V3 to V4 (published on 27.07.2016):
+- Added the situation record extension for indicating safety related traffic messages.
+- Added more enumeration literals
+
+Changes from V4 to V5 (published on 13.9.2016):
+- Included "nonGeneralPublicComment" in the SituationRecord.
 
 Organization name
-Republic of Slovenia, Ministry of infrastructure, NCUP - National traffic management centre
+ECo-AT (The Austrian contribution to the Cooperative ITS Corridor)
 Organization description
-Government, Public Services
+ECo-AT (European Corridor – Austrian Testbed for Cooperative Systems) is the Austrian project to create harmonised and standardised cooperative ITS applications jointly with partners in Germany and the Netherlands. The project is led by the Austrian motorway operator ASFINAG and the consortium consists of Kapsch TrafficCom AG, Siemens AG Österreich, SWARCO AG, High Tech Marketing, Volvo Technology AB, FTW, ITS Vienna Region, and BASt (Bundesanstalt für Straßenwesen).
 
-Organization logo<br>
-![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/f5f633c6-7612-43b8-adc7-fdd2b345fcef)
+Organization logo
+
+Website
+http://www.eco-at.info/
 
 Contact name
-Matej Vovk
+Dipl.-Ing. Peter Meckel
 Contact mail
-dummy
+Peter.Meckel@asfinag.at
+
+EA Model File
+
+DATEX_II_PIM_ASFINAG.zip
 
 XMI file
 
-DatexII_Winds_D2Payload_XMI.xml
+see_zip_file..xml
 
 XML schema
 
-DATEXII_3_Common_9.xsd
-
-DATEXII_3_CommonExtension_4.xsd
-
-DATEXII_3_D2Payload_9.xsd
-
-DATEXII_3_Facilities_4.xsd
-
-DATEXII_3_LocationExtension_5.xsd
-
-DATEXII_3_LocationReferencing_9.xsd
-
-DATEXII_3_Parking_5.xsd
-
-DATEXII_3_RoadTrafficData_2.xsd
+DATEXII-Profile_OtherDENM_ECo-AT_WithDefinitions.xsd
 
 PDF Documentation
 
-realiswind-3.0-profile.pdf
+DATEXII-Profile_OtherDENM_ECo-AT.pdf
 
 Selection file
 
-realiswind-3.0-selection.sel
+OtherDENMProfile.sel
