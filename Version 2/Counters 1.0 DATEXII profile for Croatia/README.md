@@ -1,51 +1,40 @@
-# Slovenian profile on wind data
+# Counters 1.0 DATEXII profile for Croatia
 
 Status definition refers to ISO 14187
 Card
 Profile object
-Road Traffic Data
+PredefinedLocationsPublication
 Profile information
-Road traffic  relevant Wind data as published by the Slovenian National Traffic Control Centre
+List of traffic counters on Croatian roads.
 
 Organization name
-Republic of Slovenia, Ministry of infrastructure, NCUP - National traffic management centre
+Hrvatske ceste d.o.o.
 Organization description
-Government, Public Services
+Croatian roads are responsible for management, construction and maintenance of state roads in Croatia. We provide high quality transport connections between regions in Croatia and at the same time improve road links to European transport routes. Delivering a high capacity road network will support dynamic economic growth nationwide and facilitate global economic integration of Croatia.
 
-Organization logo<br>
-![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/f5f633c6-7612-43b8-adc7-fdd2b345fcef)
+Organization logo<BR>
+![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/26e34c3d-eac3-43ff-b16b-fd9fa645b7e0)
+
+Website
+https://hrvatske-ceste.hr
 
 Contact name
-Matej Vovk
+Irena Čačić
 Contact mail
-dummy
+irena.cacic@hrvatske-ceste.hr
 
 XMI file
 
-DatexII_Winds_D2Payload_XMI.xml
+realiscounters-1.0.xml
 
 XML schema
 
-DATEXII_3_Common_9.xsd
-
-DATEXII_3_CommonExtension_4.xsd
-
-DATEXII_3_D2Payload_9.xsd
-
-DATEXII_3_Facilities_4.xsd
-
-DATEXII_3_LocationExtension_5.xsd
-
-DATEXII_3_LocationReferencing_9.xsd
-
-DATEXII_3_Parking_5.xsd
-
-DATEXII_3_RoadTrafficData_2.xsd
+realiscounters-1.0.xsd
 
 PDF Documentation
 
-realiswind-3.0-profile.pdf
+realiscounters-1.0.pdf
 
 Selection file
 
-realiswind-3.0-selection.sel
+realiscounters-1.0.sel
