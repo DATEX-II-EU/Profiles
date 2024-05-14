@@ -1,0 +1,1036 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:D2LogicalModel="http://datex2.eu/schema/2/2_0" version="2.3" targetNamespace="http://datex2.eu/schema/2/2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="_ExtensionType">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_GipLinkLinearLocationReferenceIndexGipLink">
+    <xs:sequence>
+      <xs:element name="gipLink" type="D2LogicalModel:GipLink" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_Intermediate">
+    <xs:sequence>
+      <xs:element name="pointCoordinates" type="D2LogicalModel:PointCoordinates" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_IntermediatePointOnLinearElement">
+    <xs:sequence>
+      <xs:element name="referent" type="D2LogicalModel:Referent" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_LinearExtensionType">
+    <xs:sequence>
+      <xs:element name="extendedLinear" type="D2LogicalModel:ExtendedLinear" minOccurs="0" />
+      <xs:element name="extendedLinearForGipLink" type="D2LogicalModel:ExtendedLinearForGipLink" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_PredefinedLocationVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="PredefinedLocation" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_PredefinedNonOrderedLocationGroupVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="PredefinedNonOrderedLocationGroup" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCDirection">
+    <xs:sequence>
+      <xs:element name="alertCDirectionCoded" type="D2LogicalModel:AlertCDirectionEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCDirectionNamed" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="alertCDirectionSense" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="alertCDirectionExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlertCDirectionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="both" />
+      <xs:enumeration value="negative" />
+      <xs:enumeration value="positive" />
+      <xs:enumeration value="unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AlertCLinear" abstract="true">
+    <xs:sequence>
+      <xs:element name="alertCLocationCountryCode" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLocationTableNumber" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLocationTableVersion" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLinearExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCLinearByCode">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:AlertCLinear">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="D2LogicalModel:AlertCDirection" />
+          <xs:element name="locationCodeForLinearLocation" type="D2LogicalModel:AlertCLocation" />
+          <xs:element name="alertCLinearByCodeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocationName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="specificLocation" type="D2LogicalModel:AlertCLocationCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlertCLocationCode">
+    <xs:restriction base="D2LogicalModel:NonNegativeInteger" />
+  </xs:simpleType>
+  <xs:complexType name="AlertCMethod2Linear">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:AlertCLinear">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="D2LogicalModel:AlertCDirection" />
+          <xs:element name="alertCMethod2PrimaryPointLocation" type="D2LogicalModel:AlertCMethod2PrimaryPointLocation" />
+          <xs:element name="alertCMethod2SecondaryPointLocation" type="D2LogicalModel:AlertCMethod2SecondaryPointLocation" />
+          <xs:element name="alertCMethod2LinearExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod2PrimaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="D2LogicalModel:AlertCLocation" />
+      <xs:element name="alertCMethod2PrimaryPointLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod2SecondaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="D2LogicalModel:AlertCLocation" />
+      <xs:element name="alertCMethod2SecondaryPointLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4Linear">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:AlertCLinear">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="D2LogicalModel:AlertCDirection" />
+          <xs:element name="alertCMethod4PrimaryPointLocation" type="D2LogicalModel:AlertCMethod4PrimaryPointLocation" />
+          <xs:element name="alertCMethod4SecondaryPointLocation" type="D2LogicalModel:AlertCMethod4SecondaryPointLocation" />
+          <xs:element name="alertCMethod4LinearExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4PrimaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="D2LogicalModel:AlertCLocation" />
+      <xs:element name="offsetDistance" type="D2LogicalModel:OffsetDistance" />
+      <xs:element name="alertCMethod4PrimaryPointLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4SecondaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="D2LogicalModel:AlertCLocation" />
+      <xs:element name="offsetDistance" type="D2LogicalModel:OffsetDistance" />
+      <xs:element name="alertCMethod4SecondaryPointLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AreaOfInterestEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="continentWide" />
+      <xs:enumeration value="national" />
+      <xs:enumeration value="neighbouringCountries" />
+      <xs:enumeration value="notSpecified" />
+      <xs:enumeration value="regional" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="BasicData" abstract="true">
+    <xs:sequence>
+      <xs:element name="measurementOrCalculationPeriod" type="D2LogicalModel:Seconds" minOccurs="0" maxOccurs="1" />
+      <xs:element name="measurementOrCalculationTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="pertinentLocation" type="D2LogicalModel:GroupOfLocations" minOccurs="0" />
+      <xs:element name="basicDataExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="measurementOrCalculatedTimePrecision" type="D2LogicalModel:TimePrecisionEnum" use="optional" />
+  </xs:complexType>
+  <xs:simpleType name="Boolean">
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:simpleType name="ComputationMethodEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="arithmeticAverageOfSamplesBasedOnAFixedNumberOfSamples" />
+      <xs:enumeration value="arithmeticAverageOfSamplesInATimePeriod" />
+      <xs:enumeration value="harmonicAverageOfSamplesInATimePeriod" />
+      <xs:enumeration value="medianOfSamplesInATimePeriod" />
+      <xs:enumeration value="movingAverageOfSamples" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ConfidentialityValueEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="internalUse" />
+      <xs:enumeration value="noRestriction" />
+      <xs:enumeration value="restrictedToAuthorities" />
+      <xs:enumeration value="restrictedToAuthoritiesAndTrafficOperators" />
+      <xs:enumeration value="restrictedToAuthoritiesTrafficOperatorsAndPublishers" />
+      <xs:enumeration value="restrictedToAuthoritiesTrafficOperatorsAndVms" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountryEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="at" />
+      <xs:enumeration value="be" />
+      <xs:enumeration value="bg" />
+      <xs:enumeration value="ch" />
+      <xs:enumeration value="cs" />
+      <xs:enumeration value="cy" />
+      <xs:enumeration value="cz" />
+      <xs:enumeration value="de" />
+      <xs:enumeration value="dk" />
+      <xs:enumeration value="ee" />
+      <xs:enumeration value="es" />
+      <xs:enumeration value="fi" />
+      <xs:enumeration value="fo" />
+      <xs:enumeration value="fr" />
+      <xs:enumeration value="gb" />
+      <xs:enumeration value="gg" />
+      <xs:enumeration value="gi" />
+      <xs:enumeration value="gr" />
+      <xs:enumeration value="hr" />
+      <xs:enumeration value="hu" />
+      <xs:enumeration value="ie" />
+      <xs:enumeration value="im" />
+      <xs:enumeration value="is" />
+      <xs:enumeration value="it" />
+      <xs:enumeration value="je" />
+      <xs:enumeration value="li" />
+      <xs:enumeration value="lt" />
+      <xs:enumeration value="lu" />
+      <xs:enumeration value="lv" />
+      <xs:enumeration value="ma" />
+      <xs:enumeration value="mc" />
+      <xs:enumeration value="mk" />
+      <xs:enumeration value="mt" />
+      <xs:enumeration value="nl" />
+      <xs:enumeration value="no" />
+      <xs:enumeration value="pl" />
+      <xs:enumeration value="pt" />
+      <xs:enumeration value="ro" />
+      <xs:enumeration value="se" />
+      <xs:enumeration value="si" />
+      <xs:enumeration value="sk" />
+      <xs:enumeration value="sm" />
+      <xs:enumeration value="tr" />
+      <xs:enumeration value="va" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="d2LogicalModel" type="D2LogicalModel:D2LogicalModel">
+    <xs:unique name="_d2LogicalModelPredefinedLocationConstraint">
+      <xs:selector xpath=".//D2LogicalModel:predefinedLocation" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
+  </xs:element>
+  <xs:complexType name="D2LogicalModel">
+    <xs:sequence>
+      <xs:element name="exchange" type="D2LogicalModel:Exchange" />
+      <xs:element name="payloadPublication" type="D2LogicalModel:PayloadPublication" minOccurs="0" />
+      <xs:element name="d2LogicalModelExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="modelBaseVersion" use="required" fixed="2" />
+    <xs:attribute name="extensionName" use="optional" default="TrafficSignsExtensions" />
+    <xs:attribute name="extensionVersion" use="optional" default="3.8" />
+  </xs:complexType>
+  <xs:complexType name="DataValue" abstract="true">
+    <xs:sequence>
+      <xs:element name="dataError" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="reasonForDataError" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="dataValueExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="accuracy" type="D2LogicalModel:Percentage" use="optional" />
+    <xs:attribute name="computationalMethod" type="D2LogicalModel:ComputationMethodEnum" use="optional" />
+    <xs:attribute name="numberOfIncompleteInputs" type="D2LogicalModel:NonNegativeInteger" use="optional" />
+    <xs:attribute name="numberOfInputValuesUsed" type="D2LogicalModel:NonNegativeInteger" use="optional" />
+    <xs:attribute name="smoothingFactor" type="D2LogicalModel:Float" use="optional" />
+    <xs:attribute name="standardDeviation" type="D2LogicalModel:Float" use="optional" />
+    <xs:attribute name="supplierCalculatedDataQuality" type="D2LogicalModel:Percentage" use="optional" />
+  </xs:complexType>
+  <xs:simpleType name="DateTime">
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="DirectionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="allDirections" />
+      <xs:enumeration value="bothWays" />
+      <xs:enumeration value="clockwise" />
+      <xs:enumeration value="anticlockwise" />
+      <xs:enumeration value="innerRing" />
+      <xs:enumeration value="outerRing" />
+      <xs:enumeration value="northBound" />
+      <xs:enumeration value="northEastBound" />
+      <xs:enumeration value="eastBound" />
+      <xs:enumeration value="southEastBound" />
+      <xs:enumeration value="southBound" />
+      <xs:enumeration value="southWestBound" />
+      <xs:enumeration value="westBound" />
+      <xs:enumeration value="northWestBound" />
+      <xs:enumeration value="inboundTowardsTown" />
+      <xs:enumeration value="outboundFromTown" />
+      <xs:enumeration value="unknown" />
+      <xs:enumeration value="opposite" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DistanceAlongLinearElement" abstract="true">
+    <xs:sequence>
+      <xs:element name="distanceAlongLinearElementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DistanceFromLinearElementReferent">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DistanceAlongLinearElement">
+        <xs:sequence>
+          <xs:element name="distanceAlong" type="D2LogicalModel:MetresAsFloat" minOccurs="1" maxOccurs="1" />
+          <xs:element name="fromReferent" type="D2LogicalModel:Referent" />
+          <xs:element name="towardsReferent" type="D2LogicalModel:Referent" minOccurs="0" />
+          <xs:element name="distanceFromLinearElementReferentExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DistanceFromLinearElementStart">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DistanceAlongLinearElement">
+        <xs:sequence>
+          <xs:element name="distanceAlong" type="D2LogicalModel:MetresAsFloat" minOccurs="1" maxOccurs="1" />
+          <xs:element name="distanceFromLinearElementStartExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DurationValue">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DataValue">
+        <xs:sequence>
+          <xs:element name="duration" type="D2LogicalModel:Seconds" minOccurs="1" maxOccurs="1" />
+          <xs:element name="durationValueExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ElaboratedData">
+    <xs:sequence>
+      <xs:element name="forecast" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="source" type="D2LogicalModel:Source" minOccurs="0" />
+      <xs:element name="validity" type="D2LogicalModel:Validity" minOccurs="0" />
+      <xs:element name="elaboratedDataFault" type="D2LogicalModel:ElaboratedDataFault" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="basicData" type="D2LogicalModel:BasicData" minOccurs="0" />
+      <xs:element name="elaboratedDataExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ElaboratedDataFault">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Fault">
+        <xs:sequence>
+          <xs:element name="elaboratedDataFault" type="D2LogicalModel:ElaboratedDataFaultEnum" minOccurs="1" maxOccurs="1" />
+          <xs:element name="elaboratedDataFaultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ElaboratedDataFaultEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="intermittentDataValues" />
+      <xs:enumeration value="noDataValuesAvailable" />
+      <xs:enumeration value="spuriousUnreliableDataValues" />
+      <xs:enumeration value="unspecifiedOrUnknownFault" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ElaboratedDataPublication">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:PayloadPublication">
+        <xs:sequence>
+          <xs:element name="forecastDefault" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1" />
+          <xs:element name="periodDefault" type="D2LogicalModel:Seconds" minOccurs="0" maxOccurs="1" />
+          <xs:element name="timeDefault" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1" />
+          <xs:element name="headerInformation" type="D2LogicalModel:HeaderInformation" />
+          <xs:element name="referenceSettings" type="D2LogicalModel:ReferenceSettings" minOccurs="0" />
+          <xs:element name="elaboratedData" type="D2LogicalModel:ElaboratedData" maxOccurs="unbounded" />
+          <xs:element name="elaboratedDataPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Exchange">
+    <xs:sequence>
+      <xs:element name="supplierIdentification" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="exchangeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExtendedLinear">
+    <xs:sequence>
+      <xs:element name="linearByCoordinates" type="D2LogicalModel:LinearByCoordinates" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExtendedLinearForGipLink">
+    <xs:sequence>
+      <xs:element name="gipLinkLinearLocationReference" type="D2LogicalModel:GipLinkLinearLocationReference" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Fault">
+    <xs:sequence>
+      <xs:element name="faultIdentifier" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="faultDescription" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="faultCreationTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="faultLastUpdateTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="faultSeverity" type="D2LogicalModel:FaultSeverityEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="faultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="FaultSeverityEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="low" />
+      <xs:enumeration value="medium" />
+      <xs:enumeration value="high" />
+      <xs:enumeration value="unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Float">
+    <xs:restriction base="xs:float" />
+  </xs:simpleType>
+  <xs:complexType name="GipLink">
+    <xs:sequence>
+      <xs:element name="linkId" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="linkPercentageFrom" type="D2LogicalModel:PercentageDistanceAlongLinearElement" />
+      <xs:element name="linkPercentageTo" type="D2LogicalModel:PercentageDistanceAlongLinearElement" />
+      <xs:element name="referenceDirection" type="D2LogicalModel:GipReferenceDirectionEnum" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GipLinkLinearLocationReference">
+    <xs:sequence>
+      <xs:element name="gipLink" type="D2LogicalModel:_GipLinkLinearLocationReferenceIndexGipLink" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="version" type="D2LogicalModel:String" use="optional" />
+    <xs:attribute name="name" type="D2LogicalModel:String" use="optional" />
+  </xs:complexType>
+  <xs:simpleType name="GipReferenceDirectionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="fromTo" />
+      <xs:enumeration value="toFrom" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GroupOfLocations" abstract="true">
+    <xs:sequence>
+      <xs:element name="groupOfLocationsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderInformation">
+    <xs:sequence>
+      <xs:element name="areaOfInterest" type="D2LogicalModel:AreaOfInterestEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="confidentiality" type="D2LogicalModel:ConfidentialityValueEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="informationStatus" type="D2LogicalModel:InformationStatusEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="urgency" type="D2LogicalModel:UrgencyEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="headerInformationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="HeightGradeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="aboveGrade" />
+      <xs:enumeration value="atGrade" />
+      <xs:enumeration value="belowGrade" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InformationStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="real" />
+      <xs:enumeration value="securityExercise" />
+      <xs:enumeration value="technicalExercise" />
+      <xs:enumeration value="test" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Integer">
+    <xs:restriction base="xs:integer" />
+  </xs:simpleType>
+  <xs:complexType name="InternationalIdentifier">
+    <xs:sequence>
+      <xs:element name="country" type="D2LogicalModel:CountryEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="nationalIdentifier" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="internationalIdentifierExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="KilometresPerHour">
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:simpleType name="Language">
+    <xs:restriction base="xs:language" />
+  </xs:simpleType>
+  <xs:complexType name="Linear">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:NetworkLocation">
+        <xs:sequence>
+          <xs:element name="alertCLinear" type="D2LogicalModel:AlertCLinear" minOccurs="0" />
+          <xs:element name="linearWithinLinearElement" type="D2LogicalModel:LinearWithinLinearElement" minOccurs="0" />
+          <xs:element name="linearExtension" type="D2LogicalModel:_LinearExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LinearByCoordinates">
+    <xs:sequence>
+      <xs:element name="directed" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="roadName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="roadNumber" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="start" type="D2LogicalModel:PointCoordinates" />
+      <xs:element name="intermediate" type="D2LogicalModel:_Intermediate" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="end" type="D2LogicalModel:PointCoordinates" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinearElement">
+    <xs:sequence>
+      <xs:element name="roadName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="roadNumber" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="linearElementReferenceModel" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="linearElementReferenceModelVersion" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="linearElementNature" type="D2LogicalModel:LinearElementNatureEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="linearElementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="LinearElementByCode">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:LinearElement">
+        <xs:sequence>
+          <xs:element name="linearElementIdentifier" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+          <xs:element name="linearElementByCodeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LinearElementByPoints">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:LinearElement">
+        <xs:sequence>
+          <xs:element name="startPointOfLinearElement" type="D2LogicalModel:Referent" />
+          <xs:element name="intermediatePointOnLinearElement" type="D2LogicalModel:_IntermediatePointOnLinearElement" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="endPointOfLinearElement" type="D2LogicalModel:Referent" />
+          <xs:element name="linearElementByPointsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="LinearElementNatureEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="road" />
+      <xs:enumeration value="roadSection" />
+      <xs:enumeration value="slipRoad" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LinearReferencingDirectionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="both" />
+      <xs:enumeration value="opposite" />
+      <xs:enumeration value="aligned" />
+      <xs:enumeration value="unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LinearWithinLinearElement">
+    <xs:sequence>
+      <xs:element name="administrativeAreaOfLinearSection" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="directionBoundOnLinearSection" type="D2LogicalModel:DirectionEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="directionRelativeOnLinearSection" type="D2LogicalModel:LinearReferencingDirectionEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="heightGradeOfLinearSection" type="D2LogicalModel:HeightGradeEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="linearElement" type="D2LogicalModel:LinearElement" />
+      <xs:element name="fromPoint" type="D2LogicalModel:DistanceAlongLinearElement" />
+      <xs:element name="toPoint" type="D2LogicalModel:DistanceAlongLinearElement" />
+      <xs:element name="linearWithinLinearElementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Location" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:GroupOfLocations">
+        <xs:sequence>
+          <xs:element name="locationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LocationByReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Location">
+        <xs:sequence>
+          <xs:element name="predefinedLocationReference" type="D2LogicalModel:_PredefinedLocationVersionedReference" minOccurs="1" maxOccurs="1" />
+          <xs:element name="locationByReferenceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LocationInfo">
+    <xs:sequence>
+      <xs:element name="country" type="D2LogicalModel:CountryEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="region" type="D2LogicalModel:String" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="locationName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="locationText" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MeasurementEquipmentFault">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Fault">
+        <xs:sequence>
+          <xs:element name="measurementEquipmentFault" type="D2LogicalModel:MeasurementEquipmentFaultEnum" minOccurs="1" maxOccurs="1" />
+          <xs:element name="measurementEquipmentFaultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MeasurementEquipmentFaultEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="intermittentDataValues" />
+      <xs:enumeration value="noDataValuesAvailable" />
+      <xs:enumeration value="spuriousUnreliableDataValues" />
+      <xs:enumeration value="unspecifiedOrUnknownFault" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MetresAsFloat">
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:simpleType name="MetresAsNonNegativeInteger">
+    <xs:restriction base="D2LogicalModel:NonNegativeInteger" />
+  </xs:simpleType>
+  <xs:complexType name="MultilingualString">
+    <xs:sequence>
+      <xs:element name="values">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="value" type="D2LogicalModel:MultilingualStringValue" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MultilingualStringValue">
+    <xs:simpleContent>
+      <xs:extension base="D2LogicalModel:MultilingualStringValueType">
+        <xs:attribute name="lang" type="xs:language" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="MultilingualStringValueType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NetworkLocation" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Location">
+        <xs:sequence>
+          <xs:element name="networkLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="NonNegativeInteger">
+    <xs:restriction base="xs:nonNegativeInteger" />
+  </xs:simpleType>
+  <xs:complexType name="OccupancyChangeValue">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DataValue">
+        <xs:sequence>
+          <xs:element name="occupancyChange" type="D2LogicalModel:Integer" minOccurs="1" maxOccurs="1" />
+          <xs:element name="occupancyChangeValueExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OffsetDistance">
+    <xs:sequence>
+      <xs:element name="offsetDistance" type="D2LogicalModel:MetresAsNonNegativeInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="offsetDistanceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OverallPeriod">
+    <xs:sequence>
+      <xs:element name="overallStartTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="overallEndTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1" />
+      <xs:element name="overallPeriodExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PayloadPublication" abstract="true">
+    <xs:sequence>
+      <xs:element name="feedDescription" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="feedType" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="publicationTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="publicationCreator" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="payloadPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="D2LogicalModel:Language" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="Percentage">
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:complexType name="PercentageDistanceAlongLinearElement">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DistanceAlongLinearElement">
+        <xs:sequence>
+          <xs:element name="percentageDistanceAlong" type="D2LogicalModel:Percentage" minOccurs="1" maxOccurs="1" />
+          <xs:element name="percentageDistanceAlongLinearElementExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PercentageValue">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DataValue">
+        <xs:sequence>
+          <xs:element name="percentage" type="D2LogicalModel:Percentage" minOccurs="1" maxOccurs="1" />
+          <xs:element name="percentageValueExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PointCoordinates">
+    <xs:sequence>
+      <xs:element name="latitude" type="D2LogicalModel:Float" minOccurs="1" maxOccurs="1" />
+      <xs:element name="longitude" type="D2LogicalModel:Float" minOccurs="1" maxOccurs="1" />
+      <xs:element name="pointCoordinatesExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PredefinedLocation">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:PredefinedLocationContainer">
+        <xs:sequence>
+          <xs:element name="predefinedLocationName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+          <xs:element name="location" type="D2LogicalModel:Location" />
+          <xs:element name="predefinedLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required" />
+        <xs:attribute name="version" type="xs:string" use="required" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PredefinedLocationContainer" abstract="true">
+    <xs:sequence>
+      <xs:element name="predefinedLocationContainerExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PredefinedLocationsPublication">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:PayloadPublication">
+        <xs:sequence>
+          <xs:element name="headerInformation" type="D2LogicalModel:HeaderInformation" />
+          <xs:element name="predefinedLocationContainer" type="D2LogicalModel:PredefinedLocationContainer" maxOccurs="unbounded" />
+          <xs:element name="predefinedLocationsPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReferenceSettings">
+    <xs:sequence>
+      <xs:element name="predefinedNonOrderedLocationGroupReference" type="D2LogicalModel:_PredefinedNonOrderedLocationGroupVersionedReference" minOccurs="0" maxOccurs="1" />
+      <xs:element name="trafficStatusDefault" type="D2LogicalModel:TrafficStatusEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="referenceSettingsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Referent">
+    <xs:sequence>
+      <xs:element name="referentIdentifier" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="referentName" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="referentType" type="D2LogicalModel:ReferentTypeEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="referentDescription" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="pointCoordinates" type="D2LogicalModel:PointCoordinates" minOccurs="0" />
+      <xs:element name="referentExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ReferentTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="boundary" />
+      <xs:enumeration value="intersection" />
+      <xs:enumeration value="referenceMarker" />
+      <xs:enumeration value="landmark" />
+      <xs:enumeration value="roadNode" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="RoadInfo">
+    <xs:sequence>
+      <xs:element name="roadNumber" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="roadName" type="D2LogicalModel:MultilingualString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="roadOperator" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="roadSection" type="D2LogicalModel:String" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Seconds">
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:complexType name="Source">
+    <xs:sequence>
+      <xs:element name="sourceCountry" type="D2LogicalModel:CountryEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="sourceIdentification" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1" />
+      <xs:element name="sourceName" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="sourceType" type="D2LogicalModel:SourceTypeEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="reliable" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="sourceExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="SourceTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="automobileClubPatrol" />
+      <xs:enumeration value="cameraObservation" />
+      <xs:enumeration value="freightVehicleOperator" />
+      <xs:enumeration value="inductionLoopMonitoringStation" />
+      <xs:enumeration value="infraredMonitoringStation" />
+      <xs:enumeration value="microwaveMonitoringStation" />
+      <xs:enumeration value="mobileTelephoneCaller" />
+      <xs:enumeration value="nonPoliceEmergencyServicePatrol" />
+      <xs:enumeration value="otherInformation" />
+      <xs:enumeration value="otherOfficialVehicle" />
+      <xs:enumeration value="policePatrol" />
+      <xs:enumeration value="privateBreakdownService" />
+      <xs:enumeration value="publicAndPrivateUtilities" />
+      <xs:enumeration value="registeredMotoristObserver" />
+      <xs:enumeration value="roadAuthorities" />
+      <xs:enumeration value="roadOperatorPatrol" />
+      <xs:enumeration value="roadsideTelephoneCaller" />
+      <xs:enumeration value="spotterAircraft" />
+      <xs:enumeration value="trafficMonitoringStation" />
+      <xs:enumeration value="transitOperator" />
+      <xs:enumeration value="vehicleProbeMeasurement" />
+      <xs:enumeration value="videoProcessingMonitoringStation" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="SpeedPercentile">
+    <xs:sequence>
+      <xs:element name="vehiclePercentage" type="D2LogicalModel:PercentageValue" />
+      <xs:element name="speedPercentile" type="D2LogicalModel:SpeedValue" />
+      <xs:element name="speedPercentileExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SpeedValue">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DataValue">
+        <xs:sequence>
+          <xs:element name="speed" type="D2LogicalModel:KilometresPerHour" minOccurs="1" maxOccurs="1" />
+          <xs:element name="speedValueExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="String">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TimePrecisionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="tenthsOfSecond" />
+      <xs:enumeration value="second" />
+      <xs:enumeration value="minute" />
+      <xs:enumeration value="quarterHour" />
+      <xs:enumeration value="halfHour" />
+      <xs:enumeration value="hour" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TrafficData" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:BasicData">
+        <xs:sequence>
+          <xs:element name="forVehiclesWithCharacteristicsOf" type="D2LogicalModel:VehicleCharacteristics" minOccurs="0" />
+          <xs:element name="trafficDataExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TrafficSpeed">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:TrafficData">
+        <xs:sequence>
+          <xs:element name="averageVehicleSpeed" type="D2LogicalModel:SpeedValue" minOccurs="0" />
+          <xs:element name="speedPercentile" type="D2LogicalModel:SpeedPercentile" minOccurs="0" />
+          <xs:element name="trafficSpeedExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TrafficStatus">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:BasicData">
+        <xs:sequence>
+          <xs:element name="trafficTrendType" type="D2LogicalModel:TrafficTrendTypeEnum" minOccurs="0" maxOccurs="1" />
+          <xs:element name="trafficStatus" type="D2LogicalModel:TrafficStatusValue" minOccurs="0" />
+          <xs:element name="trafficStatusExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TrafficStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="impossible" />
+      <xs:enumeration value="congested" />
+      <xs:enumeration value="heavy" />
+      <xs:enumeration value="freeFlow" />
+      <xs:enumeration value="unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TrafficStatusValue">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DataValue">
+        <xs:sequence>
+          <xs:element name="trafficStatusValue" type="D2LogicalModel:TrafficStatusEnum" minOccurs="1" maxOccurs="1" />
+          <xs:element name="trafficStatusValueExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TrafficTrendTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="trafficBuildingUp" />
+      <xs:enumeration value="trafficEasing" />
+      <xs:enumeration value="trafficStable" />
+      <xs:enumeration value="unknown" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="TravelTimeData">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:BasicData">
+        <xs:sequence>
+          <xs:element name="travelTimeTrendType" type="D2LogicalModel:TravelTimeTrendTypeEnum" minOccurs="0" maxOccurs="1" />
+          <xs:element name="travelTimeType" type="D2LogicalModel:TravelTimeTypeEnum" minOccurs="0" maxOccurs="1" />
+          <xs:element name="vehicleType" type="D2LogicalModel:VehicleTypeEnum" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="travelTime" type="D2LogicalModel:DurationValue" minOccurs="0" />
+          <xs:element name="freeFlowTravelTime" type="D2LogicalModel:DurationValue" minOccurs="0" />
+          <xs:element name="normallyExpectedTravelTime" type="D2LogicalModel:DurationValue" minOccurs="0" />
+          <xs:element name="freeFlowSpeed" type="D2LogicalModel:SpeedValue" minOccurs="0" />
+          <xs:element name="travelTimeDataExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TravelTimeTrendTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="decreasing" />
+      <xs:enumeration value="increasing" />
+      <xs:enumeration value="stable" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TravelTimeTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="best" />
+      <xs:enumeration value="estimated" />
+      <xs:enumeration value="instantaneous" />
+      <xs:enumeration value="reconstituted" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UrgencyEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="extremelyUrgent" />
+      <xs:enumeration value="urgent" />
+      <xs:enumeration value="normalUrgency" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Validity">
+    <xs:sequence>
+      <xs:element name="validityStatus" type="D2LogicalModel:ValidityStatusEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="overrunning" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="validityTimeSpecification" type="D2LogicalModel:OverallPeriod" />
+      <xs:element name="validityExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ValidityStatusEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="active" />
+      <xs:enumeration value="suspended" />
+      <xs:enumeration value="definedByValidityTimeSpec" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VehicleCharacteristics">
+    <xs:sequence>
+      <xs:element name="vehicleType" type="D2LogicalModel:VehicleTypeEnum" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="vehicleCharacteristicsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VehicleCountValue">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:DataValue">
+        <xs:sequence>
+          <xs:element name="vehicleCount" type="D2LogicalModel:NonNegativeInteger" minOccurs="1" maxOccurs="1" />
+          <xs:element name="vehicleCountValueExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="VehicleTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="agriculturalVehicle" />
+      <xs:enumeration value="anyVehicle" />
+      <xs:enumeration value="articulatedVehicle" />
+      <xs:enumeration value="bicycle" />
+      <xs:enumeration value="bus" />
+      <xs:enumeration value="car" />
+      <xs:enumeration value="caravan" />
+      <xs:enumeration value="carOrLightVehicle" />
+      <xs:enumeration value="carWithCaravan" />
+      <xs:enumeration value="carWithTrailer" />
+      <xs:enumeration value="constructionOrMaintenanceVehicle" />
+      <xs:enumeration value="fourWheelDrive" />
+      <xs:enumeration value="highSidedVehicle" />
+      <xs:enumeration value="lorry" />
+      <xs:enumeration value="moped" />
+      <xs:enumeration value="motorcycle" />
+      <xs:enumeration value="motorcycleWithSideCar" />
+      <xs:enumeration value="motorscooter" />
+      <xs:enumeration value="tanker" />
+      <xs:enumeration value="threeWheeledVehicle" />
+      <xs:enumeration value="trailer" />
+      <xs:enumeration value="tram" />
+      <xs:enumeration value="twoWheeledVehicle" />
+      <xs:enumeration value="van" />
+      <xs:enumeration value="vehicleWithCatalyticConverter" />
+      <xs:enumeration value="vehicleWithoutCatalyticConverter" />
+      <xs:enumeration value="vehicleWithCaravan" />
+      <xs:enumeration value="vehicleWithTrailer" />
+      <xs:enumeration value="withEvenNumberedRegistrationPlates" />
+      <xs:enumeration value="withOddNumberedRegistrationPlates" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VersionedReference">
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="VmsFault">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Fault">
+        <xs:sequence>
+          <xs:element name="vmsFault" type="D2LogicalModel:VmsFaultEnum" minOccurs="1" maxOccurs="1" />
+          <xs:element name="vmsFaultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="VmsFaultEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="communicationsFailure" />
+      <xs:enumeration value="incorrectMessageDisplayed" />
+      <xs:enumeration value="incorrectPictogramDisplayed" />
+      <xs:enumeration value="outOfService" />
+      <xs:enumeration value="powerFailure" />
+      <xs:enumeration value="unableToClearDown" />
+      <xs:enumeration value="unknown" />
+      <xs:enumeration value="other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VmsUnitFault">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Fault">
+        <xs:sequence>
+          <xs:element name="vmsUnitFault" type="D2LogicalModel:VmsFaultEnum" minOccurs="1" maxOccurs="1" />
+          <xs:element name="vmsUnitFaultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

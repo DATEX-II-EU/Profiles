@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:tro="http://datex2.eu/schema/3/trafficRegulation" version="1" targetNamespace="http://datex2.eu/schema/3/trafficRegulation" xmlns:com="http://datex2.eu/schema/3/common" xmlns:loc="http://datex2.eu/schema/3/locationReferencing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://datex2.eu/schema/3/locationReferencing" schemaLocation="DATEXII_3_LocationReferencing.xsd" />
+  <xs:import namespace="http://datex2.eu/schema/3/common" schemaLocation="DATEXII_3_Common.xsd" />
+  <xs:complexType name="_AccessConditionTypeEnum">
+    <xs:simpleContent>
+      <xs:extension base="tro:AccessConditionTypeEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_ConditionOperator">
+    <xs:simpleContent>
+      <xs:extension base="tro:ConditionOperator">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_DriverCharacteristicsTypeEnum">
+    <xs:simpleContent>
+      <xs:extension base="tro:DriverCharacteristicsTypeEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_LicenseCharacteristicsEnum">
+    <xs:simpleContent>
+      <xs:extension base="tro:LicenseCharacteristicsEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_NonVehicularRoadUserTypeEnum">
+    <xs:simpleContent>
+      <xs:extension base="tro:NonVehicularRoadUserTypeEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_RoadTypeEnum">
+    <xs:simpleContent>
+      <xs:extension base="tro:RoadTypeEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_UnitOfSpeedEnum">
+    <xs:simpleContent>
+      <xs:extension base="tro:UnitOfSpeedEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AccessCondition">
+    <xs:annotation>
+      <xs:documentation>Conditions for the access of a road or carriageway or lane.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="accessConditionType" type="tro:_AccessConditionTypeEnum" minOccurs="1" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>Type of access condition.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="otherAccessRestriction" type="com:MultilingualString" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Other access restriction not listed elsewhere.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="applicableLocation" type="loc:LocationReference" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Location where access condition applies.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_accessConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="AccessConditionTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Access is only permitted under certain conditions.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="accessOnly">
+        <xs:annotation>
+          <xs:documentation>Access only.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="destinationTraffic">
+        <xs:annotation>
+          <xs:documentation>Access is restricted, if the destination of traffic lies in a specific region.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="loadingAndUnloading">
+        <xs:annotation>
+          <xs:documentation>Loading or unloading of vehicle.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="passengerLoadingAndUnloading">
+        <xs:annotation>
+          <xs:documentation>Pick up or set down passengers.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sourceAndDestinationTraffic">
+        <xs:annotation>
+          <xs:documentation>Access is restricted, if the source and destination of traffic lies in a specific region.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sourceTraffic">
+        <xs:annotation>
+          <xs:documentation>Access is restricted, if the source of traffic lies in a specific region.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="throughTraffic">
+        <xs:annotation>
+          <xs:documentation>Access is restricted, if the traffic goes through a specific region.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AmountOfMoney">
+    <xs:annotation>
+      <xs:documentation>A monetary value expressed to two decimal places.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="com:Decimal">
+      <xs:totalDigits value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Condition" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Abstract class that specifies a condition for applicabilities or exemptions of a traffic regulation.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="negate" type="com:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>If set to true means that the entire condition shall be negated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="legalBasis" type="tro:LegalBasis" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Legal basis where applicability characteristics or exemptions are specified.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_conditionExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ConditionOperator">
+    <xs:annotation>
+      <xs:documentation>The logical operator to be used in a test of conditions.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="or">
+        <xs:annotation>
+          <xs:documentation>The OR logical operator – a logical operation to determine if any.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="xor">
+        <xs:annotation>
+          <xs:documentation>The XOR logical operator - a logical operation that outputs true only.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="and">
+        <xs:annotation>
+          <xs:documentation>The AND logical operator – a logical operation to determine if all.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ConditionSet">
+    <xs:annotation>
+      <xs:documentation>Groups a number of conditions into a condition set.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="operator" type="tro:_ConditionOperator" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Specifies the operator to be applied between the conditions in the set.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="conditions" type="tro:Condition" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>Specifies the conditions that are present in the set</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_conditionSetExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="DriverCharacteristicsTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Types of driver characteristics.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="disabledWithPermit">
+        <xs:annotation>
+          <xs:documentation>Disabled with permit.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="learnerdriver">
+        <xs:annotation>
+          <xs:documentation>Driver of vehicle is learnerdriver.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="localResident">
+        <xs:annotation>
+          <xs:documentation>The driver is a local resident.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DriverCondition">
+    <xs:annotation>
+      <xs:documentation>Conditions for the driver, e.g. holding a disabled permit.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="driverCharacteristicsType" type="tro:_DriverCharacteristicsTypeEnum" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Type of driver characteristics.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ageOfDriver" type="com:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The age of the driver in years.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="licenseCharacteristics" type="tro:_LicenseCharacteristicsEnum" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Characteristics of the driver's license.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="timeLicenseHeld" type="tro:Duration" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Period in which the driver has held and continues to hold a driving license.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_driverConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="Duration">
+    <xs:annotation>
+      <xs:documentation>DIN ISO 8601 duration value.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="com:String" />
+  </xs:simpleType>
+  <xs:complexType name="LegalBasis">
+    <xs:annotation>
+      <xs:documentation>Class for specification of a legal basis.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" type="com:MultilingualString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Name of legal basis.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="version" type="com:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Version of legal basis.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="date" type="com:Date" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date of legal basis.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_legalBasisExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="LicenseCharacteristicsEnum">
+    <xs:annotation>
+      <xs:documentation>Characteristics of the drivers license.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="provisional">
+        <xs:annotation>
+          <xs:documentation>A restricted license that is given to a person who is learning to drive, but has not yet satisfied the prerequisite to obtain a driver's license.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="permanent">
+        <xs:annotation>
+          <xs:documentation>The driver's license is permanent.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LocationCondition">
+    <xs:annotation>
+      <xs:documentation>Conditions for the location of a traffic regulation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="implementedLocation" type="loc:LocationReference" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The actual (implemented) location of the traffic regulation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="locationByOrder" type="loc:LocationReference" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The ordered (planned) location as defined in the original traffic regulation order, if existent,</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="trafficImpactLocation" type="loc:LocationReference" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The spatial location (typically area) of the road upon which the impact of a regulation is considered to be effective (which is not always the same as the implementedLocation).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_locationConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="NonVehicularRoadUserCondition">
+    <xs:annotation>
+      <xs:documentation>Conditions for non vehicular road users.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="nonVehicularRoadUser" type="tro:_NonVehicularRoadUserTypeEnum" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Types of non-vehicular road users for which the condition applies.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_nonVehicularRoadUserConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="NonVehicularRoadUserTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Collection of non vehicular road user types.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="cattleDrive">
+        <xs:annotation>
+          <xs:documentation>Cattle drive.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pedestrians">
+        <xs:annotation>
+          <xs:documentation>Pedestrians.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="riddenOrAccompaniedHorses">
+        <xs:annotation>
+          <xs:documentation>Ridden or accompanied by horses.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OccupantCondition">
+    <xs:annotation>
+      <xs:documentation>Conditions for the occupants of a vehicle.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="disabledWithPermit" type="com:Boolean" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Occupant is disabled with permit.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="numberOfOccupants" type="com:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Total number of occupants including the driver.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_occupantConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PermitCondition">
+    <xs:annotation>
+      <xs:documentation>Condition for which a permit is required for vehicles with certain characteristics. Sometimes restricted to specific locations.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="whereToApplyForPermit" type="com:Url" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>URL of the competent authority where an application for a permit can be requested</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="locationRelatedPermit" type="com:Boolean" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>indication whether the permit is related to a specific location or route in the zone.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maxDurationOfPermit" type="tro:Duration" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>the maximum validity duration a permit could have in hours</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="whereToCallForPermit" type="com:String" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Phone number for contacting the railway operator (at level crossings without a dedicated phone).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="permitSubjectToFee" type="tro:PermitSubjectToFee" minOccurs="0" />
+          <xs:element name="_permitConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PermitSubjectToFee">
+    <xs:annotation>
+      <xs:documentation>Access permitted when fee is paid.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="amountDue" type="tro:AmountOfMoney" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>amount due in Euro</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maximumAccessDuration" type="tro:Duration" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>maximum time permitted in CZ after first entry</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="minimumTimeToNextEntry" type="tro:Duration" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>minimum time between two entries</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="paymentInformation" type="com:Url" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>link to the website where payment information can be found</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_permitSubjectToFeeExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RoadCondition">
+    <xs:annotation>
+      <xs:documentation>Specification of road types (e.g. motorway, express way, etc.).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="roadType" type="tro:_RoadTypeEnum" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Type of road (e.g. motorway, express way, etc.).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_roadConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="RoadTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Collection of road types.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="motorway">
+        <xs:annotation>
+          <xs:documentation>A major road that has been specially built for fast travel over long distances. Motorways have several lanes and special places where traffic gets on and leaves.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="expressRoad">
+        <xs:annotation>
+          <xs:documentation>A wide road that is specially designed for fast traffic. It is usually divided, so that traffic travelling in one direction is separated from the traffic travelling in the opposite direction.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="insideBuiltUpAreas">
+        <xs:annotation>
+          <xs:documentation>Roads inside built-up areas.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="outsideBuiltUpAreas">
+        <xs:annotation>
+          <xs:documentation>Roads outside built-up areas.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Speed">
+    <xs:annotation>
+      <xs:documentation>Class for the specification of a speed.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="numericValue" type="com:Decimal" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Numeric value of the speed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="unitOfMeasure" type="tro:_UnitOfSpeedEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The unit of measure of the specified speed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_speedExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="UnitOfSpeedEnum">
+    <xs:annotation>
+      <xs:documentation>Units of speed.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="kilometresPerHour">
+        <xs:annotation>
+          <xs:documentation>Kilometres per hour.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="milesPerHour">
+        <xs:annotation>
+          <xs:documentation>Miles per hour.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ValidityCondition">
+    <xs:annotation>
+      <xs:documentation>Conditions for time validity of a traffic regulation.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="implementedValidity" type="com:Validity" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The actual (implemented) validity of the traffic regulation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="validityByOrder" type="com:Validity" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The ordered (planned) validity as defined in the original traffic regulation order, if existent.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_validityConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="VehicleCondition">
+    <xs:annotation>
+      <xs:documentation>Conditions for a vehicle.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tro:Condition">
+        <xs:sequence>
+          <xs:element name="vehicleCharacteristics" type="com:VehicleCharacteristics">
+            <xs:annotation>
+              <xs:documentation>Traffic regulation only for special vehicles.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_vehicleConditionExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

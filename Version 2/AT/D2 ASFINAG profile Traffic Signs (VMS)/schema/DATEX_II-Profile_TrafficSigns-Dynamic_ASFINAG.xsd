@@ -1,0 +1,1299 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:D2LogicalModel="http://datex2.eu/schema/2/2_0" version="2.3" targetNamespace="http://datex2.eu/schema/2/2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="_ExtensionType">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_TextPage">
+    <xs:sequence>
+      <xs:element name="vmsText" type="D2LogicalModel:VmsText" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="pageNumber" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_VmsMessageIndexVmsMessage">
+    <xs:sequence>
+      <xs:element name="vmsMessage" type="D2LogicalModel:VmsMessage" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="messageIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_VmsMessagePictogramDisplayAreaIndexVmsPictogramDisplayArea">
+    <xs:sequence>
+      <xs:element name="vmsPictogramDisplayArea" type="D2LogicalModel:VmsPictogramDisplayArea" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="pictogramDisplayAreaIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_VmsPictogramDisplayAreaPictogramSequencingIndexVmsPictogram">
+    <xs:sequence>
+      <xs:element name="vmsPictogram" type="D2LogicalModel:VmsPictogram" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="pictogramSequencingIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_VmsTextLineIndexVmsTextLine">
+    <xs:sequence>
+      <xs:element name="vmsTextLine" type="D2LogicalModel:VmsTextLine" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="lineIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_VmsUnitRecordVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="VmsUnitRecord" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_VmsUnitTableVersionedReference">
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VersionedReference">
+        <xs:attribute name="targetClass" use="required" fixed="VmsUnitTable" />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="_VmsUnitVmsIndexVms">
+    <xs:sequence>
+      <xs:element name="vms" type="D2LogicalModel:Vms" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="vmsIndex" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="Boolean">
+    <xs:annotation>
+      <xs:documentation>Boolean has the value space required to support the mathematical concept of binary-valued logic: {true, false}. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:simpleType name="CodedReasonForSettingMessageEnum">
+    <xs:annotation>
+      <xs:documentation>Coded reasons why a message has been selected for display on the sign.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="situation">
+        <xs:annotation>
+          <xs:documentation>Message selected as the result of a situation occuring either on or off the road which may affect road users. </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="operatorCreated">
+        <xs:annotation>
+          <xs:documentation>Message selected by operator as the result of an unmanaged event or situation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="trafficManagement">
+        <xs:annotation>
+          <xs:documentation>Message selected as part of the implementation of a traffic management action. This may or may not be part of a specific traffic management or diversion plan.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="travelTime">
+        <xs:annotation>
+          <xs:documentation>VMS is currently selected to display travel times.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="campaign">
+        <xs:annotation>
+          <xs:documentation>VMS is currently selected to display a campaign message.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="default">
+        <xs:annotation>
+          <xs:documentation>VMS is currently selected to display default information (e.g. time, date, temperature).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ConfidentialityValueEnum">
+    <xs:annotation>
+      <xs:documentation>Values of confidentiality.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="internalUse">
+        <xs:annotation>
+          <xs:documentation>For internal use only of the recipient organisation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noRestriction">
+        <xs:annotation>
+          <xs:documentation>No restriction on usage.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthorities">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthoritiesAndTrafficOperators">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities and traffic operators.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthoritiesTrafficOperatorsAndPublishers">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities, traffic operators and publishers (service providers).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToAuthoritiesTrafficOperatorsAndVms">
+        <xs:annotation>
+          <xs:documentation>Restricted for use only by authorities, traffic operators, publishers (service providers) and variable message signs.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountryEnum">
+    <xs:annotation>
+      <xs:documentation>List of countries.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="at">
+        <xs:annotation>
+          <xs:documentation>Austria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="be">
+        <xs:annotation>
+          <xs:documentation>Belgium</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bg">
+        <xs:annotation>
+          <xs:documentation>Bulgaria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ch">
+        <xs:annotation>
+          <xs:documentation>Switzerland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cs">
+        <xs:annotation>
+          <xs:documentation>Serbia and Montenegro</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cy">
+        <xs:annotation>
+          <xs:documentation>Cyprus</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cz">
+        <xs:annotation>
+          <xs:documentation>Czech Republic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de">
+        <xs:annotation>
+          <xs:documentation>Germany</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dk">
+        <xs:annotation>
+          <xs:documentation>Denmark</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ee">
+        <xs:annotation>
+          <xs:documentation>Estonia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es">
+        <xs:annotation>
+          <xs:documentation>Spain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fi">
+        <xs:annotation>
+          <xs:documentation>Finland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fo">
+        <xs:annotation>
+          <xs:documentation>Faroe Islands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr">
+        <xs:annotation>
+          <xs:documentation>France</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gb">
+        <xs:annotation>
+          <xs:documentation>Great Britain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gg">
+        <xs:annotation>
+          <xs:documentation>Guernsey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gi">
+        <xs:annotation>
+          <xs:documentation>Gibraltar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gr">
+        <xs:annotation>
+          <xs:documentation>Greece</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hr">
+        <xs:annotation>
+          <xs:documentation>Croatia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hu">
+        <xs:annotation>
+          <xs:documentation>Hungary</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ie">
+        <xs:annotation>
+          <xs:documentation>Ireland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="im">
+        <xs:annotation>
+          <xs:documentation>Isle Of Man</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="is">
+        <xs:annotation>
+          <xs:documentation>Iceland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="it">
+        <xs:annotation>
+          <xs:documentation>Italy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="je">
+        <xs:annotation>
+          <xs:documentation>Jersey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="li">
+        <xs:annotation>
+          <xs:documentation>Lichtenstein</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lt">
+        <xs:annotation>
+          <xs:documentation>Lithuania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lu">
+        <xs:annotation>
+          <xs:documentation>Luxembourg</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lv">
+        <xs:annotation>
+          <xs:documentation>Latvia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ma">
+        <xs:annotation>
+          <xs:documentation>Morocco</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mc">
+        <xs:annotation>
+          <xs:documentation>Monaco</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mk">
+        <xs:annotation>
+          <xs:documentation>Macedonia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mt">
+        <xs:annotation>
+          <xs:documentation>Malta</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nl">
+        <xs:annotation>
+          <xs:documentation>Netherlands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no">
+        <xs:annotation>
+          <xs:documentation>Norway</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pl">
+        <xs:annotation>
+          <xs:documentation>Poland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pt">
+        <xs:annotation>
+          <xs:documentation>Portugal</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ro">
+        <xs:annotation>
+          <xs:documentation>Romania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se">
+        <xs:annotation>
+          <xs:documentation>Sweden</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="si">
+        <xs:annotation>
+          <xs:documentation>Slovenia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sk">
+        <xs:annotation>
+          <xs:documentation>Slovakia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sm">
+        <xs:annotation>
+          <xs:documentation>San Marino</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tr">
+        <xs:annotation>
+          <xs:documentation>Turkey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="va">
+        <xs:annotation>
+          <xs:documentation>Vatican City State</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="d2LogicalModel" type="D2LogicalModel:D2LogicalModel" />
+  <xs:complexType name="D2LogicalModel">
+    <xs:annotation>
+      <xs:documentation>The DATEX II logical model comprising exchange, content payload and management sub-models.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="exchange" type="D2LogicalModel:Exchange" />
+      <xs:element name="payloadPublication" type="D2LogicalModel:PayloadPublication" minOccurs="0" />
+      <xs:element name="d2LogicalModelExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="modelBaseVersion" use="required" fixed="2" />
+  </xs:complexType>
+  <xs:simpleType name="DateTime">
+    <xs:annotation>
+      <xs:documentation>A combination of integer-valued year, month, day, hour, minute properties, a decimal-valued second property and a time zone property from which it is possible to determine the local time, the equivalent UTC time and the time zone offset from UTC.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:complexType name="ElaboratedDataFault">
+    <xs:annotation>
+      <xs:documentation>Details of a fault which is being reported for the related elaborated data.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Fault">
+        <xs:sequence>
+          <xs:element name="elaboratedDataFault" type="D2LogicalModel:ElaboratedDataFaultEnum" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The type of fault which is being reported for the specified elaborated data.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="elaboratedDataFaultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="ElaboratedDataFaultEnum">
+    <xs:annotation>
+      <xs:documentation>Types of elaborated data faults.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="intermittentDataValues">
+        <xs:annotation>
+          <xs:documentation>Data values are being produced at intermittent intervals which are not consitent with the expected reporting interval.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noDataValuesAvailable">
+        <xs:annotation>
+          <xs:documentation>No elaborated data values are currently available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="spuriousUnreliableDataValues">
+        <xs:annotation>
+          <xs:documentation>Spurious or unreliable data values are being produced.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unspecifiedOrUnknownFault">
+        <xs:annotation>
+          <xs:documentation>An unspecified or unknown fault exists in the process which is generating elaborated data.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Exchange">
+    <xs:annotation>
+      <xs:documentation>Details associated with the management of the exchange between the supplier and the client.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="keepAlive" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicator that this exchange is due to "keep alive" functionality.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="response" type="D2LogicalModel:ResponseEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The type of the response that the supplier is returning to the requesting client.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subscriptionReference" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Unique identifier of the client's subscription with the supplier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supplierIdentification" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="exchangeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Fault">
+    <xs:annotation>
+      <xs:documentation>Information about a fault relating to a specific piece of equipment or process.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="faultIdentifier" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Unique identifier of the fault.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faultDescription" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Textual description of the fault.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faultCreationTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date and time at which the fault was originally recorded/reported.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faultLastUpdateTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date and time at which the fault information as specified in this instance was last updated.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faultSeverity" type="D2LogicalModel:FaultSeverityEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The severity of the fault in terms of how it affects the usability of the equipment or the reliability of the data generated by the equipment.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="faultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="FaultSeverityEnum">
+    <xs:annotation>
+      <xs:documentation>Classification of the severity of faults.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="low">
+        <xs:annotation>
+          <xs:documentation>The fault is of low severity and has only limited impact on the usability of the equipment or the value of the data generated by the equipment.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="medium">
+        <xs:annotation>
+          <xs:documentation>The fault is of medium severity which will significantly limit the usability of the equipment or devalue the usefulness of the data generated by the equipment.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="high">
+        <xs:annotation>
+          <xs:documentation>The fault is of high severity which will render the equipment unusable or any data generated by the equipment to be of no value.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>The fault is of unknown severity and hence its effect on the usability of the equipment or the usefulness of the data generated by the equipment can not be assessed.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Float">
+    <xs:annotation>
+      <xs:documentation>A floating point number whose value space consists of the values m × 2^e, where m is an integer whose absolute value is less than 2^24, and e is an integer between -149 and 104, inclusive.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:float" />
+  </xs:simpleType>
+  <xs:complexType name="HeaderInformation">
+    <xs:annotation>
+      <xs:documentation>Management information relating to the data contained within a publication.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="confidentiality" type="D2LogicalModel:ConfidentialityValueEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The extent to which the related information may be circulated, according to the recipient type. Recipients must comply with this confidentiality statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="informationStatus" type="D2LogicalModel:InformationStatusEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The status of the related information (real, test, exercise ....).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="headerInformationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="InformationStatusEnum">
+    <xs:annotation>
+      <xs:documentation>Status of the related information (i.e. real, test or exercise).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="real">
+        <xs:annotation>
+          <xs:documentation>The information is real. It is not a test or exercise.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="securityExercise">
+        <xs:annotation>
+          <xs:documentation>The information is part of an exercise which is for testing security.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="technicalExercise">
+        <xs:annotation>
+          <xs:documentation>The information is part of an exercise which includes tests of associated technical subsystems.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="test">
+        <xs:annotation>
+          <xs:documentation>The information is part of a test for checking the exchange of this type of information.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="InternationalIdentifier">
+    <xs:annotation>
+      <xs:documentation>An identifier/name whose range is specific to the particular country.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="country" type="D2LogicalModel:CountryEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>ISO 3166-1 two character country code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nationalIdentifier" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier or name unique within the specified country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="internationalIdentifierExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="KilometresPerHour">
+    <xs:annotation>
+      <xs:documentation>A measure of speed defined in kilometres per hour.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:simpleType name="Language">
+    <xs:annotation>
+      <xs:documentation>A language datatype, identifies a specified language by an ISO 639-1 2-alpha / ISO 639-2 3-alpha code.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:language" />
+  </xs:simpleType>
+  <xs:complexType name="MeasurementEquipmentFault">
+    <xs:annotation>
+      <xs:documentation>Details of a fault which is being reported for the related measurement equipment.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Fault">
+        <xs:sequence>
+          <xs:element name="measurementEquipmentFault" type="D2LogicalModel:MeasurementEquipmentFaultEnum" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>The type of fault which is being reported for the specified measurement equipment.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="measurementEquipmentFaultExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MeasurementEquipmentFaultEnum">
+    <xs:annotation>
+      <xs:documentation>Types of measurement equipment faults.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="intermittentDataValues">
+        <xs:annotation>
+          <xs:documentation>Data values are being produced at intermittent intervals which are not consitent with the expected reporting interval.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noDataValuesAvailable">
+        <xs:annotation>
+          <xs:documentation>No measured data values are currently available.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="spuriousUnreliableDataValues">
+        <xs:annotation>
+          <xs:documentation>Spurious or unreliable data values are being produced.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unspecifiedOrUnknownFault">
+        <xs:annotation>
+          <xs:documentation>An unspecified or unknown fault exists in the measurement equipment.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MetresAsFloat">
+    <xs:annotation>
+      <xs:documentation>A measure of distance defined in metres in a floating point format.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:simpleType name="MetresAsNonNegativeInteger">
+    <xs:annotation>
+      <xs:documentation>A measure of distance defined in metres in a non negative integer format.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:NonNegativeInteger" />
+  </xs:simpleType>
+  <xs:complexType name="MultilingualString">
+    <xs:sequence>
+      <xs:element name="values">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="value" type="D2LogicalModel:MultilingualStringValue" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MultilingualStringValue">
+    <xs:simpleContent>
+      <xs:extension base="D2LogicalModel:MultilingualStringValueType">
+        <xs:attribute name="lang" type="xs:language" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="MultilingualStringValueType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NonNegativeInteger">
+    <xs:annotation>
+      <xs:documentation>An integer number whose value space is the set {0, 1, 2, ..., 2147483645, 2147483646, 2147483647}.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger" />
+  </xs:simpleType>
+  <xs:complexType name="PayloadPublication" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A payload publication of traffic related information or associated management information created at a specific point in time that can be exchanged via a DATEX II interface.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="publicationTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date/time at which the payload publication was created.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publicationCreator" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="payloadPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="D2LogicalModel:Language" use="required">
+      <xs:annotation>
+        <xs:documentation>The default language used throughout the payload publication.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:simpleType name="ResponseEnum">
+    <xs:annotation>
+      <xs:documentation>Types of response that a supplier can return to a requesting client.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="acknowledge">
+        <xs:annotation>
+          <xs:documentation>An acknowledgement that the supplier has received and complied with the client's request.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="requestDenied">
+        <xs:annotation>
+          <xs:documentation>A notification that the supplier has denied the client's request for a data.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="subscriptionRequestDenied">
+        <xs:annotation>
+          <xs:documentation>A notification that the supplier has denied the client's request for a subscription.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="String">
+    <xs:annotation>
+      <xs:documentation>A character string whose value space is the set of finite-length sequences of characters. Every character has a corresponding Universal Character Set code point (as defined in ISO/IEC 10646), which is an integer.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Tonnes">
+    <xs:annotation>
+      <xs:documentation>A measure of weight defined in metric tonnes.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:simpleType name="Url">
+    <xs:annotation>
+      <xs:documentation>A Uniform Resource Locator (URL) address comprising a compact string of characters for a resource available on the Internet.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:anyURI" />
+  </xs:simpleType>
+  <xs:complexType name="VersionedReference">
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="Vms">
+    <xs:annotation>
+      <xs:documentation>Provides the current status and settings of the VMS and the currently displayed information. Where a VMS is displaying a sequence or alternating set of messages these are ordered according to the messageIndex qualifier.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="vmsWorking" type="D2LogicalModel:Boolean" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicates whether the VMS is usable. Note it may still be usable with minor faults.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsMessage" type="D2LogicalModel:_VmsMessageIndexVmsMessage" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="vmsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="VmsDatexPictogramEnum">
+    <xs:annotation>
+      <xs:documentation>Types of main pictograms.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="accident">
+        <xs:annotation>
+          <xs:documentation>Accident.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="advisorySpeed">
+        <xs:annotation>
+          <xs:documentation>Advisory speed limit.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="blankVoid">
+        <xs:annotation>
+          <xs:documentation>Blank or void.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="carriagewayNarrows">
+        <xs:annotation>
+          <xs:documentation>The carriageway narrows ahead.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="carriagewayNarrowsOnTheLeft">
+        <xs:annotation>
+          <xs:documentation>The carriageway narrows ahead from the left.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="carriagewayNarrowsOnTheRight">
+        <xs:annotation>
+          <xs:documentation>The carriageway narrows ahead from the right.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="crossWind">
+        <xs:annotation>
+          <xs:documentation>Cross wind.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="endOfProhibitionOfOvertaking">
+        <xs:annotation>
+          <xs:documentation>End of prohibition of overtaking.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="endOfProhibitionOfOvertakingForGoodsVehicles">
+        <xs:annotation>
+          <xs:documentation>End of prohibition of overtaking for goods vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="endOfSpeedLimit">
+        <xs:annotation>
+          <xs:documentation>End of mandatory speed limit.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fog">
+        <xs:annotation>
+          <xs:documentation>Fog.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="keepASafeDistance">
+        <xs:annotation>
+          <xs:documentation>Keep a safe distance.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="keepLeft">
+        <xs:annotation>
+          <xs:documentation>Keep left.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="keepRight">
+        <xs:annotation>
+          <xs:documentation>Keep right.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="laneClosed">
+        <xs:annotation>
+          <xs:documentation>Lane closed.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="laneDeviationToLeft">
+        <xs:annotation>
+          <xs:documentation>Lane deviates to the left.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="laneDeviationToRight">
+        <xs:annotation>
+          <xs:documentation>Lane deviates to the right.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="laneOpen">
+        <xs:annotation>
+          <xs:documentation>Lane open.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lightSignals">
+        <xs:annotation>
+          <xs:documentation>Traffic light signals ahead.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="looseGravel">
+        <xs:annotation>
+          <xs:documentation>Loose gravel.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="maintenanceVehicleInAction">
+        <xs:annotation>
+          <xs:documentation>Maintenance vehicles in action.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noEntry">
+        <xs:annotation>
+          <xs:documentation>No entry.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noEntryForGoodsVehicles">
+        <xs:annotation>
+          <xs:documentation>No entry for goods vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noEntryForVehiclesExceedingXTonnesLadenMass">
+        <xs:annotation>
+          <xs:documentation>No entry for vehicles exceeding X tonnes laden mass.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noEntryForVehiclesCarryingDangerousGoods">
+        <xs:annotation>
+          <xs:documentation>No entry for vehicles carrying dangerous goods.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="otherDangers">
+        <xs:annotation>
+          <xs:documentation>Danger ahead of an unspecified nature.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overtakingByGoodsVehiclesProhibited">
+        <xs:annotation>
+          <xs:documentation>Overtaking prohibited for goods vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="overtakingProhibited">
+        <xs:annotation>
+          <xs:documentation>Overtaking prohibited.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pollutionOrSmogAlert">
+        <xs:annotation>
+          <xs:documentation>Pollution or smog alert.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="roadworks">
+        <xs:annotation>
+          <xs:documentation>Roadworks.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="slipperyRoad">
+        <xs:annotation>
+          <xs:documentation>Slippery road.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="snow">
+        <xs:annotation>
+          <xs:documentation>Snow.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="snowChainsCompulsory">
+        <xs:annotation>
+          <xs:documentation>The use of snow chains is compulsory.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="trafficCongestion">
+        <xs:annotation>
+          <xs:documentation>Traffic congestion and possible queues.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tunnelClosed">
+        <xs:annotation>
+          <xs:documentation>Tunnel closed.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unevenRoad">
+        <xs:annotation>
+          <xs:documentation>Uneven road surface.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VmsDatexSupplementalPictogramEnum">
+    <xs:annotation>
+      <xs:documentation>Types of pictograms displayable in supplementary panels (normally below the main pictogram display which it qualifies).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="distanceToTheBeginningofTheApplicationZone">
+        <xs:annotation>
+          <xs:documentation>Distance to the beginning of the application zone.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lengthOfTheApplicationZone">
+        <xs:annotation>
+          <xs:documentation>Length of the applicable zone.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restricetdToBus">
+        <xs:annotation>
+          <xs:documentation>Restricted to buses.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="restrictedToGoodsVehicles">
+        <xs:annotation>
+          <xs:documentation>Restricted to goods vehicles.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VmsMessage">
+    <xs:annotation>
+      <xs:documentation>A message displayed on a VMS which may comprise one or more sequentially displayed text pages and/or pictograms with supplementary details. When in a sequence of displayed messages sequencing of text pages and pictograms within a message are prohibited.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="messageSetBy" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The organisation or authority which set the message currently being displayed. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="setBySystem" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicates whether the message has been set automatically by a system. True =  automatically set.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="codedReasonForSetting" type="D2LogicalModel:CodedReasonForSettingMessageEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The reason, in terms of a high level coded classification, why the sign has been set. </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsMessageInformationType" type="D2LogicalModel:VmsMessageInformationTypeEnum" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Type of information being displayed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timeLastSet" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date/time at which the sign was last set.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="textPage" type="D2LogicalModel:_TextPage" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="vmsPictogramDisplayArea" type="D2LogicalModel:_VmsMessagePictogramDisplayAreaIndexVmsPictogramDisplayArea" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="vmsMessageExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="VmsMessageInformationTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Types of information displayable on a VMS.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="campaignMessage">
+        <xs:annotation>
+          <xs:documentation>Campaign type information which is non time specific that may request certain actions (e.g. "do not drink and drive") or which is intended to influence drivers' behaviour.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dateTime">
+        <xs:annotation>
+          <xs:documentation>Current date and/or time information.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="futureInformation">
+        <xs:annotation>
+          <xs:documentation>Information which may inform road users about future situations which potentially may cause congestion or influence future travel plans (e.g. future roadworks, closures, sporting events, public concerts, suspension of train or ferry services).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="instructionOrMessage">
+        <xs:annotation>
+          <xs:documentation>Instructions or messages to road users which are relevant at the current time, (e.g. "do not throw out any burning objects" or an Amber alert message).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="situationWarning">
+        <xs:annotation>
+          <xs:documentation>Information warning of a current situation likely to affect traffic on the road ahead.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="temperature">
+        <xs:annotation>
+          <xs:documentation>Temperature information.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="trafficManagement">
+        <xs:annotation>
+          <xs:documentation>Information comprising traffic management instructions.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="travelTime">
+        <xs:annotation>
+          <xs:documentation>Travel time information.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VmsPictogram">
+    <xs:annotation>
+      <xs:documentation>A main pictogram displayable on the VMS panel. Note a main pictogram may have an associated supplementary panel which may itself contain a further pictogram and line of text.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="pictogramDescription" type="D2LogicalModel:VmsDatexPictogramEnum" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Description of the (main) displayed pictogram.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pictogramCode" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The code of the pictogram from the pictogram code list referenced in the VmsPictogramDisplayCharacteristics for the VMS that is identified in the relevant VMS Unit table.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pictogramUrl" type="D2LogicalModel:Url" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reference to a URL from where an image of the displayed pictogram can be be obtained.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalPictogramDescription" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Additional description of the pictogram.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pictogramFlashing" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indication of whether the pictogram is flashing.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="presenceOfRedTriangle" type="D2LogicalModel:Boolean" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indication of the presence of a red triangle around the pictogram, often used to indicate imminence, typically within 2km, of signed danger.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="viennaConventionCompliant" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicates that the displayed pictogram conforms with the Vienna Convention defined pictogram list as modified by "UNECE Consolidated Resolution on Road Signs and Signals".</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="distanceAttribute" type="D2LogicalModel:MetresAsNonNegativeInteger" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Value of distance that is displayable as part of the pictogram (e.g. for keep minimum safe distance).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="heightAttribute" type="D2LogicalModel:MetresAsFloat" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Value of height that is displayable as part of the pictogram (e.g. for a vehicle height restriction).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="lengthAttribute" type="D2LogicalModel:MetresAsFloat" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Value of length that is displayable as part of the pictogram (e.g. for a vehicle length restriction).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="speedAttribute" type="D2LogicalModel:KilometresPerHour" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Value of speed that is displayable as part of the pictogram (e.g. for a maximum speed limit).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="weightAttribute" type="D2LogicalModel:Tonnes" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Value of weight that is displayable as part of the pictogram (e.g. for a maximum weight restriction).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="weightPerAxleAttribute" type="D2LogicalModel:Tonnes" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Value of axle weight that is displayable as part of the pictogram (e.g. for a maximum axle weight restriction).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="widthAttribute" type="D2LogicalModel:MetresAsFloat" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Value of width that is displayable as part of the pictogram (e.g. for a vehicle width restriction).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsSupplementaryPanel" type="D2LogicalModel:VmsSupplementaryPanel" minOccurs="0" />
+      <xs:element name="vmsPictogramExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VmsPictogramDisplayArea">
+    <xs:annotation>
+      <xs:documentation>An area on a VMS used for the display of pictograms and associated supplemental information or instructions.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="vmsPictogram" type="D2LogicalModel:_VmsPictogramDisplayAreaPictogramSequencingIndexVmsPictogram" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="vmsPictogramDisplayAreaExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VmsPublication">
+    <xs:annotation>
+      <xs:documentation>A publication containing the current status and settings of one or more VMS units, each unit controlling one or more individual variable message signs.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:PayloadPublication">
+        <xs:sequence>
+          <xs:element name="headerInformation" type="D2LogicalModel:HeaderInformation" />
+          <xs:element name="vmsUnit" type="D2LogicalModel:VmsUnit" maxOccurs="unbounded" />
+          <xs:element name="vmsPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="VmsSetting" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Provides information on variable message signs and the information currently displayed.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="vmsSettingExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VmsSupplementaryPanel">
+    <xs:annotation>
+      <xs:documentation>A panel which may display information or a regulatory instruction which is supplemental to the associated pictogram, comprising either an additional line of text or a pictogram or both.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="supplementaryMessageDescription" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Free text description of the message that is displayed in the panel which is supplemental to the main pictogram display.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsSupplementaryPictogram" type="D2LogicalModel:VmsSupplementaryPictogram" minOccurs="0" />
+      <xs:element name="vmsSupplementaryText" type="D2LogicalModel:VmsTextLine" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>One line of text displayed in the panel which is supplemental to the pictogram display.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsSupplementaryPanelExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VmsSupplementaryPictogram">
+    <xs:annotation>
+      <xs:documentation>An additional pictogram that is displayed in the panel which is supplemental to the associated pictogram display.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="supplementaryPictogramDescription" type="D2LogicalModel:VmsDatexSupplementalPictogramEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Description of the supplementary displayed pictogram.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supplementaryPictogramCode" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The code of the supplementary pictogram from the supplementary pictogram code list referenced in the VmsSupplementaryPanelCharacteristics for the VMS that is identified in the relevant VMS Unit table.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supplementaryPictogramUrl" type="D2LogicalModel:Url" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reference to a URL from where an image of the displayed supplementary pictogram can be be obtained.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="additionalSupplementaryPictogramDescription" type="D2LogicalModel:MultilingualString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Additional free text description of the supplementary pictogram.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pictogramFlashing" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indication of whether the pictogram is flashing.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsSupplementaryPictogramExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VmsText">
+    <xs:annotation>
+      <xs:documentation>A page of text (comprising one or more ordered lines) that are displayed simultaneously on the VMS. Where more than one page is defined these are sequentially displayed according to their "pageNumber".</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="vmsLegendCode" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The code of the legend/text from the legend code list referenced in the VmsTextDisplayCharacteristics.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsTextLine" type="D2LogicalModel:_VmsTextLineIndexVmsTextLine" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="vmsTextExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VmsTextLine">
+    <xs:annotation>
+      <xs:documentation>A single line of text on a text display area or supplementary panel.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="vmsTextLine" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A free-text string that is displayed on a single line on the text display area.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsTextLineLanguage" type="D2LogicalModel:Language" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The language of the displayed line of text, specified by an ISO 639-2 3-alpha code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsTextLineHtml" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The displayed line of text defined by an HTML string showing text formatting tags.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="vmsTextLineExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VmsUnit">
+    <xs:annotation>
+      <xs:documentation>Status of a VMS unit which may control one or more variable message signs on a single gantry or on different gantries.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:VmsSetting">
+        <xs:sequence>
+          <xs:element name="vmsUnitTableReference" type="D2LogicalModel:_VmsUnitTableVersionedReference" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>A reference to a versioned VMS Unit table.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="vmsUnitReference" type="D2LogicalModel:_VmsUnitRecordVersionedReference" minOccurs="1" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>A reference to a versioned VMS unit record in a VMS Unit table which defines the characteristics of the VMS unit.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="vms" type="D2LogicalModel:_VmsUnitVmsIndexVms" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="vmsUnitExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

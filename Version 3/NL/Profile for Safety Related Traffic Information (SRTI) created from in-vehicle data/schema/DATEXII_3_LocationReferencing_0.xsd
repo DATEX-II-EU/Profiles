@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:loc="http://datex2.eu/schema/3/locationReferencing" version="3.0" targetNamespace="http://datex2.eu/schema/3/locationReferencing" xmlns:ext="http://datex2.eu/schema/3/extension" xmlns:com="http://datex2.eu/schema/3/common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://datex2.eu/schema/3/common" schemaLocation="DATEXII_3_Common.xsd" />
+  <xs:import namespace="http://datex2.eu/schema/3/extension" schemaLocation="DATEXII_3_Extension.xsd" />
+  <xs:complexType name="_AlertCDirectionEnum">
+    <xs:simpleContent>
+      <xs:extension base="loc:AlertCDirectionEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_AltitudeAccuracyEnum">
+    <xs:simpleContent>
+      <xs:extension base="loc:AltitudeAccuracyEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_CarriagewayEnum">
+    <xs:simpleContent>
+      <xs:extension base="loc:CarriagewayEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_HeightTypeEnum">
+    <xs:simpleContent>
+      <xs:extension base="loc:HeightTypeEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_InfrastructureDescriptorEnum">
+    <xs:simpleContent>
+      <xs:extension base="loc:InfrastructureDescriptorEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_LinearDirectionEnum">
+    <xs:simpleContent>
+      <xs:extension base="loc:LinearDirectionEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="_LinearLocationExtensionType">
+    <xs:sequence>
+      <xs:element name="linearLocationExtended" type="ext:LinearLocationExtended" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_PointLocationExtensionType">
+    <xs:sequence>
+      <xs:element name="openlrPointExtended" type="ext:OpenlrPointExtended" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_PositionConfidenceCodedErrorEnum">
+    <xs:simpleContent>
+      <xs:extension base="loc:PositionConfidenceCodedErrorEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCDirection">
+    <xs:sequence>
+      <xs:element name="alertCDirectionCoded" type="loc:_AlertCDirectionEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCDirectionNamed" type="com:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="alertCAffectedDirection" type="loc:_LinearDirectionEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="_alertCDirectionExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlertCDirectionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="negative" />
+      <xs:enumeration value="positive" />
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AlertCLinear" abstract="true">
+    <xs:sequence>
+      <xs:element name="alertCLocationCountryCode" type="com:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLocationTableNumber" type="com:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLocationTableVersion" type="com:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="_alertCLinearExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCLinearByCode">
+    <xs:complexContent>
+      <xs:extension base="loc:AlertCLinear">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="loc:AlertCDirection" />
+          <xs:element name="locationCodeForLinearLocation" type="loc:AlertCLocation" />
+          <xs:element name="_alertCLinearByCodeExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocationName" type="com:MultilingualString" minOccurs="0" maxOccurs="1" />
+      <xs:element name="specificLocation" type="loc:AlertCLocationCode" minOccurs="1" maxOccurs="1" />
+      <xs:element name="_alertCLocationExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AlertCLocationCode">
+    <xs:restriction base="com:NonNegativeInteger">
+      <xs:minInclusive value="1" />
+      <xs:maxInclusive value="63487" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AlertCMethod2Linear">
+    <xs:complexContent>
+      <xs:extension base="loc:AlertCLinear">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="loc:AlertCDirection" />
+          <xs:element name="alertCMethod2PrimaryPointLocation" type="loc:AlertCMethod2PrimaryPointLocation" />
+          <xs:element name="alertCMethod2SecondaryPointLocation" type="loc:AlertCMethod2SecondaryPointLocation" />
+          <xs:element name="_alertCMethod2LinearExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod2Point">
+    <xs:complexContent>
+      <xs:extension base="loc:AlertCPoint">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="loc:AlertCDirection" />
+          <xs:element name="alertCMethod2PrimaryPointLocation" type="loc:AlertCMethod2PrimaryPointLocation" />
+          <xs:element name="_alertCMethod2PointExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod2PrimaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="loc:AlertCLocation" />
+      <xs:element name="_alertCMethod2PrimaryPointLocationExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod2SecondaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="loc:AlertCLocation" />
+      <xs:element name="_alertCMethod2SecondaryPointLocationExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4Linear">
+    <xs:complexContent>
+      <xs:extension base="loc:AlertCLinear">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="loc:AlertCDirection" />
+          <xs:element name="alertCMethod4PrimaryPointLocation" type="loc:AlertCMethod4PrimaryPointLocation" />
+          <xs:element name="alertCMethod4SecondaryPointLocation" type="loc:AlertCMethod4SecondaryPointLocation" />
+          <xs:element name="_alertCMethod4LinearExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4Point">
+    <xs:complexContent>
+      <xs:extension base="loc:AlertCPoint">
+        <xs:sequence>
+          <xs:element name="alertCDirection" type="loc:AlertCDirection" />
+          <xs:element name="alertCMethod4PrimaryPointLocation" type="loc:AlertCMethod4PrimaryPointLocation" />
+          <xs:element name="_alertCMethod4PointExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4PrimaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="loc:AlertCLocation" />
+      <xs:element name="offsetDistance" type="loc:OffsetDistance" />
+      <xs:element name="_alertCMethod4PrimaryPointLocationExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCMethod4SecondaryPointLocation">
+    <xs:sequence>
+      <xs:element name="alertCLocation" type="loc:AlertCLocation" />
+      <xs:element name="offsetDistance" type="loc:OffsetDistance" />
+      <xs:element name="_alertCMethod4SecondaryPointLocationExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AlertCPoint" abstract="true">
+    <xs:sequence>
+      <xs:element name="alertCLocationCountryCode" type="com:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLocationTableNumber" type="com:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="alertCLocationTableVersion" type="com:String" minOccurs="1" maxOccurs="1" />
+      <xs:element name="_alertCPointExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="AltitudeAccuracyEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="equalToOrLessThan1Centimetre" />
+      <xs:enumeration value="equalToOrLessThan2Centimetres" />
+      <xs:enumeration value="equalToOrLessThan5Centimetres" />
+      <xs:enumeration value="equalToOrLessThan10Centimetres" />
+      <xs:enumeration value="equalToOrLessThan20Centimetres" />
+      <xs:enumeration value="equalToOrLessThan50Centimetres" />
+      <xs:enumeration value="equalToOrLessThan1Metre" />
+      <xs:enumeration value="equalToOrLessThan2Metres" />
+      <xs:enumeration value="equalToOrLessThan5Metres" />
+      <xs:enumeration value="equalToOrLessThan10Metres" />
+      <xs:enumeration value="equalToOrLessThan20Metres" />
+      <xs:enumeration value="equalToOrLessThan50Metres" />
+      <xs:enumeration value="equalToOrLessThan100Metres" />
+      <xs:enumeration value="equalToOrLessThan200Metres" />
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="AltitudeConfidence">
+    <xs:sequence>
+      <xs:element name="altitudeAccuracyCodedValue" type="loc:_AltitudeAccuracyEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="altitudeAccuracyCodedError" type="loc:_PositionConfidenceCodedErrorEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="_altitudeConfidenceExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Carriageway">
+    <xs:sequence>
+      <xs:element name="carriageway" type="loc:_CarriagewayEnum" minOccurs="1" maxOccurs="1" />
+      <xs:element name="_carriagewayExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="CarriagewayEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="connectingCarriageway" />
+      <xs:enumeration value="entrySlipRoad" />
+      <xs:enumeration value="exitSlipRoad" />
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GmlLinearRing">
+    <xs:complexContent>
+      <xs:extension base="loc:GmlLineString">
+        <xs:sequence>
+          <xs:element name="_gmlLinearRingExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="GmlLineString">
+    <xs:sequence>
+      <xs:element name="posList" type="loc:GmlPosList" minOccurs="1" maxOccurs="1" />
+      <xs:element name="_gmlLineStringExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="srsDimension" type="com:NonNegativeInteger" use="optional" />
+    <xs:attribute name="srsName" type="com:String" use="optional" />
+  </xs:complexType>
+  <xs:simpleType name="GmlPosList">
+    <xs:restriction base="com:LongString">
+      <xs:pattern value="[-+]?[0-9]*\.?[0-9]+(\s[-+]?[0-9]*\.?[0-9]+){3,}" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="HeightCoordinate">
+    <xs:sequence>
+      <xs:element name="heightValue" type="com:MetresAsFloat" minOccurs="1" maxOccurs="1" />
+      <xs:element name="heightType" type="loc:_HeightTypeEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="altitudeConfidence" type="loc:AltitudeConfidence" minOccurs="0" />
+      <xs:element name="verticalPositionAccuracy" type="loc:PositionAccuracy" minOccurs="0" />
+      <xs:element name="_heightCoordinateExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="HeightTypeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ellipsoidalHeight" />
+      <xs:enumeration value="gravityRelatedHeight" />
+      <xs:enumeration value="relativeHeight" />
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="InfrastructureDescriptorEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="inTunnel" />
+      <xs:enumeration value="onBridge" />
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="LinearDirectionEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="both" />
+      <xs:enumeration value="opposite" />
+      <xs:enumeration value="aligned" />
+      <xs:enumeration value="unknown" />
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="LinearLocation">
+    <xs:complexContent>
+      <xs:extension base="loc:NetworkLocation">
+        <xs:sequence>
+          <xs:element name="gmlLineString" type="loc:GmlLineString" />
+          <xs:element name="_linearLocationExtension" type="loc:_LinearLocationExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Location" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="loc:LocationReference">
+        <xs:sequence>
+          <xs:element name="_locationExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="LocationReference" abstract="true">
+    <xs:sequence>
+      <xs:element name="_locationReferenceExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NetworkLocation" abstract="true">
+    <xs:complexContent>
+      <xs:extension base="loc:Location">
+        <xs:sequence>
+          <xs:element name="supplementaryPositionalDescription" type="loc:SupplementaryPositionalDescription" minOccurs="0" />
+          <xs:element name="_networkLocationExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OffsetDistance">
+    <xs:sequence>
+      <xs:element name="offsetDistance" type="com:MetresAsNonNegativeInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="_offsetDistanceExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointByCoordinates">
+    <xs:sequence>
+      <xs:element name="bearing" type="com:AngleInDegrees" minOccurs="0" maxOccurs="1" />
+      <xs:element name="pointCoordinates" type="loc:PointCoordinates" />
+      <xs:element name="_pointByCoordinatesExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointCoordinates">
+    <xs:sequence>
+      <xs:element name="latitude" type="com:Float" minOccurs="1" maxOccurs="1" />
+      <xs:element name="longitude" type="com:Float" minOccurs="1" maxOccurs="1" />
+      <xs:element name="heightCoordinate" type="loc:HeightCoordinate" minOccurs="0" maxOccurs="3" />
+      <xs:element name="positionConfidenceEllipse" type="loc:PositionConfidenceEllipse" minOccurs="0" />
+      <xs:element name="horizontalPositionAccuracy" type="loc:PositionAccuracy" minOccurs="0" />
+      <xs:element name="_pointCoordinatesExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointLocation">
+    <xs:complexContent>
+      <xs:extension base="loc:NetworkLocation">
+        <xs:sequence>
+          <xs:element name="pointByCoordinates" type="loc:PointByCoordinates" />
+          <xs:element name="alertCPoint" type="loc:AlertCPoint" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="_pointLocationExtension" type="loc:_PointLocationExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PositionAccuracy">
+    <xs:sequence>
+      <xs:element name="accuracyPercentile50" type="com:MetresAsFloat" minOccurs="0" maxOccurs="1" />
+      <xs:element name="accuracyPercentile75" type="com:MetresAsFloat" minOccurs="0" maxOccurs="1" />
+      <xs:element name="accuracyPercentile95" type="com:MetresAsFloat" minOccurs="0" maxOccurs="1" />
+      <xs:element name="_positionAccuracyExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="PositionConfidenceCodedErrorEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="outOfRange" />
+      <xs:enumeration value="unavailable" />
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="PositionConfidenceEllipse">
+    <xs:sequence>
+      <xs:element name="semiMajorAxisLength" type="com:MetresAsFloat" minOccurs="0" maxOccurs="1" />
+      <xs:element name="semiMajorAxisLengthCodedError" type="loc:_PositionConfidenceCodedErrorEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="semiMinorAxisLength" type="com:MetresAsFloat" minOccurs="0" maxOccurs="1" />
+      <xs:element name="semiMinorAxisLengthCodedError" type="loc:_PositionConfidenceCodedErrorEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="semiMajorAxisOrientation" type="com:AngleInDegrees" minOccurs="0" maxOccurs="1" />
+      <xs:element name="semiMajorAxisOrientationError" type="com:Boolean" minOccurs="0" maxOccurs="1" />
+      <xs:element name="_positionConfidenceEllipseExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SingleRoadLinearLocation">
+    <xs:complexContent>
+      <xs:extension base="loc:LinearLocation">
+        <xs:sequence>
+          <xs:element name="alertCLinear" type="loc:AlertCLinear" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="_singleRoadLinearLocationExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SupplementaryPositionalDescription">
+    <xs:sequence>
+      <xs:element name="infrastructureDescriptor" type="loc:_InfrastructureDescriptorEnum" minOccurs="0" maxOccurs="1" />
+      <xs:element name="carriageway" type="loc:Carriageway" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="_supplementaryPositionalDescriptionExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

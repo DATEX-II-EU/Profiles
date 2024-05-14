@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:roa="http://datex2.eu/schema/3/roadTrafficData" version="3.3" targetNamespace="http://datex2.eu/schema/3/roadTrafficData" xmlns:com="http://datex2.eu/schema/3/common" xmlns:loc="http://datex2.eu/schema/3/locationReferencing" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://datex2.eu/schema/3/locationReferencing" schemaLocation="DATEXII_3_LocationReferencing.xsd" />
+  <xs:import namespace="http://datex2.eu/schema/3/common" schemaLocation="DATEXII_3_Common.xsd" />
+  <xs:complexType name="_TimeMeaningEnum">
+    <xs:simpleContent>
+      <xs:extension base="roa:TimeMeaningEnum">
+        <xs:attribute name="_extendedValue" type="xs:string" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="BasicData" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Data that are either measured or calculated at the same time or over the same time period.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="measurementOrCalculationTime" type="roa:MeasurementOrCalculationTime" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>Characteristics of the measurement or calculation time which should be considered to override any specified defaults</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_basicDataExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ElaboratedDataPublication">
+    <xs:annotation>
+      <xs:documentation>A publication containing one or more elaborated data sets.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="com:PayloadPublication">
+        <xs:sequence>
+          <xs:element name="headerInformation" type="com:HeaderInformation" />
+          <xs:element name="physicalQuantity" type="roa:PhysicalQuantity" maxOccurs="unbounded" />
+          <xs:element name="informationManager" type="com:InternationalIdentifier" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Organisation that manages the information content (is responsible for updates of this information) typically the organisation that first made the DATEX II publication of this content.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="_elaboratedDataPublicationExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MeasurementOrCalculationTime">
+    <xs:annotation>
+      <xs:documentation>Describes the time at which a measured or calculated value or set of values was measured or calculated. It may be a future time at which a data value is predicted to apply.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="timeMeaning" type="roa:_TimeMeaningEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Meaning of associated time value</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="timeValue" type="com:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Point in time at which this specific value or set of values has been measured or calculated. It may also be a future time at which a data value is predicted.  It may be the time of the beginning, the end or the middle of a measurement period.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="period" type="com:Period" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The measurement or calculation period</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="_measurementOrCalculationTimeExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="timePrecision" type="com:TimePrecisionEnum" use="optional">
+      <xs:annotation>
+        <xs:documentation>The precision to which the time of measurement or calculation is given.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="PhysicalQuantity" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A measured or calculated physical quantity, with related properties explaining its context, meaning or status</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="pertinentLocation" type="loc:LocationReference" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The location (e.g. the stretch of road or area) to which the data value(s) is or are pertinent/relevant. This may be different from the location of the measurement equipment (i.e. the measurement site location). </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="source" type="com:Source" minOccurs="0" />
+      <xs:element name="_physicalQuantityExtension" type="com:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SinglePhysicalQuantity">
+    <xs:annotation>
+      <xs:documentation>A measured or calculated physical quantity at a single instant or period in time, with related properties explaining its context, meaning or status</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="roa:PhysicalQuantity">
+        <xs:sequence>
+          <xs:element name="basicData" type="roa:BasicData" minOccurs="0" />
+          <xs:element name="_singlePhysicalQuantityExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="TimeMeaningEnum">
+    <xs:annotation>
+      <xs:documentation>Explains the meaning of a specific time value with respect to a time period</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="beginTime">
+        <xs:annotation>
+          <xs:documentation>Meaning the beginning of a period</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="endTime">
+        <xs:annotation>
+          <xs:documentation>Meaning the end of a period</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="middleTime">
+        <xs:annotation>
+          <xs:documentation>Meaning the mid-point of a period</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="_extended" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="WeatherData" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Measured or derived values relating to the weather at a specific location or locations.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="roa:BasicData">
+        <xs:sequence>
+          <xs:element name="_weatherDataExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="WindInformation">
+    <xs:annotation>
+      <xs:documentation>Measurements of wind conditions.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="roa:WeatherData">
+        <xs:sequence>
+          <xs:element name="wind" type="com:Wind" />
+          <xs:element name="_windInformationExtension" type="com:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
