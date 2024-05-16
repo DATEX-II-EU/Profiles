@@ -2,8 +2,10 @@
 
 Status definition refers to ISO 14187
 Card
+
 Profile object
 SituationPublication, PredefinedLocationsPublication
+
 Profile information
 ASFINAG provides DATEX II traffic information of Austrian motorways for service providers and other interested institutions. This profile describes the message content for the Network Management. Note that the publication is two-folded: A static part (PredefinedLocationsPublication, no separate document on this) and a dynamic part (see documentation). Further note, that it is possible to omit the static part in case location referencing is done in the dynamic part (single file solution) using the Level B extension LinearByCoordinates (included in the corresponding dynamic schema).
 In essence, this profile covers both the two-file and the single-file solution, as the main content does not differ between these solutions.
