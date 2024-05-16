@@ -14,15 +14,15 @@ This profile describes the Austrian Elementary Profile Traffic travel times. For
 Change log
 
 Version 1 (published on 24.05.2018)
--Current or near-realtime travel time feed with standard location referencing methods (Wgs84, Alert-C, street kilometers)
--Feed is split into two files: 1) TrafficTravelTimesStatic (location data), and 2) TrafficTravelTimesDynamic (travel times data)
+- Current or near-realtime travel time feed with standard location referencing methods (Wgs84, Alert-C, street kilometers)
+- Feed is split into two files: 1) TrafficTravelTimesStatic (location data), and 2) TrafficTravelTimesDynamic (travel times data)
 
 Version 2 (published on 21.12.2018):
--Included a proprietary location referencing method, called as Graph Integration Platform (GIP), as a DATEX II level b extension
--Added predicted traveltimes feed.Comes in separate files
+- Included a proprietary location referencing method, called as Graph Integration Platform (GIP), as a DATEX II level b extension
+- Added predicted traveltimes feed.Comes in separate files
 
 Version 3 - current operational version (published on 02.04.2019):
--All the predictions data comes in one single file (15 min - 240 min predictions), and the corresponding location data of the predefined sections comes in another file.
+- All the predictions data comes in one single file (15 min - 240 min predictions), and the corresponding location data of the predefined sections comes in another file.
 
 Organization name
 ASFINAG
