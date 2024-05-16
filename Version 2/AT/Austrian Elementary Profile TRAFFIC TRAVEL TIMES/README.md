@@ -31,6 +31,8 @@ ASFINAG acts as an economically responsible motorway operator. We are convinced 
 
 Organization logo
 
+![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/75daa24e-a125-443d-8646-00c527962188)
+
 Website
 
 http://www.asfinag.at/
