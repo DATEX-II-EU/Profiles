@@ -1,51 +1,57 @@
-# Slovenian profile on wind data
+# D2 ASFINAG profile Toll
 
 Status definition refers to ISO 14187
 Card
+
 Profile object
-Road Traffic Data
+Toll Publication
+
 Profile information
-Road traffic  relevant Wind data as published by the Slovenian National Traffic Control Centre
+Normal 0 false false false SV X-NONE X-NONE
+
+ASFINAG provides DATEX II traffic information of Austrian motorways for service providers and other interested institutions. This profile describes the message content for the toll roads (i.e. in this case roads of Austria which are charged in addition to the motorway-vignette).
+
+This profile contains a Level B extension for the Toll Publication.
+
+A toll booth will be referenced by a Point location. The charged road can be referenced with their length (according to this point) or by a Linear Object. The description of these standard location referencing methods is not included in this document.
+
+ASFINAG specific documentation (for example the basis of computation) is accentuated in colour.
+
+/* Style Definitions */ table.MsoNormalTable {mso-style-name:"Normale Tabelle"; mso-tstyle-rowband-size:0; mso-tstyle-colband-size:0; mso-style-noshow:yes; mso-style-priority:99; mso-style-parent:""; mso-padding-alt:0cm 5.4pt 0cm 5.4pt; mso-para-margin:0cm; mso-para-margin-bottom:.0001pt; mso-pagination:widow-orphan; font-size:10.0pt; font-family:"Times New Roman",serif; mso-ansi-language:SV; mso-fareast-language:SV;} -->
 
 Organization name
-Republic of Slovenia, Ministry of infrastructure, NCUP - National traffic management centre
+ASFINAG
 Organization description
-Government, Public Services
+ASFINAG acts as an economically responsible motorway operator. We are convinced that modern and sustainably developed infrastructure is essential both for the mobility requirements of every single person and for Austria as a location for business. By using new technologies and innovations, we want to make Austria's motorways and expressways amongst the safest in Europe – in the interest of our customers and to strengthen the country as a place in which to do business.
 
-Organization logo<br>
-![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/f5f633c6-7612-43b8-adc7-fdd2b345fcef)
+Organization logo
+
+![image](https://github.com/DATEX-II-EU/Profiles/assets/24648804/9da70a85-2be6-4199-957d-4c9bd2e9b1de)
+
+Website
+http://www.asfinag.at
 
 Contact name
-Matej Vovk
+Dipl.-Ing. Gottfried Allmer
 Contact mail
-dummy
+gottfried.allmer@asfinag.at
+
+EA Model File
+
+DATEX_II-Profile_Toll_ASFINAG.zip
 
 XMI file
 
-DatexII_Winds_D2Payload_XMI.xml
+See_zip-file.xml
 
 XML schema
 
-DATEXII_3_Common_9.xsd
-
-DATEXII_3_CommonExtension_4.xsd
-
-DATEXII_3_D2Payload_9.xsd
-
-DATEXII_3_Facilities_4.xsd
-
-DATEXII_3_LocationExtension_5.xsd
-
-DATEXII_3_LocationReferencing_9.xsd
-
-DATEXII_3_Parking_5.xsd
-
-DATEXII_3_RoadTrafficData_2.xsd
+DATEX_II-Profile_Toll_ASFINAG.xsd
 
 PDF Documentation
 
-realiswind-3.0-profile.pdf
+DATEX_II-Profile_Toll_ASFINAG.pdf
 
 Selection file
 
-realiswind-3.0-selection.sel
+DATEX_II-Profile_Toll_ASFINAG.sel
