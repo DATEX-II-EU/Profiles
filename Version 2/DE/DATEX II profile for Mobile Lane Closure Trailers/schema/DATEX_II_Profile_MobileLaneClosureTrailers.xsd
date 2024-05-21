@@ -1,0 +1,1184 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:D2LogicalModel="http://datex2.eu/schema/2/2_0" version="2.1" targetNamespace="http://datex2.eu/schema/2/2_0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="_ExtensionType">
+    <xs:sequence>
+      <xs:any namespace="##any" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_LocationContainedInItinerary">
+    <xs:sequence>
+      <xs:element name="location" type="D2LogicalModel:Location" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="index" type="xs:int" use="required" />
+  </xs:complexType>
+  <xs:complexType name="_MaintenanceVehiclesExtensionType">
+    <xs:sequence>
+      <xs:element name="maintenanceVehiclesExtended" type="D2LogicalModel:MaintenanceVehiclesExtended" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_MobilityExtensionType">
+    <xs:sequence>
+      <xs:element name="mobilityExtended" type="D2LogicalModel:MobilityExtended" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="_PointCoordinatesExtensionType">
+    <xs:sequence>
+      <xs:element name="pointCoordinatesExtended" type="D2LogicalModel:PointCoordinatesExtended" minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="BlockingDirectionEnum">
+    <xs:annotation>
+      <xs:documentation>blocking direction</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="inDirectionOfBearing">
+        <xs:annotation>
+          <xs:documentation>in direction of bearing</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="oppositeToBearing">
+        <xs:annotation>
+          <xs:documentation>opposite to bearing</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Boolean">
+    <xs:annotation>
+      <xs:documentation>Boolean has the value space required to support the mathematical concept of binary-valued logic: {true, false}. </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+  <xs:complexType name="Comment">
+    <xs:annotation>
+      <xs:documentation>A free text comment with an optional date/time stamp that can be used by the operator to convey un-coded observations/information.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="comment" type="D2LogicalModel:MultilingualString" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A free text comment that can be used by the operator to convey un-coded observations/information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="commentExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ConfidentialityValueEnum">
+    <xs:annotation>
+      <xs:documentation>Values of confidentiality.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="noRestriction">
+        <xs:annotation>
+          <xs:documentation>No restriction on usage.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountryEnum">
+    <xs:annotation>
+      <xs:documentation>List of countries.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="at">
+        <xs:annotation>
+          <xs:documentation>Austria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="be">
+        <xs:annotation>
+          <xs:documentation>Belgium</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="bg">
+        <xs:annotation>
+          <xs:documentation>Bulgaria</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ch">
+        <xs:annotation>
+          <xs:documentation>Switzerland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cs">
+        <xs:annotation>
+          <xs:documentation>Serbia and Montenegro</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cy">
+        <xs:annotation>
+          <xs:documentation>Cyprus</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cz">
+        <xs:annotation>
+          <xs:documentation>Czech Republic</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="de">
+        <xs:annotation>
+          <xs:documentation>Germany</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dk">
+        <xs:annotation>
+          <xs:documentation>Denmark</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ee">
+        <xs:annotation>
+          <xs:documentation>Estonia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="es">
+        <xs:annotation>
+          <xs:documentation>Spain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fi">
+        <xs:annotation>
+          <xs:documentation>Finland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fo">
+        <xs:annotation>
+          <xs:documentation>Faroe Islands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="fr">
+        <xs:annotation>
+          <xs:documentation>France</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gb">
+        <xs:annotation>
+          <xs:documentation>Great Britain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gg">
+        <xs:annotation>
+          <xs:documentation>Guernsey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gi">
+        <xs:annotation>
+          <xs:documentation>Gibraltar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gr">
+        <xs:annotation>
+          <xs:documentation>Greece</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hr">
+        <xs:annotation>
+          <xs:documentation>Croatia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="hu">
+        <xs:annotation>
+          <xs:documentation>Hungary</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ie">
+        <xs:annotation>
+          <xs:documentation>Ireland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="im">
+        <xs:annotation>
+          <xs:documentation>Isle Of Man</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="is">
+        <xs:annotation>
+          <xs:documentation>Iceland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="it">
+        <xs:annotation>
+          <xs:documentation>Italy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="je">
+        <xs:annotation>
+          <xs:documentation>Jersey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="li">
+        <xs:annotation>
+          <xs:documentation>Lichtenstein</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lt">
+        <xs:annotation>
+          <xs:documentation>Lithuania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lu">
+        <xs:annotation>
+          <xs:documentation>Luxembourg</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="lv">
+        <xs:annotation>
+          <xs:documentation>Latvia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ma">
+        <xs:annotation>
+          <xs:documentation>Morocco</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mc">
+        <xs:annotation>
+          <xs:documentation>Monaco</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mk">
+        <xs:annotation>
+          <xs:documentation>Macedonia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mt">
+        <xs:annotation>
+          <xs:documentation>Malta</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="nl">
+        <xs:annotation>
+          <xs:documentation>Netherlands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="no">
+        <xs:annotation>
+          <xs:documentation>Norway</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pl">
+        <xs:annotation>
+          <xs:documentation>Poland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pt">
+        <xs:annotation>
+          <xs:documentation>Portugal</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ro">
+        <xs:annotation>
+          <xs:documentation>Romania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="se">
+        <xs:annotation>
+          <xs:documentation>Sweden</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="si">
+        <xs:annotation>
+          <xs:documentation>Slovenia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sk">
+        <xs:annotation>
+          <xs:documentation>Slovakia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="sm">
+        <xs:annotation>
+          <xs:documentation>San Marino</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="tr">
+        <xs:annotation>
+          <xs:documentation>Turkey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="va">
+        <xs:annotation>
+          <xs:documentation>Vatican City State</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="other">
+        <xs:annotation>
+          <xs:documentation>Other than as defined in this enumeration.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="d2LogicalModel" type="D2LogicalModel:D2LogicalModel">
+    <xs:unique name="_d2LogicalModelSituationRecordConstraint">
+      <xs:selector xpath=".//D2LogicalModel:situationRecord" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
+    <xs:unique name="_d2LogicalModelSituationConstraint">
+      <xs:selector xpath=".//D2LogicalModel:situation" />
+      <xs:field xpath="@id" />
+      <xs:field xpath="@version" />
+    </xs:unique>
+  </xs:element>
+  <xs:complexType name="D2LogicalModel">
+    <xs:annotation>
+      <xs:documentation>The DATEX II logical model comprising exchange, content payload and management sub-models.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="exchange" type="D2LogicalModel:Exchange" />
+      <xs:element name="payloadPublication" type="D2LogicalModel:PayloadPublication" minOccurs="0" />
+      <xs:element name="d2LogicalModelExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="modelBaseVersion" use="required" fixed="2" />
+    <xs:attribute name="extensionName" use="optional" default="MobileLaneClosureTrailers" />
+    <xs:attribute name="extensionVersion" use="optional" default="01-00-00" />
+  </xs:complexType>
+  <xs:simpleType name="DateTime">
+    <xs:annotation>
+      <xs:documentation>A combination of integer-valued year, month, day, hour, minute properties, a decimal-valued second property and a time zone property from which it is possible to determine the local time, the equivalent UTC time and the time zone offset from UTC.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:dateTime" />
+  </xs:simpleType>
+  <xs:simpleType name="ErrorStateEnum">
+    <xs:annotation>
+      <xs:documentation>error state enum</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gpsDefect">
+        <xs:annotation>
+          <xs:documentation>GPS defect</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknownTableState">
+        <xs:annotation>
+          <xs:documentation>table state can not be evaluated</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="externalError">
+        <xs:annotation>
+          <xs:documentation>error in external system</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="externalErrorNoReaction">
+        <xs:annotation>
+          <xs:documentation>external system does not react</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Exchange">
+    <xs:annotation>
+      <xs:documentation>Details associated with the management of the exchange between the supplier and the client.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="keepAlive" type="D2LogicalModel:Boolean" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Indicator that this exchange is due to "keep alive" functionality.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="supplierIdentification" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="subscription" type="D2LogicalModel:Subscription" minOccurs="0" />
+      <xs:element name="exchangeExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="Float">
+    <xs:annotation>
+      <xs:documentation>A floating point number whose value space consists of the values m × 2^e, where m is an integer whose absolute value is less than 2^24, and e is an integer between -149 and 104, inclusive.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:float" />
+  </xs:simpleType>
+  <xs:simpleType name="GpsStatusEnum">
+    <xs:annotation>
+      <xs:documentation>GPS status</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="noSignal">
+        <xs:annotation>
+          <xs:documentation>no signal</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gps2D">
+        <xs:annotation>
+          <xs:documentation>GPS 2D</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="gps3D">
+        <xs:annotation>
+          <xs:documentation>GPS 3D</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dgps2D">
+        <xs:annotation>
+          <xs:documentation>D-GPS 2D</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="dgps3D">
+        <xs:annotation>
+          <xs:documentation>D-GPS 3D</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="GroupOfLocations" abstract="true">
+    <xs:annotation>
+      <xs:documentation>One or more physically separate locations. Multiple locations may be related, as in an itinerary (or route), or may be unrelated. It is not for identifying the same physical location using different referencing systems.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="groupOfLocationsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="HeaderInformation">
+    <xs:annotation>
+      <xs:documentation>Management information relating to the data contained within a publication.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="confidentiality" type="D2LogicalModel:ConfidentialityValueEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The extent to which the related information may be circulated, according to the recipient type. Recipients must comply with this confidentiality statement.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="informationStatus" type="D2LogicalModel:InformationStatusEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The status of the related information (real, test, exercise ....).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="headerInformationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="InformationStatusEnum">
+    <xs:annotation>
+      <xs:documentation>Status of the related information (i.e. real, test or exercise).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="real">
+        <xs:annotation>
+          <xs:documentation>The information is real. It is not a test or exercise.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="technicalExercise">
+        <xs:annotation>
+          <xs:documentation>The information is part of an exercise which includes tests of associated technical subsystems.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="InternationalIdentifier">
+    <xs:annotation>
+      <xs:documentation>An identifier/name whose range is specific to the particular country.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="country" type="D2LogicalModel:CountryEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>ISO 3166-1 two character country code.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nationalIdentifier" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Identifier or name unique within the specified country.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="internationalIdentifierExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Itinerary" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Multiple (i.e. more than one) physically separate locations arranged as an ordered set that defines an itinerary or route.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:GroupOfLocations">
+        <xs:sequence>
+          <xs:element name="itineraryExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ItineraryByIndexedLocations">
+    <xs:annotation>
+      <xs:documentation>Multiple physically separate locations arranged as an ordered set that defines an itinerary or route. The index qualifier indicates the order.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Itinerary">
+        <xs:sequence>
+          <xs:element name="locationContainedInItinerary" type="D2LogicalModel:_LocationContainedInItinerary" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>A location contained in an itinerary (i.e. an ordered set of locations defining a route or itinerary).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="itineraryByIndexedLocationsExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="KilometresPerHour">
+    <xs:annotation>
+      <xs:documentation>A measure of speed defined in kilometres per hour.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:simpleType name="Language">
+    <xs:annotation>
+      <xs:documentation>A language datatype, identifies a specified language by an ISO 639-1 2-alpha / ISO 639-2 3-alpha code.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:language" />
+  </xs:simpleType>
+  <xs:complexType name="Location" abstract="true">
+    <xs:annotation>
+      <xs:documentation>The specification of a location either on a network (as a point or a linear location) or as an area. This may be provided in one or more referencing systems.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:GroupOfLocations">
+        <xs:sequence>
+          <xs:element name="locationForDisplay" type="D2LogicalModel:PointCoordinates" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>A location which may be used by clients for visual display on user interfaces.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="locationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MaintenanceArrowStateEnum">
+    <xs:annotation>
+      <xs:documentation>arrow state enum</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="left">
+        <xs:annotation>
+          <xs:documentation>left</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="middle">
+        <xs:annotation>
+          <xs:documentation>middle</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="right">
+        <xs:annotation>
+          <xs:documentation>right</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MaintenanceLightStateEnum">
+    <xs:annotation>
+      <xs:documentation>light state enum</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="off">
+        <xs:annotation>
+          <xs:documentation>off</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cross">
+        <xs:annotation>
+          <xs:documentation>cross</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="arrowLeft">
+        <xs:annotation>
+          <xs:documentation>arrowLeft</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="arrowRight">
+        <xs:annotation>
+          <xs:documentation>arrow right</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="specialSymbol">
+        <xs:annotation>
+          <xs:documentation>special symbol</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MaintenanceTableStateEnum">
+    <xs:annotation>
+      <xs:documentation>table state enum</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="flippedUp">
+        <xs:annotation>
+          <xs:documentation>flipped up</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="flippedDown">
+        <xs:annotation>
+          <xs:documentation>flippedDown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="intermediateState">
+        <xs:annotation>
+          <xs:documentation>intermediate state</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MaintenanceVehicles">
+    <xs:annotation>
+      <xs:documentation>Details of the maintenance vehicles involved in the roadworks activity.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="maintenanceVehiclesExtension" type="D2LogicalModel:_MaintenanceVehiclesExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MaintenanceVehiclesExtended">
+    <xs:annotation>
+      <xs:documentation>MaintenanceVehiclesExtended</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="maintenanceLightState" type="D2LogicalModel:MaintenanceLightStateEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>light state</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maintenanceTableState" type="D2LogicalModel:MaintenanceTableStateEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>table state</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="maintenanceArrowState" type="D2LogicalModel:MaintenanceArrowStateEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>arrow state</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MaintenanceWorks">
+    <xs:annotation>
+      <xs:documentation>Roadworks involving the maintenance or installation of infrastructure.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Roadworks">
+        <xs:sequence>
+          <xs:element name="roadMaintenanceType" type="D2LogicalModel:RoadMaintenanceTypeEnum" minOccurs="1" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The type of road maintenance or installation work at the specified location.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="maintenanceWorksExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="MetresAsFloat">
+    <xs:annotation>
+      <xs:documentation>A measure of distance defined in metres in a floating point format.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="D2LogicalModel:Float" />
+  </xs:simpleType>
+  <xs:complexType name="Mobility">
+    <xs:annotation>
+      <xs:documentation>An indication of whether the associated instance of a SituationRecord is mobile (e.g. a march or parade moving along a road) or stationary.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="mobilityType" type="D2LogicalModel:MobilityEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>An indication of whether the associated instance of a SituationRecord is mobile (e.g. a march or parade moving along a road) or stationary.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="mobilityExtension" type="D2LogicalModel:_MobilityExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="MobilityEnum">
+    <xs:annotation>
+      <xs:documentation>Types of mobility relating to a situation element defined by a SituationReord.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="mobile">
+        <xs:annotation>
+          <xs:documentation>The described element of a situation is moving.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="stationary">
+        <xs:annotation>
+          <xs:documentation>The described element of a situation is stationary.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="unknown">
+        <xs:annotation>
+          <xs:documentation>The mobility of the described element of a situation is unknown.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MobilityExtended">
+    <xs:annotation>
+      <xs:documentation>Extension for Mobility</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="speed" type="D2LogicalModel:KilometresPerHour" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A value of speed expressed in kilometres per hour.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="blockingDirection" type="D2LogicalModel:BlockingDirectionEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Direction of blocking the road</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfSatellites" type="D2LogicalModel:NonNegativeInteger" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>number of satellites usable for GPS</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="gpsStatus" type="D2LogicalModel:GpsStatusEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>status of GPS signal</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="errorState" type="D2LogicalModel:ErrorStateEnum" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>error state</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="lastPositions" type="D2LogicalModel:ItineraryByIndexedLocations" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MultilingualString">
+    <xs:sequence>
+      <xs:element name="values">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="value" type="D2LogicalModel:MultilingualStringValue" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MultilingualStringValue">
+    <xs:simpleContent>
+      <xs:extension base="D2LogicalModel:MultilingualStringValueType">
+        <xs:attribute name="lang" type="xs:language" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="MultilingualStringValueType">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="NetworkLocation" abstract="true">
+    <xs:annotation>
+      <xs:documentation>The specification of a location on a network (as a point or a linear location).</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:Location">
+        <xs:sequence>
+          <xs:element name="networkLocationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="NonNegativeInteger">
+    <xs:annotation>
+      <xs:documentation>An integer number whose value space is the set {0, 1, 2, ..., 2147483645, 2147483646, 2147483647}.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:nonNegativeInteger" />
+  </xs:simpleType>
+  <xs:simpleType name="OperatingModeEnum">
+    <xs:annotation>
+      <xs:documentation>Modes of operation of the exchange.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="operatingMode2">
+        <xs:annotation>
+          <xs:documentation>"Publisher Push Periodic" operating mode.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="OperatorAction">
+    <xs:annotation>
+      <xs:documentation>Actions that a traffic operator can decide to implement to prevent or help correct dangerous or poor driving conditions, including maintenance of the road infrastructure.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:SituationRecord">
+        <xs:sequence>
+          <xs:element name="operatorActionExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="OverallPeriod">
+    <xs:annotation>
+      <xs:documentation>A continuous or discontinuous period of validity defined by overall bounding start and end times and the possible intersection of valid periods (potentially recurring) with the complement of exception periods (also potentially recurring).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="overallStartTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Start of bounding period of validity defined by date and time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overallEndTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>End of bounding period of validity defined by date and time.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="overallPeriodExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PayloadPublication" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A payload publication of traffic related information or associated management information created at a specific point in time that can be exchanged via a DATEX II interface.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="publicationTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Date/time at which the payload publication was created.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="publicationCreator" type="D2LogicalModel:InternationalIdentifier" />
+      <xs:element name="payloadPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="lang" type="D2LogicalModel:Language" use="required">
+      <xs:annotation>
+        <xs:documentation>The default language used throughout the payload publication.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="Point">
+    <xs:annotation>
+      <xs:documentation>A single geospatial point.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:NetworkLocation">
+        <xs:sequence>
+          <xs:element name="pointByCoordinates" type="D2LogicalModel:PointByCoordinates" minOccurs="0" />
+          <xs:element name="pointExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="PointByCoordinates">
+    <xs:annotation>
+      <xs:documentation>A single point defined only by a coordinate set with an optional bearing direction.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="bearing" type="D2LogicalModel:NonNegativeInteger" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A bearing at the point measured in degrees (0 - 359).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pointCoordinates" type="D2LogicalModel:PointCoordinates" />
+      <xs:element name="pointByCoordinatesExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointCoordinates">
+    <xs:annotation>
+      <xs:documentation>A pair of coordinates defining the geodetic position of a single point using the European Terrestrial Reference System 1989 (ETRS89).</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="latitude" type="D2LogicalModel:Float" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Latitude in decimal degrees using the European Terrestrial Reference System 1989 (ETRS89).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="longitude" type="D2LogicalModel:Float" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Longitude in decimal degrees using the European Terrestrial Reference System 1989 (ETRS89).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="pointCoordinatesExtension" type="D2LogicalModel:_PointCoordinatesExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PointCoordinatesExtended">
+    <xs:annotation>
+      <xs:documentation>Additional information for point coordinates</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="altitude" type="D2LogicalModel:MetresAsFloat" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Height over sea</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ProbabilityOfOccurrenceEnum">
+    <xs:annotation>
+      <xs:documentation>Levels of confidence that the sender has in the information, ordered {certain, probable, risk of}.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="certain">
+        <xs:annotation>
+          <xs:documentation>The source is completely certain of the occurrence of the situation record version content.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="RoadMaintenanceTypeEnum">
+    <xs:annotation>
+      <xs:documentation>Types of road maintenance.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="maintenanceWork">
+        <xs:annotation>
+          <xs:documentation>Maintenance of road, associated infrastructure or equipments.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Roadworks" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Highway maintenance, installation and construction activities that may potentially affect traffic operations.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:OperatorAction">
+        <xs:sequence>
+          <xs:element name="roadworksDuration" type="D2LogicalModel:RoadworksDurationEnum" minOccurs="0" maxOccurs="1">
+            <xs:annotation>
+              <xs:documentation>Indicates in general terms the expected duration of the roadworks.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="mobility" type="D2LogicalModel:Mobility" />
+          <xs:element name="maintenanceVehicles" type="D2LogicalModel:MaintenanceVehicles" minOccurs="0" />
+          <xs:element name="roadworksExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="RoadworksDurationEnum">
+    <xs:annotation>
+      <xs:documentation>Expected durations of roadworks in general terms.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="shortTerm">
+        <xs:annotation>
+          <xs:documentation>The roadworks are expected to last for a short term ( duration &lt; = 1 month)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Situation">
+    <xs:annotation>
+      <xs:documentation>An identifiable instance of a traffic/travel situation comprising one or more traffic/travel circumstances which are linked by one or more causal relationships. Each traffic/travel circumstance is represented by a Situation Record.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="headerInformation" type="D2LogicalModel:HeaderInformation" />
+      <xs:element name="situationRecord" type="D2LogicalModel:SituationRecord" maxOccurs="unbounded" />
+      <xs:element name="situationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:complexType name="SituationPublication">
+    <xs:annotation>
+      <xs:documentation>A publication containing zero or more traffic/travel situations.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="D2LogicalModel:PayloadPublication">
+        <xs:sequence>
+          <xs:element name="situation" type="D2LogicalModel:Situation" minOccurs="0" maxOccurs="unbounded" />
+          <xs:element name="situationPublicationExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="SituationRecord" abstract="true">
+    <xs:annotation>
+      <xs:documentation>An identifiable versioned instance of a single record/element within a situation.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="situationRecordCreationReference" type="D2LogicalModel:String" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>A unique alphanumeric reference (either an external reference or GUID) of the SituationRecord object (the first version of the record) that was created by the original supplier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situationRecordCreationTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date/time that the SituationRecord object (the first version of the record) was created by the original supplier.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situationRecordVersionTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date/time that this current version of the SituationRecord within the situation was written into the database of the supplier which is involved in the data exchange. Identity and version of record are defined by the class stereotype implementation.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="situationRecordFirstSupplierVersionTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The date/time that the current version of the Situation Record was written into the database of the original supplier in the supply chain.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="probabilityOfOccurrence" type="D2LogicalModel:ProbabilityOfOccurrenceEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>An assessment of the degree of likelihood that the reported event will occur.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validity" type="D2LogicalModel:Validity" />
+      <xs:element name="generalPublicComment" type="D2LogicalModel:Comment" minOccurs="0" maxOccurs="3">
+        <xs:annotation>
+          <xs:documentation>A comment which may be freely distributed to the general public</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="nonGeneralPublicComment" type="D2LogicalModel:Comment" minOccurs="0" maxOccurs="3">
+        <xs:annotation>
+          <xs:documentation>A comment which should not be distributed to the general public.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="groupOfLocations" type="D2LogicalModel:GroupOfLocations" />
+      <xs:element name="situationRecordExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:string" use="required" />
+    <xs:attribute name="version" type="xs:string" use="required" />
+  </xs:complexType>
+  <xs:simpleType name="String">
+    <xs:annotation>
+      <xs:documentation>A character string whose value space is the set of finite-length sequences of characters. Every character has a corresponding Universal Character Set code point (as defined in ISO/IEC 10646), which is an integer.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1024" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Subscription">
+    <xs:annotation>
+      <xs:documentation>This item contains all information relating to a customer subscription.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="operatingMode" type="D2LogicalModel:OperatingModeEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The mode of operation of the exchange.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subscriptionStartTime" type="D2LogicalModel:DateTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Gives the date/time at which the subscription becomes active.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subscriptionState" type="D2LogicalModel:SubscriptionStateEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The current state of the the client's subscription.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="subscriptionStopTime" type="D2LogicalModel:DateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Gives the date/time at which the subscription expires.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="updateMethod" type="D2LogicalModel:UpdateMethodEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The type of updates of situations requested by the client.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="target" type="D2LogicalModel:Target" maxOccurs="unbounded" />
+      <xs:element name="subscriptionExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="SubscriptionStateEnum">
+    <xs:annotation>
+      <xs:documentation>The state of a client's current subscription.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="active">
+        <xs:annotation>
+          <xs:documentation>The client's subscription as registered with a supplier is currently active.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="suspended">
+        <xs:annotation>
+          <xs:documentation>The client's subscription as registered with a supplier is currently suspended.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Target">
+    <xs:annotation>
+      <xs:documentation>The details of a DATEX II target client.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="address" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The IP address of a DATEX II target client.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="protocol" type="D2LogicalModel:String" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The exchange protocol used between the supplier and the client.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="targetExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="UpdateMethodEnum">
+    <xs:annotation>
+      <xs:documentation>The types of updates of situations that may be requested by a client.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="allElementUpdate">
+        <xs:annotation>
+          <xs:documentation>The client has currently requested that all situation elements are sent when one or more component elements are updated.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="singleElementUpdate">
+        <xs:annotation>
+          <xs:documentation>The client has currently requested that only the individual elements of a situation that have changed are sent when updated.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="snapshot">
+        <xs:annotation>
+          <xs:documentation>The client has requested that all situations and their elements which are valid at the time of request be sent together, i.e. a snapshot in time of all valid situations.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="Validity">
+    <xs:annotation>
+      <xs:documentation>Specification of validity, either explicitly or by a validity time period specification which may be discontinuous.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="validityStatus" type="D2LogicalModel:ValidityStatusEnum" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Specification of validity, either explicitly overriding the validity time specification or confirming it.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validityTimeSpecification" type="D2LogicalModel:OverallPeriod">
+        <xs:annotation>
+          <xs:documentation>A specification of periods of validity defined by overall bounding start and end times and the possible intersection of valid periods with exception periods (exception periods overriding valid periods).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="validityExtension" type="D2LogicalModel:_ExtensionType" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ValidityStatusEnum">
+    <xs:annotation>
+      <xs:documentation>Values of validity status that can be assigned to a described event, action or item.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="active">
+        <xs:annotation>
+          <xs:documentation>The described event, action or item is currently active regardless of the definition of the validity time specification.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="suspended">
+        <xs:annotation>
+          <xs:documentation>The described event, action or item is currently suspended, that is inactive, regardless of the definition of the validity time specification.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="definedByValidityTimeSpec">
+        <xs:annotation>
+          <xs:documentation>The validity status of the described event, action or item is in accordance with the definition of the validity time specification.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
